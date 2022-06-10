@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算本文介绍了ZeroTier在Windows、Linux和Synology Drive下的安装与使用\n\n\n\nLinux安装：\n1apt-get install zerotier-one\n或\n1curl -s https://install.zerotier.com | sudo bash\n\nwindows安装：\n1安装目录里的Microsoft Edge WebView2 Runtime.exe\n\nSynology Drive安装\n在套件中心里添加矿神源\n1https://spk7.imnks.com/\n安装后ssh切换root权限提升权限\n1sed -i &#x27;s/package/root/g&#x27; /var/packages/zerotier/conf/privilege\n手动运行Zerotier\n12cd /var/packages/zerotier/target/bin./zerotier-one -q join d5e5fb6537ebc5f5\n\n加入网络：\n1zerotier-cli join d5e5fb6537ebc5f5\n退出网络：\n1zerotier-cli leave d5e5fb6537ebc5f5\n启动服务\n1zerotier-one -d\n重启服务：\n1service zerotier-one restart\n查看状态：\n1zerotier-cli status\n卸载：\n1apt-get purge zerotier-one\nZerotier连接虚拟网络后无法连接其他网络的原因原因：在zerotier虚拟网络上加入了与本地路由器冲突的路由表查看网关\n1netstat –rn\n或者\n1route -n\n添加网关\n1route default 192.168.2.1\n删除网关\n1route del -net 192.168.192.0 netmask 255.255.255.0\n\n在路由器上使用的方法\n","dateCreated":"2022-06-03T17:37:41+08:00","dateModified":"2022-06-09T16:40:28+08:00","datePublished":"2022-06-03T17:37:41+08:00","description":"ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算本文介绍了ZeroTier在Windows、Linux和Synology Drive下的安装与使用","headline":"ZeroTier使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"git://panxiuwen.github.io/d0ba3d2b7ece/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"git://panxiuwen.github.io/d0ba3d2b7ece/","keywords":"Network, Incomplete"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算本文介绍了ZeroTier在Windows、Linux和Synology Drive下的安装与使用\n\n\n\nLinux安装：\n1apt-get install zerotier-one\n或\n1curl -s https://install.zerotier.com | sudo bash\n\nwindows安装：\n1安装目录里的Microsoft Edge WebView2 Runtime.exe\n\nSynology Drive安装\n在套件中心里添加矿神源\n1https://spk7.imnks.com/\n安装后ssh切换root权限提升权限\n1sed -i &#x27;s/package/root/g&#x27; /var/packages/zerotier/conf/privilege\n手动运行Zerotier\n12cd /var/packages/zerotier/target/bin./zerotier-one -q join d5e5fb6537ebc5f5\n\n加入网络：\n1zerotier-cli join d5e5fb6537ebc5f5\n退出网络：\n1zerotier-cli leave d5e5fb6537ebc5f5\n启动服务\n1zerotier-one -d\n重启服务：\n1service zerotier-one restart\n查看状态：\n1zerotier-cli status\n卸载：\n1apt-get purge zerotier-one\nZerotier连接虚拟网络后无法连接其他网络的原因原因：在zerotier虚拟网络上加入了与本地路由器冲突的路由表查看网关\n1netstat –rn\n或者\n1route -n\n添加网关\n1route default 192.168.2.1\n删除网关\n1route del -net 192.168.192.0 netmask 255.255.255.0\n\n在路由器上使用的方法\n","dateCreated":"2022-06-03T17:37:41+08:00","dateModified":"2022-06-09T16:40:28+08:00","datePublished":"2022-06-03T17:37:41+08:00","description":"ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算本文介绍了ZeroTier在Windows、Linux和Synology Drive下的安装与使用","headline":"ZeroTier使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/d0ba3d2b7ece/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/d0ba3d2b7ece/","keywords":"Network, Incomplete"}</script>
     <meta name="description" content="ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算本文介绍了ZeroTier在Windows、Linux和Synology Drive下的安装与使用">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="ZeroTier使用">
-<meta property="og:url" content="git://panxiuwen.github.io/d0ba3d2b7ece/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/d0ba3d2b7ece/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算本文介绍了ZeroTier在Windows、Linux和Synology Drive下的安装与使用">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
         
     
     
-        <meta property="og:image" content="git://panxiuwen.github.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
     
@@ -386,9 +386,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/9cc707e351df/"
-                    data-tooltip="Windows配置SSH"
-                    aria-label="上一篇: Windows配置SSH"
+                    href="/f697f52f1378/"
+                    data-tooltip="Windows的软件"
+                    aria-label="上一篇: Windows的软件"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -462,9 +462,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/9cc707e351df/"
-                    data-tooltip="Windows配置SSH"
-                    aria-label="上一篇: Windows配置SSH"
+                    href="/f697f52f1378/"
+                    data-tooltip="Windows的软件"
+                    aria-label="上一篇: Windows的软件"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
