@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍如何使用WordPress、Typecho、Hexo、Halo等blog框架搭建个人网站\n\n使用Hexo建站\nHexo是基于node.js开发的blog框架，内容由Markdown生成，可一键部署到Github Page等平台\n\nWindows配置下载nodejs\n\nLinux安装1apt-get install nodejs npm\n\n换源并安装hexo，请提前安装好git并配置环境变量\n1234npm config set registry http://registry.npm.taobao.org/npm config get registrynpm install -g npmnpm install hexo-cli -g\n初始化blog文件\n1234cd d:/toolshexo init blogcd blognpm install\n修改blog/node_modules/hexo-server/index.js中的端口和ip为0.0.0.0运行hexo\n123hexo cleanhexo ghexo s\n\n安装Tranquilpeak主题下载Tranquilpeak主题，并放在/blog/themes目录中在主题目录运行\n1npm install &amp;&amp; npm run prod\n资源文件\n123侧边栏图标存储目录为：/themes/tranquilpeak/node_modules/@fortawesome/fontawesome-free/svgs/brands侧边栏布局修改：/tranquilpeak/_config.yml侧边栏显示内容修改：/tranquilpeak/languages/zh-cn.yml\n更新需要替换重要的数据文件\n12345/blog/_config.yml/blog/source//blog/themes/tranquilpeak/_config.yml/blog/themes/tranquilpeak/languages/zh-cn.yml/blog/themes/tranquilpeak/source/assets/images/\n部署到Github安装hexo-deployer-git\n1npm install hexo-deployer-git --save\n在_config文件中添加deploy信息\n部署到github\n1hexo d\n如果使用hexo d之后仓库只有源代码，没有生成的静态网页，那么请检查Github仓库里的Action-All wordflows里的错误信息\n\n使用Wordpress建站下载wordpress下载qzdy主题\n参考Tranquilpeak的仓库将Hexo部署到GitHubPages\n","dateCreated":"2022-06-04T17:37:41+08:00","dateModified":"2022-06-10T17:22:29+08:00","datePublished":"2022-06-04T17:37:41+08:00","description":"本文介绍如何使用WordPress、Typecho、Hexo、Halo等blog框架搭建个人网站","headline":"使用blog框架搭建站","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/716ef24d5f54/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/716ef24d5f54/","keywords":"Incomplete, Web"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍如何使用WordPress、Typecho、Hexo、Halo等blog框架搭建个人网站\n\n使用Hexo建站\nHexo是基于node.js开发的blog框架，内容由Markdown生成，可一键部署到Github Page等平台\n\nWindows配置下载nodejs\n\nLinux安装1apt-get install nodejs npm\n\n换源并安装hexo，请提前安装好git并配置环境变量\n1234npm config set registry http://registry.npm.taobao.org/npm config get registrynpm install -g npmnpm install hexo-cli -g\n初始化blog文件\n1234cd d:/toolshexo init blogcd blognpm install\n修改blog/node_modules/hexo-server/index.js中的端口和ip为0.0.0.0运行hexo\n123hexo cleanhexo ghexo s\n\n安装Tranquilpeak主题下载Tranquilpeak主题，并放在/blog/themes目录中在主题目录运行\n1npm install &amp;&amp; npm run prod\n资源文件\n123侧边栏图标存储目录为：/themes/tranquilpeak/node_modules/@fortawesome/fontawesome-free/svgs/brands侧边栏布局修改：/tranquilpeak/_config.yml侧边栏显示内容修改：/tranquilpeak/languages/zh-cn.yml\n更新需要替换重要的数据文件\n12345/blog/_config.yml/blog/source//blog/themes/tranquilpeak/_config.yml/blog/themes/tranquilpeak/languages/zh-cn.yml/blog/themes/tranquilpeak/source/assets/images/\n部署到Github安装hexo-deployer-git\n1npm install hexo-deployer-git --save\n在_config文件中添加deploy信息\n部署到github\n1hexo d\n如果使用hexo d之后仓库只有源代码，没有生成的静态网页，那么请检查Github仓库里的Action-All wordflows里的错误信息\n\n使用Wordpress建站下载wordpress下载qzdy主题\n参考Tranquilpeak的仓库将Hexo部署到GitHubPages\n","dateCreated":"2022-06-04T17:37:41+08:00","dateModified":"2022-06-10T17:22:29+08:00","datePublished":"2022-06-04T17:37:41+08:00","description":"本文介绍如何使用WordPress、Typecho、Hexo、Halo等blog框架搭建个人网站","headline":"使用blog框架搭建站","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://127.0.0.1/716ef24d5f54/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://127.0.0.1/716ef24d5f54/","keywords":"Incomplete, Web"}</script>
     <meta name="description" content="本文介绍如何使用WordPress、Typecho、Hexo、Halo等blog框架搭建个人网站">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="使用blog框架搭建站">
-<meta property="og:url" content="https://panxiuwen.github.io/716ef24d5f54/index.html">
+<meta property="og:url" content="http://127.0.0.1/716ef24d5f54/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍如何使用WordPress、Typecho、Hexo、Halo等blog框架搭建个人网站">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="http://127.0.0.1/assets/images/mitu.jpg"/>
     
     
     
@@ -405,7 +405,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -416,7 +416,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -481,7 +481,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -492,7 +492,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
