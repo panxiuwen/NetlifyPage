@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Pan&#39;s websit">
+    <title>配置Minecraft服务器 - Pan&#39;s websit</title>
+    <meta name="author" content="Sean Pan">
+    
+        <meta name="keywords" content="hexo,javascript">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍配置Minecraft服务器\n\n\nJava Edition在Oracle官网下载JDK8，要注册账号解压文件\n1tar -zxvf\n检查Java\n1/app/jdk1.8.0_241/jre/bin/java -version\n配置 screen\n1nano .bashrc\n123alias sl=&quot;screen -ls&quot;alias sb=&quot;screen bash&quot;alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;\n测试命令行\n1cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui\n同意eula并编辑server.properties(注意要改PVP、online)\n死亡不掉落\n1/gamerule keepInventory true\n防爆\n1/gamerule mobGriefing false\n管理员锚\n1/give Sean railcraft:worldspike 64 0\n查看在线玩家\n1list\nBedrock Edition注意，编译后不要移动位置，因为编译后的文件含有不可更改的路径信息MCPE安卓下载 \nPocketMine-MP下载\nPHP build scripts for PocketMine-MP环境设置完代理再编译\n12export https_proxy=http://192.168.2.3:2333./compile.sh -j4 -f -l (-l启用多读少写优化-f启用滥用优化)\n开启了服务器\n1./start.sh\n配置命令行\n1alias mcpe=&#x27;cd /app/mcpe&amp;&amp; screen -dm bash start.sh&#x27;","dateCreated":"2022-06-03T00:00:00+08:00","dateModified":"2022-06-10T19:23:45+08:00","datePublished":"2022-06-03T00:00:00+08:00","description":"本文介绍配置Minecraft服务器","headline":"配置Minecraft服务器","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/68fb587df8c3/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/68fb587df8c3/","keywords":"Game"}</script>
+    <meta name="description" content="本文介绍配置Minecraft服务器">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="配置Minecraft服务器">
+<meta property="og:url" content="http://192.168.192.100/68fb587df8c3/index.html">
+<meta property="og:site_name" content="Pan&#39;s websit">
+<meta property="og:description" content="本文介绍配置Minecraft服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-10T11:23:45.976Z">
+<meta property="article:author" content="Sean Pan">
+<meta property="article:tag" content="Game">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="[object Object]">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-ugcpbieivliwnoaslqv3bxtnrpxx2tp0pimsnkpypxun1cwcx7syz92ocp9b.min.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Pan&#39;s websit
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/mitu.jpg" alt="作者的图片"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/mitu.jpg" alt="作者的图片"/>
+                </a>
+                <h4 class="sidebar-profile-name">Sean Pan</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>不似天涯，卷起杨花似雪花</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="首页"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">首页</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="分类"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">分类</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="标签"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">标签</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="归档"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">归档</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="搜索"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">搜索</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="#about"
+                            
+                            rel="noopener"
+                            title="关于"
+                        >
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">关于</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="知乎"
+                        >
+                        <i class="sidebar-button-icon fab fa-zhihu" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">知乎</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://music.163.com/#/user/home?id=70816221"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="网易云"
+                        >
+                        <i class="sidebar-button-icon fab fa-tiktok" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">网易云</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/panxiuwen/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://gitee.com/sean982202733/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Gitee"
+                        >
+                        <i class="sidebar-button-icon fab fa-google" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Gitee</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:panxiuwen_sean@qq.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="邮箱"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">邮箱</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            配置Minecraft服务器
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2022-06-03T00:00:00+08:00">
+	
+		    6月 03, 2022
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>本文介绍配置Minecraft服务器</p>
+<span id="more"></span>
+
+<h3 id="Java-Edition"><a href="#Java-Edition" class="headerlink" title="Java Edition"></a>Java Edition</h3><p>在Oracle官网下载<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK8</a>，要注册账号<br>解压文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf</span><br></pre></td></tr></table></figure>
+<p>检查Java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/app/jdk1.8.0_241/jre/bin/java -version</span><br></pre></td></tr></table></figure>
+<p>配置 screen</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano .bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias sl=&quot;screen -ls&quot;</span><br><span class="line">alias sb=&quot;screen bash&quot;</span><br><span class="line">alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;</span><br></pre></td></tr></table></figure>
+<p>测试命令行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui</span><br></pre></td></tr></table></figure>
+<p>同意eula并编辑server.properties(注意要改PVP、online)</p>
+<p>死亡不掉落</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/gamerule keepInventory true</span><br></pre></td></tr></table></figure>
+<p>防爆</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/gamerule mobGriefing false</span><br></pre></td></tr></table></figure>
+<p>管理员锚</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/give Sean railcraft:worldspike 64 0</span><br></pre></td></tr></table></figure>
+<p>查看在线玩家</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list</span><br></pre></td></tr></table></figure>
+<h3 id="Bedrock-Edition"><a href="#Bedrock-Edition" class="headerlink" title="Bedrock Edition"></a>Bedrock Edition</h3><p><strong>注意，编译后不要移动位置，因为编译后的文件含有不可更改的路径信息</strong><br><a target="_blank" rel="noopener" href="https://klpbbs.com/xz/">MCPE安卓下载</a> </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pmmp/PocketMine-MP/releases">PocketMine-MP下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pmmp/php-build-scripts">PHP build scripts for PocketMine-MP环境</a><br>设置完代理再编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://192.168.2.3:2333</span><br><span class="line">./compile.sh -j4 -f -l (-l启用多读少写优化-f启用滥用优化)</span><br></pre></td></tr></table></figure>
+<p>开启了服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
+<p>配置命令行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias mcpe=&#x27;cd /app/mcpe&amp;&amp; screen -dm bash start.sh&#x27;</span><br></pre></td></tr></table></figure>
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Game/" rel="tag">Game</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/1626adb5e0a9/"
+                    data-tooltip="Linux服务的配置方法"
+                    aria-label="上一篇: Linux服务的配置方法"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/554bf8e9a142/"
+                    data-tooltip="实现流量转发"
+                    aria-label="下一篇: 实现流量转发"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2022 Sean Pan. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/1626adb5e0a9/"
+                    data-tooltip="Linux服务的配置方法"
+                    aria-label="上一篇: Linux服务的配置方法"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/554bf8e9a142/"
+                    data-tooltip="实现流量转发"
+                    aria-label="下一篇: 实现流量转发"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/mitu.jpg" alt="作者的图片"/>
+        
+            <h4 id="about-card-name">Sean Pan</h4>
+        
+            <div id="about-card-bio"><p>不似天涯，卷起杨花似雪花</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Master in YNU</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Kunming China
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/script-83fla0bgeojapftrfusyfguda5zl4tkpdjin5ohxzxbvdeliluaioqsswfkn.min.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>
