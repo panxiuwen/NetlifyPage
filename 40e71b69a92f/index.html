@@ -13,16 +13,16 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"Debian是较为好用的GNU/Linux的一个分支本文介绍了Debian初始化中的一些操作，部分内容可参考《树莓派的初始化》\n\n\n语言应该选英文，安装软件选择SSH Server，标准系统工具\n解决运行什么命令都command not find的问题\n12nano .bashrcexport PATH=$PATH:/usr/sbin\n使修改生效\n1source .bashrc\n设置管理员密码\n1sudo passwd root\n安装一些必要软件\n1apt-get install sudo curl gnupg net-tools\n修改源，注意版本为bullseye\n12345678910111213nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/debian/ bullseye main non-free contribdeb-src http://mirrors.aliyun.com/debian/ bullseye main non-free contribdeb http://mirrors.aliyun.com/debian-security/ bullseye-security maindeb-src http://mirrors.aliyun.com/debian-security/ bullseye-security maindeb http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contribdeb-src http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contribdeb http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contribdeb-src http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib\n1注意，如果于提示插入光盘，nano /etc/apt/sources.list找到有cdrom的那行\n允许root登录SSH\n12nano /etc/ssh/sshd_config找到PermitRootLogin prohibit-password 改为 PermitRootLogin yes ，并把前面的#去掉\n重启ssh服务生效\n1sudo systemctl restart ssh\n3.Zertier相关安装，其他使用方法请参考Zerotier.md\n1apt-get install zerotier-one 或 curl -s https://install.zerotier.com | sudo bash\n4.pi-dashboard相关安装带php的apache\n1apt-get install apache2 php libapache2-mod-php\n下载pi-dashboard后解压上传到/var/www/html里\n安装Python3&amp;GCC\n1apt-get install python3-pip python3-dev libffi-dev gcc make\n卸载软件\n12apt-get purgeaptitude purge nginx\n查看占用的端口\n1lsof -i:21\n修复apt\n1apt --fix-broken install","dateCreated":"2022-06-02T00:00:00+08:00","dateModified":"2022-06-10T19:11:03+08:00","datePublished":"2022-06-02T00:00:00+08:00","description":"Debian是较为好用的GNU/Linux的一个分支本文介绍了Debian初始化中的一些操作，部分内容可参考《树莓派的初始化》","headline":"Debian的初始化","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/40e71b69a92f/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/40e71b69a92f/","keywords":"Linux"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"Debian是较为好用的GNU/Linux的一个分支本文介绍了Debian初始化中的一些操作，部分内容可参考《树莓派的初始化》\n\n\n语言应该选英文，安装软件选择SSH Server，标准系统工具\n解决运行什么命令都command not find的问题\n12nano .bashrcexport PATH=$PATH:/usr/sbin\n使修改生效\n1source .bashrc\n设置管理员密码\n1sudo passwd root\n安装一些必要软件\n1apt-get install sudo curl gnupg net-tools\n修改源，注意版本为bullseye\n12345678910111213nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/debian/ bullseye main non-free contribdeb-src http://mirrors.aliyun.com/debian/ bullseye main non-free contribdeb http://mirrors.aliyun.com/debian-security/ bullseye-security maindeb-src http://mirrors.aliyun.com/debian-security/ bullseye-security maindeb http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contribdeb-src http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contribdeb http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contribdeb-src http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib\n1注意，如果于提示插入光盘，nano /etc/apt/sources.list找到有cdrom的那行\n允许root登录SSH\n12nano /etc/ssh/sshd_config找到PermitRootLogin prohibit-password 改为 PermitRootLogin yes ，并把前面的#去掉\n重启ssh服务生效\n1sudo systemctl restart ssh\n3.Zertier相关安装，其他使用方法请参考Zerotier.md\n1apt-get install zerotier-one 或 curl -s https://install.zerotier.com | sudo bash\n4.pi-dashboard相关安装带php的apache\n1apt-get install apache2 php libapache2-mod-php\n下载pi-dashboard后解压上传到/var/www/html里\n安装Python3&amp;GCC\n1apt-get install python3-pip python3-dev libffi-dev gcc make\n卸载软件\n12apt-get purgeaptitude purge nginx\n查看占用的端口\n1lsof -i:21\n修复apt\n1apt --fix-broken install\n5.挂载硬盘查找磁盘：\n1sudo fdisk -l\n挂载硬盘\n12mkdir /mnt/diskmount -o uid=root,gid=root /dev/sda1 /mnt/disk\n卸载硬盘\n1umount /dev/sda1","dateCreated":"2022-06-02T00:00:00+08:00","dateModified":"2022-06-13T21:52:09+08:00","datePublished":"2022-06-02T00:00:00+08:00","description":"Debian是较为好用的GNU/Linux的一个分支本文介绍了Debian初始化中的一些操作，部分内容可参考《树莓派的初始化》","headline":"Debian的初始化","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/40e71b69a92f/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/40e71b69a92f/","keywords":"Linux"}</script>
     <meta name="description" content="Debian是较为好用的GNU&#x2F;Linux的一个分支本文介绍了Debian初始化中的一些操作，部分内容可参考《树莓派的初始化》">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Debian的初始化">
-<meta property="og:url" content="https://panxiuwen.github.io/40e71b69a92f/index.html">
+<meta property="og:url" content="http://192.168.192.100/40e71b69a92f/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="Debian是较为好用的GNU&#x2F;Linux的一个分支本文介绍了Debian初始化中的一些操作，部分内容可参考《树莓派的初始化》">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:11:03.025Z">
+<meta property="article:modified_time" content="2022-06-13T13:52:09.138Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -32,7 +32,7 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
     
     
     
@@ -351,6 +351,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:21</span><br></pre></td></tr></table></figure>
 <p>修复apt</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt --fix-broken install</span><br></pre></td></tr></table></figure>
+<h3 id="5-挂载硬盘"><a href="#5-挂载硬盘" class="headerlink" title="5.挂载硬盘"></a>5.挂载硬盘</h3><p>查找磁盘：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure>
+<p>挂载硬盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /mnt/disk</span><br><span class="line">mount -o uid=root,gid=root /dev/sda1 /mnt/disk</span><br></pre></td></tr></table></figure>
+<p>卸载硬盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/sda1</span><br></pre></td></tr></table></figure>
             
 
 

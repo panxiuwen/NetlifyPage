@@ -13,16 +13,16 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"一些设备的跑分\n\nX86 CPU Benchmark’s Gather\n\n\nCPU\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nCore i5-5200U\nInspiron15 3543\nNative\nBroadwell × 2\n1200.5\n2740.6\n\n\nCore i5-5200U\nInspiron15 3543\nVMware\nBroadwell × 2\n708.5\n1870.7\n\n\nCore i5-5200U\nInspiron15 3543\nWSL\nBroadwell × 2\n265.2\n478.4\n\n\nCeleron 1007U\nASUS X201E\nNative\nIvyBridge × 2\n646.9\n1153.2\n\n\nCore i3-9100F\nTUF B360m\nWSL\nCoffeeLake × 4\n441\n1202.1\n\n\nEfficiency of Virtual Machine WSL：22.09%/17.46%    VMware：59.02%/68.26%Remarks：Windows LTSC 2019 / VMware Workstation Pro 16.1.2.8432 / Debian buster\nARM SOC Benchmark’s gather\n\n\nSOC\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nSD 625\nRedmi 4\nLinuxDeploy\nA53 × 8\n312\n1452.8\n\n\nSD 625\nRedmi 4\nRM TC\nA53 × 8\n313.8\n1714.5\n\n\nSD 835\nMi 6\nLinuxDeploy\nA73 × 4 + A53 × 4\n696.1\n1762\n\n\nSD 835\nMi 6\nRM TC\nA73 × 4 + A53 × 4\n788.5\n2250.9\n\n\nSD 870\nMi 10s\nLinuxDeploy\nA77 × 4 + A55 × 4\n1277.3\n2430.4\n\n\nSD 870\nMi 10s\nRM TC\nA77 × 4 + A55 × 4\n1426.3\n2549.4\n\n\nBCM 2711\nPi4\nNative\nA72 × 4\n312\n1038.9\n\n\nAllwinner H2+\nPi Zero\nNative\nA7 × 4\n202.2\n-\n\n\nRM TC means remove temperature controlRemarks：LinuxDeploy 2.60 / Debian buster\nBenchmark’s gather Single Core of X86\n\n\nItem\n5200U-Native\n5200U-VMware\n5200U-WSL\n1007U-Native\n9100F-WSL\n\n\n\nDhrystone 2\n2756.4\n2685.3\n2749.6\n1567.6\n4466\n\n\nWhetstone\n1148\n1017.7\n1036\n473.3\n1602.5\n\n\nThroughput\n1070.5\n673\n104.4\n513.6\n177.9\n\n\nFileCopy 1024\n1595.1\n1145.4\n252.6\n847.8\n361.5\n\n\nFileCopy 256\n1089.7\n776.2\n154.7\n545.8\n223\n\n\nFileCopy 4096\n2941.3\n2285.8\n508.7\n1734.4\n790\n\n\nPipe Throughput\n785.9\n544.7\n169.5\n432.5\n226.7\n\n\nPipe Switching\n470\n28.4\n66.6\n238.3\n126.3\n\n\nProcess Creation\n435.3\n254\n65.9\n383.6\n119.7\n\n\nShell Scripts X1\n1696.6\n1541.9\n396.9\n1191\n825.3\n\n\nShell Scripts X8\n3854.5\n2724.3\n514.8\n1599.1\n1518.5\n\n\nSystem Call\n491.9\n259.8\n134.7\n233.3\n155.2\n\n\nIndex Score\n1200.5\n708.5\n265.2\n646.9\n441\n\n\nBenchmark’s Gather Multi Core of X86\n\n\nItem\n5200U-Native\n5200U-VMware\n5200U-WSL\n1007U-Native\n9100F-WSL\n\n\n\nDhrystone 2\n6889\n2685.3\n6703.5\n3144.4\n17220.7\n\n\nWhetstone\n3629.3\n1017.7\n3377.6\n945.7\n6111.4\n\n\nThroughput\n2625.1\n673\n199.5\n989.5\n580.6\n\n\nFileCopy 1024\n2293.4\n1145.4\n288.5\n1574.7\n736\n\n\nFileCopy 256\n1510.5\n776.2\n179.5\n1012.2\n449\n\n\nFileCopy 4096\n4542.5\n2285.8\n452.1\n3044.1\n1367.9\n\n\nPipe Throughput\n2113.8\n544.7\n382.2\n856.4\n820.4\n\n\nPipe Switching\n1545.1\n28.4\n353.1\n449.7\n779.7\n\n\nProcess Creation\n1935.3\n254\n100.2\n791.2\n332.8\n\n\nShell Scripts X1\n4341\n1541.9\n544.6\n1736.5\n1698.9\n\n\nShell Scripts X8\n4272.3\n2724.3\n576.8\n1640.4\n1600.5\n\n\nSystem Call\n1482.7\n259.8\n320\n446.3\n569.5\n\n\nIndex Score\n2740.6\n708.5\n478.4\n1153.2\n1202.1\n\n\nBenchmark’s gather Single Core of ARM\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\n\n\n\nDhrystone 2\n874.4\n1674\n3605.5\n1246\n\n\nWhetstone\n434\n725.3\n1340.2\n462.3\n\n\nThroughput\n415.3\n762.8\n1371.8\n384\n\n\nFileCopy 1024\n385\n1214.9\n2669.2\n413.7\n\n\nFileCopy 256\n262.8\n921.8\n2117\n285.4\n\n\nFileCopy 4096\n742.6\n1851.3\n2458.3\n765.8\n\n\nPipe Throughput\n251.2\n810.7\n1217.2\n215.7\n\n\nPipe Switching\n11\n71.5\n207.8\n127.4\n\n\nProcess Creation\n74.7\n100.4\n186.6\n229.5\n\n\nShell Scripts X1\n646.3\n402.8\n768.3\n834.5\n\n\nShell Scripts X8\n2144.8\n2068.5\n3512.3\n1589.6\n\n\nSystem Call\n563.4\n1279.8\n1607.3\n160.3\n\n\nIndex Score\n333.8\n691.3\n1277.3\n416\n\n\nBenchmark’s Gather Multi Core of ARM\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\n\n\n\nDhrystone 2\n4581.2\n7160.1\n13835.2\n4987.5\n\n\nWhetstone\n2617.7\n3231.2\n5662.3\n1845.2\n\n\nThroughput\n1800\n2653.4\n3948.7\n1054.3\n\n\nFileCopy 1024\n517.7\n658.1\n1185.5\n740.7\n\n\nFileCopy 256\n322.7\n371.2\n671.7\n491.1\n\n\nFileCopy 4096\n1202.8\n1700.3\n2273.3\n1216.8\n\n\nPipe Throughput\n1236.8\n2455\n5268.2\n861.1\n\n\nPipe Switching\n573.7\n455\n229.4\n451.1\n\n\nProcess Creation\n907.2\n1035.3\n1020.1\n495.9\n\n\nShell Scripts X1\n2638\n2864.2\n6524.2\n1784.7\n\n\nShell Scripts X8\n2772.5\n3867.2\n6075.1\n1719.3\n\n\nSystem Call\n2016.1\n2617.1\n1552.9\n623.1\n\n\nIndex Score\n1363.2\n1755.2\n2430.4\n1038.9\n\n\nMIPSEL 24KC SOC Benchmark’s gather\n\n\nItem\nMT7620A\n\n\n\nDhrystone 2\n109.7169885\n\n\nWhetstone\n4.426333224\n\n\nThroughput\n78.66804124\n\n\nFileCopy 1024\n110.8269005\n\n\nFileCopy 256\n98.86116323\n\n\nFileCopy 4096\n27.01370771\n\n\nPipe Throughput\n117.9864114\n\n\nPipe Switching\n97.814225\n\n\nProcess Creation\n71.59094779\n\n\nSystem Call\n203.4783617\n\n\n","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-12T18:03:23+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"一些设备的跑分","headline":"一些设备的跑分","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/6ee7f5398879/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/6ee7f5398879/","keywords":"Performance"}</script>
-    <meta name="description" content="一些设备的跑分">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"The benchmarks of some device, result of UnixBench 5.13. \n\nX86 CPU Benchmark’s Gather\n\n\nCPU\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nCore i5-5200U\nInspiron15 3543\nNative\nBroadwell × 2\n1200.5\n2740.6\n\n\nCore i5-5200U\nInspiron15 3543\nVMware\nBroadwell × 2\n708.5\n1870.7\n\n\nCore i5-5200U\nInspiron15 3543\nWSL\nBroadwell × 2\n265.2\n478.4\n\n\nCeleron 1007U\nASUS X201E\nNative\nIvyBridge × 2\n646.9\n1153.2\n\n\nCore i3-9100F\nTUF B360m\nWSL\nCoffeeLake × 4\n441\n1202.1\n\n\nEfficiency of Virtual Machine WSL：22.09%/17.46%    VMware：59.02%/68.26%Remarks：Windows LTSC 2019 / VMware Workstation Pro 16.1.2.8432 / Debian buster\nARM SOC Benchmark’s gather\n\n\nSOC\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nSD 625\nRedmi 4\nLinuxDeploy\nA53 × 8\n312\n1452.8\n\n\nSD 625\nRedmi 4\nRM TC\nA53 × 8\n313.8\n1714.5\n\n\nSD 835\nMi 6\nLinuxDeploy\nA73 × 4 + A53 × 4\n696.1\n1762\n\n\nSD 835\nMi 6\nRM TC\nA73 × 4 + A53 × 4\n788.5\n2250.9\n\n\nSD 870\nMi 10s\nLinuxDeploy\nA77 × 4 + A55 × 4\n1277.3\n2430.4\n\n\nSD 870\nMi 10s\nRM TC\nA77 × 4 + A55 × 4\n1426.3\n2549.4\n\n\nBCM 2711\nPi4\nNative\nA72 × 4\n312\n1038.9\n\n\nAllwinner H2+\nPi Zero\nNative\nA7 × 4\n202.2\n-\n\n\nSD is the abbreviation of Snapdragon QualcommRM TC means remove temperature controlRemarks：LinuxDeploy 2.60 / Debian buster\nBenchmark’s gather Single Core of X86\n\n\nItem\n5200U-Native\n5200U-VMware\n5200U-WSL\n1007U-Native\n9100F-WSL\n\n\n\nDhrystone 2\n2756.4\n2685.3\n2749.6\n1567.6\n4466\n\n\nWhetstone\n1148\n1017.7\n1036\n473.3\n1602.5\n\n\nThroughput\n1070.5\n673\n104.4\n513.6\n177.9\n\n\nFileCopy 1024\n1595.1\n1145.4\n252.6\n847.8\n361.5\n\n\nFileCopy 256\n1089.7\n776.2\n154.7\n545.8\n223\n\n\nFileCopy 4096\n2941.3\n2285.8\n508.7\n1734.4\n790\n\n\nPipe Throughput\n785.9\n544.7\n169.5\n432.5\n226.7\n\n\nPipe Switching\n470\n28.4\n66.6\n238.3\n126.3\n\n\nProcess Creation\n435.3\n254\n65.9\n383.6\n119.7\n\n\nShell Scripts X1\n1696.6\n1541.9\n396.9\n1191\n825.3\n\n\nShell Scripts X8\n3854.5\n2724.3\n514.8\n1599.1\n1518.5\n\n\nSystem Call\n491.9\n259.8\n134.7\n233.3\n155.2\n\n\nIndex Score\n1200.5\n708.5\n265.2\n646.9\n441\n\n\nBenchmark’s Gather Multi Core of X86\n\n\nItem\n5200U-Native\n5200U-VMware\n5200U-WSL\n1007U-Native\n9100F-WSL\n\n\n\nDhrystone 2\n6889\n2685.3\n6703.5\n3144.4\n17220.7\n\n\nWhetstone\n3629.3\n1017.7\n3377.6\n945.7\n6111.4\n\n\nThroughput\n2625.1\n673\n199.5\n989.5\n580.6\n\n\nFileCopy 1024\n2293.4\n1145.4\n288.5\n1574.7\n736\n\n\nFileCopy 256\n1510.5\n776.2\n179.5\n1012.2\n449\n\n\nFileCopy 4096\n4542.5\n2285.8\n452.1\n3044.1\n1367.9\n\n\nPipe Throughput\n2113.8\n544.7\n382.2\n856.4\n820.4\n\n\nPipe Switching\n1545.1\n28.4\n353.1\n449.7\n779.7\n\n\nProcess Creation\n1935.3\n254\n100.2\n791.2\n332.8\n\n\nShell Scripts X1\n4341\n1541.9\n544.6\n1736.5\n1698.9\n\n\nShell Scripts X8\n4272.3\n2724.3\n576.8\n1640.4\n1600.5\n\n\nSystem Call\n1482.7\n259.8\n320\n446.3\n569.5\n\n\nIndex Score\n2740.6\n708.5\n478.4\n1153.2\n1202.1\n\n\nBenchmark’s gather Single Core of ARM\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\n\n\n\nDhrystone 2\n874.4\n1674\n3605.5\n1246\n\n\nWhetstone\n434\n725.3\n1340.2\n462.3\n\n\nThroughput\n415.3\n762.8\n1371.8\n384\n\n\nFileCopy 1024\n385\n1214.9\n2669.2\n413.7\n\n\nFileCopy 256\n262.8\n921.8\n2117\n285.4\n\n\nFileCopy 4096\n742.6\n1851.3\n2458.3\n765.8\n\n\nPipe Throughput\n251.2\n810.7\n1217.2\n215.7\n\n\nPipe Switching\n11\n71.5\n207.8\n127.4\n\n\nProcess Creation\n74.7\n100.4\n186.6\n229.5\n\n\nShell Scripts X1\n646.3\n402.8\n768.3\n834.5\n\n\nShell Scripts X8\n2144.8\n2068.5\n3512.3\n1589.6\n\n\nSystem Call\n563.4\n1279.8\n1607.3\n160.3\n\n\nIndex Score\n333.8\n691.3\n1277.3\n416\n\n\nBenchmark’s Gather Multi Core of ARM\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\n\n\n\nDhrystone 2\n4581.2\n7160.1\n13835.2\n4987.5\n\n\nWhetstone\n2617.7\n3231.2\n5662.3\n1845.2\n\n\nThroughput\n1800\n2653.4\n3948.7\n1054.3\n\n\nFileCopy 1024\n517.7\n658.1\n1185.5\n740.7\n\n\nFileCopy 256\n322.7\n371.2\n671.7\n491.1\n\n\nFileCopy 4096\n1202.8\n1700.3\n2273.3\n1216.8\n\n\nPipe Throughput\n1236.8\n2455\n5268.2\n861.1\n\n\nPipe Switching\n573.7\n455\n229.4\n451.1\n\n\nProcess Creation\n907.2\n1035.3\n1020.1\n495.9\n\n\nShell Scripts X1\n2638\n2864.2\n6524.2\n1784.7\n\n\nShell Scripts X8\n2772.5\n3867.2\n6075.1\n1719.3\n\n\nSystem Call\n2016.1\n2617.1\n1552.9\n623.1\n\n\nIndex Score\n1363.2\n1755.2\n2430.4\n1038.9\n\n\nMIPSEL 24KC SOC Benchmark’s gather\n\n\nItem\nMT7620A\n\n\n\nDhrystone 2\n109.7169885\n\n\nWhetstone\n4.426333224\n\n\nThroughput\n78.66804124\n\n\nFileCopy 1024\n110.8269005\n\n\nFileCopy 256\n98.86116323\n\n\nFileCopy 4096\n27.01370771\n\n\nPipe Throughput\n117.9864114\n\n\nPipe Switching\n97.814225\n\n\nProcess Creation\n71.59094779\n\n\nSystem Call\n203.4783617\n\n\n","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-13T21:32:42+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"The benchmarks of some device, result of UnixBench 5.13. ","headline":"一些设备的跑分","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/6ee7f5398879/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/6ee7f5398879/","keywords":"Performance"}</script>
+    <meta name="description" content="The benchmarks of some device, result of UnixBench 5.13.">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="一些设备的跑分">
-<meta property="og:url" content="https://panxiuwen.github.io/6ee7f5398879/index.html">
+<meta property="og:url" content="http://192.168.192.100/6ee7f5398879/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
-<meta property="og:description" content="一些设备的跑分">
+<meta property="og:description" content="The benchmarks of some device, result of UnixBench 5.13.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-12T10:03:23.428Z">
+<meta property="article:modified_time" content="2022-06-13T13:32:42.583Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Performance">
 <meta name="twitter:card" content="summary">
@@ -32,7 +32,7 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
     
     
     
@@ -319,7 +319,7 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>一些设备的跑分</p>
+            <p>The benchmarks of some device, result of UnixBench 5.13. </p>
 <span id="more"></span>
 <h3 id="X86-CPU-Benchmark’s-Gather"><a href="#X86-CPU-Benchmark’s-Gather" class="headerlink" title="X86 CPU Benchmark’s Gather"></a>X86 CPU Benchmark’s Gather</h3><table>
 <thead>
@@ -450,7 +450,7 @@
 <td>-</td>
 </tr>
 </tbody></table>
-<p>RM TC means remove temperature control<br>Remarks：LinuxDeploy 2.60 / Debian buster</p>
+<p>SD is the abbreviation of Snapdragon Qualcomm<br>RM TC means remove temperature control<br>Remarks：LinuxDeploy 2.60 / Debian buster</p>
 <h3 id="Benchmark’s-gather-Single-Core-of-X86"><a href="#Benchmark’s-gather-Single-Core-of-X86" class="headerlink" title="Benchmark’s gather Single Core of X86"></a>Benchmark’s gather Single Core of X86</h3><table>
 <thead>
 <tr>
@@ -959,9 +959,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/c486521670bf/"
-                    data-tooltip="群晖的初始化"
-                    aria-label="上一篇: 群晖的初始化"
+                    href="/dbd72552b9f9/"
+                    data-tooltip="Aria2的安装使用"
+                    aria-label="上一篇: Aria2的安装使用"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -973,9 +973,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/dbd72552b9f9/"
-                    data-tooltip="Aria2的安装使用"
-                    aria-label="下一篇: Aria2的安装使用"
+                    href="/dbefa23f0974/"
+                    data-tooltip="使用Crontab设置定时任务"
+                    aria-label="下一篇: 使用Crontab设置定时任务"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -1035,9 +1035,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/c486521670bf/"
-                    data-tooltip="群晖的初始化"
-                    aria-label="上一篇: 群晖的初始化"
+                    href="/dbd72552b9f9/"
+                    data-tooltip="Aria2的安装使用"
+                    aria-label="上一篇: Aria2的安装使用"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -1049,9 +1049,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/dbd72552b9f9/"
-                    data-tooltip="Aria2的安装使用"
-                    aria-label="下一篇: Aria2的安装使用"
+                    href="/dbefa23f0974/"
+                    data-tooltip="使用Crontab设置定时任务"
+                    aria-label="下一篇: 使用Crontab设置定时任务"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>

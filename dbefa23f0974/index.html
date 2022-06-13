@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了Linux下使用Crontab设置定时任务\n\n1.安装cronie\n1apt install cron\n2.编辑任务列表\n1crontab -e  #root用户选择1\n3.打开cron日志\n1nano /etc/rsyslog.conf\n在文件中找到cron.*一行：，反注释掉\n1#cron.*                     /var/log/cron.log\n重启rsyslog\n1service rsyslog restart\n4.每天的 6、11、17点 执行Python命令，并将结果保存到/root/pxw.log\n11 3,9,22 * * * python3 /app/Crontab/pxw/index.py &gt;pxw.log\n5.察看cron日志\n1nano /var/log/cron.log\n6.重启cron\n1service cron restart\n7.察看cron\n1pgrep cron","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-10T19:07:02+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"本文介绍了Linux下使用Crontab设置定时任务","headline":"使用Crontab设置定时任务","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/dbefa23f0974/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/dbefa23f0974/","keywords":"Linux"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了Linux下使用Crontab设置定时任务\n\n1.安装cronie\n1apt install cron\n2.编辑任务列表\n1crontab -e  #root用户选择1\n3.打开cron日志\n1nano /etc/rsyslog.conf\n在文件中找到cron.*一行：，反注释掉\n1#cron.*                     /var/log/cron.log\n重启rsyslog\n1service rsyslog restart\n4.每天的 6、11、17点 执行Python命令，并将结果保存到/root/pxw.log\n11 3,9,22 * * * python3 /app/Crontab/pxw/index.py &gt;pxw.log\n5.察看cron日志\n1nano /var/log/cron.log\n6.重启cron\n1service cron restart\n7.察看cron\n1pgrep cron","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-10T19:07:02+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"本文介绍了Linux下使用Crontab设置定时任务","headline":"使用Crontab设置定时任务","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/dbefa23f0974/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/dbefa23f0974/","keywords":"Linux"}</script>
     <meta name="description" content="本文介绍了Linux下使用Crontab设置定时任务">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="使用Crontab设置定时任务">
-<meta property="og:url" content="https://panxiuwen.github.io/dbefa23f0974/index.html">
+<meta property="og:url" content="http://192.168.192.100/dbefa23f0974/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了Linux下使用Crontab设置定时任务">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
     
     
     
@@ -362,9 +362,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/dbd72552b9f9/"
-                    data-tooltip="Aria2的安装使用"
-                    aria-label="上一篇: Aria2的安装使用"
+                    href="/6ee7f5398879/"
+                    data-tooltip="一些设备的跑分"
+                    aria-label="上一篇: 一些设备的跑分"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -376,9 +376,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/26a89b8719b3/"
-                    data-tooltip="备份软件的使用"
-                    aria-label="下一篇: 备份软件的使用"
+                    href="/3406be65108d/"
+                    data-tooltip="饥荒服务器搭建"
+                    aria-label="下一篇: 饥荒服务器搭建"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -438,9 +438,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/dbd72552b9f9/"
-                    data-tooltip="Aria2的安装使用"
-                    aria-label="上一篇: Aria2的安装使用"
+                    href="/6ee7f5398879/"
+                    data-tooltip="一些设备的跑分"
+                    aria-label="上一篇: 一些设备的跑分"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -452,9 +452,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/26a89b8719b3/"
-                    data-tooltip="备份软件的使用"
-                    aria-label="下一篇: 备份软件的使用"
+                    href="/3406be65108d/"
+                    data-tooltip="饥荒服务器搭建"
+                    aria-label="下一篇: 饥荒服务器搭建"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
