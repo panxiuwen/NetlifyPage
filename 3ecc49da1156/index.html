@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了在Linux下搭建ftp和smb服务器的方法\n\n\nFTP服务器的搭建安装与配置\n123sudo apt-get install vsftpdsudo service vsftpd startsudo nano /etc/vsftpd.conf\n找到并修改\n1234anonymous_enable=NO //不允许匿名访问local_enable=YES //允许本地用户访问write_enable=YES //允许写local_umask=022 //设定上传后文件权限掩码\n重启vsftpd服务使配置文件生效\n1sudo service vsftpd restart\n允许root登录\n12nano /etc/ftpusers注释掉 root即可\n连不上的错误排查\n检查21端口\n1lsof -i:21\n查看/home/username目录是否存在\n\nSMB服务器的使用安装SMB 服务器\n1apt-get install samba\n安装webmin配置web界面\n如果你已经熟练使用配置文件来管理smb内容，此步骤可以跳过\nwget下载，或者迅雷下载后上传\n1wget http://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb\n安装webmin及其依赖\n12apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python unzipdpkg --install webmin_1.994_all.deb\n有关Linux的权限说明注意SMB里的文件权限可能不一样，可以使用chown修复文件夹权限\n1chown -R nobody public","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-10T19:22:03+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"本文介绍了在Linux下搭建ftp和smb服务器的方法","headline":"在Linux下搭建文件服务器","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/3ecc49da1156/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/3ecc49da1156/","keywords":"Network, Linux"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了在Linux下搭建ftp和smb服务器的方法\n\n\nFTP服务器的搭建安装与配置\n123sudo apt-get install vsftpdsudo service vsftpd startsudo nano /etc/vsftpd.conf\n找到并修改\n1234anonymous_enable=NO //不允许匿名访问local_enable=YES //允许本地用户访问write_enable=YES //允许写local_umask=022 //设定上传后文件权限掩码\n重启vsftpd服务使配置文件生效\n1sudo service vsftpd restart\n允许root登录\n12nano /etc/ftpusers注释掉 root即可\n连不上的错误排查\n检查21端口\n1lsof -i:21\n查看/home/username目录是否存在\n\nSMB服务器的使用安装SMB 服务器\n1apt-get install samba\n安装webmin配置web界面\n如果你已经熟练使用配置文件来管理smb内容，此步骤可以跳过\nwget下载，或者迅雷下载后上传\n1wget http://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb\n安装webmin及其依赖\n12apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python unzipdpkg --install webmin_1.994_all.deb\n有关Linux的权限说明注意SMB里的文件权限可能不一样，可以使用chown修复文件夹权限\n1chown -R nobody public","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-10T19:22:03+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"本文介绍了在Linux下搭建ftp和smb服务器的方法","headline":"在Linux下搭建文件服务器","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/3ecc49da1156/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/3ecc49da1156/","keywords":"Network, Linux"}</script>
     <meta name="description" content="本文介绍了在Linux下搭建ftp和smb服务器的方法">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="在Linux下搭建文件服务器">
-<meta property="og:url" content="http://192.168.192.100/3ecc49da1156/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/3ecc49da1156/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了在Linux下搭建ftp和smb服务器的方法">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
         
     
     
-        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
     
@@ -399,7 +399,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -410,7 +410,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -475,7 +475,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -486,7 +486,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>

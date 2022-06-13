@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了Termux和LinuxDeploy的安装与使用\n\n\n\nTermux的安装与使用从F-droid上获取1.换清华源\n12sed -i &#x27;s@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#x27; $PREFIX/etc/apt/sources.listapt update &amp;&amp; apt upgrade\n2.安装ssh\n1pkg install openssh\n3.再设置密码\n1passwd\n4.开启ssh服务\n1sshd\n接下来就可以用ssh软件连接Linux了，帐号是user 密码是自己设置的端口是8022安装使用pkg install xxxxx常用软件基本上都有比如gcc(clang、make、cmake)有了这开源软件都可以编译了python3(python和python-dev) 不怕Python没库了screen(screen tsu)不怕网断了apche(apche2)可以搭建网站了注意网页文件的位置在/data/data/com.termux/files/usr/share/apache2/default-site/htdocs，端口是8080\n\nLinuxDeploy的安装与使用注意，LinuxDeploy需要root从Github上获取获取镜像文件，推荐使用迅雷下载Ubuntu arm64和Debian arm64右下角-配置，修改配置文件\n1234567发行版：Debian构架：arm64发行版：buster源地址:http://mirrors.aliyun.com/debian/安装类型：镜像文件安装路径：/sdcard/Documents/debian_arm64.tgz启用ssh服务器-打开\n右上角-安装，等log中出现\n12::Configuring extra/ssh ...&lt;&lt;&lt;deploy\n的时候，说明安装成功，如果出现xxx fail，请更换源重试几次左下角-启动当出现log中出现\n12::Starting extra/ssh ... done&lt;&lt;&lt; start\n的时候，就可以用ssh用配置文件中设置的用户名+密码连接设备了接下来的操作就和原生debian一样的了\n","dateCreated":"2022-06-03T18:37:41+08:00","dateModified":"2022-06-10T19:23:13+08:00","datePublished":"2022-06-03T18:37:41+08:00","description":"本文介绍了Termux和LinuxDeploy的安装与使用","headline":"在Android设备上使用Linux","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/b0a087ea576e/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/b0a087ea576e/","keywords":"Linux"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了Termux和LinuxDeploy的安装与使用\n\n\n\nTermux的安装与使用从F-droid上获取1.换清华源\n12sed -i &#x27;s@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#x27; $PREFIX/etc/apt/sources.listapt update &amp;&amp; apt upgrade\n2.安装ssh\n1pkg install openssh\n3.再设置密码\n1passwd\n4.开启ssh服务\n1sshd\n接下来就可以用ssh软件连接Linux了，帐号是user 密码是自己设置的端口是8022安装使用pkg install xxxxx常用软件基本上都有比如gcc(clang、make、cmake)有了这开源软件都可以编译了python3(python和python-dev) 不怕Python没库了screen(screen tsu)不怕网断了apche(apche2)可以搭建网站了注意网页文件的位置在/data/data/com.termux/files/usr/share/apache2/default-site/htdocs，端口是8080\n\nLinuxDeploy的安装与使用注意，LinuxDeploy需要root从Github上获取获取镜像文件，推荐使用迅雷下载Ubuntu arm64和Debian arm64右下角-配置，修改配置文件\n1234567发行版：Debian构架：arm64发行版：buster源地址:http://mirrors.aliyun.com/debian/安装类型：镜像文件安装路径：/sdcard/Documents/debian_arm64.tgz启用ssh服务器-打开\n右上角-安装，等log中出现\n12::Configuring extra/ssh ...&lt;&lt;&lt;deploy\n的时候，说明安装成功，如果出现xxx fail，请更换源重试几次左下角-启动当出现log中出现\n12::Starting extra/ssh ... done&lt;&lt;&lt; start\n的时候，就可以用ssh用配置文件中设置的用户名+密码连接设备了接下来的操作就和原生debian一样的了\n","dateCreated":"2022-06-03T18:37:41+08:00","dateModified":"2022-06-10T19:23:13+08:00","datePublished":"2022-06-03T18:37:41+08:00","description":"本文介绍了Termux和LinuxDeploy的安装与使用","headline":"在Android设备上使用Linux","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/b0a087ea576e/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/b0a087ea576e/","keywords":"Linux"}</script>
     <meta name="description" content="本文介绍了Termux和LinuxDeploy的安装与使用">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="在Android设备上使用Linux">
-<meta property="og:url" content="http://192.168.192.100/b0a087ea576e/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/b0a087ea576e/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了Termux和LinuxDeploy的安装与使用">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
         
     
     
-        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
     
@@ -394,7 +394,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -405,7 +405,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -470,7 +470,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -481,7 +481,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
