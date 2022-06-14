@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍怎样配置Minecraft服务器\n\n\nJava Edition在Oracle官网下载JDK8，要注册账号解压文件\n1tar -zxvf\n检查Java\n1/app/jdk1.8.0_241/jre/bin/java -version\n配置 screen\n1nano .bashrc\n123alias sl=&quot;screen -ls&quot;alias sb=&quot;screen bash&quot;alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;\n测试命令行\n1cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui\n同意eula并编辑server.properties(注意要改PVP、online)\n死亡不掉落\n1/gamerule keepInventory true\n防爆\n1/gamerule mobGriefing false\n管理员锚\n1/give Sean railcraft:worldspike 64 0\n查看在线玩家\n1list\nBedrock Edition注意，编译后不要移动位置，因为编译后的文件含有不可更改的路径信息MCPE安卓下载 \nPocketMine-MP下载\nPHP build scripts for PocketMine-MP环境设置完代理再编译\n12export https_proxy=http://192.168.2.3:2333./compile.sh -j4 -f -l (-l启用多读少写优化-f启用滥用优化)\n开启了服务器\n1./start.sh\n配置命令行\n1alias mcpe=&#x27;cd /app/mcpe&amp;&amp; screen -dm bash start.sh&#x27;","dateCreated":"2022-06-03T00:00:00+08:00","dateModified":"2022-06-13T21:36:31+08:00","datePublished":"2022-06-03T00:00:00+08:00","description":"本文介绍怎样配置Minecraft服务器","headline":"配置Minecraft服务器","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/68fb587df8c3/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/68fb587df8c3/","keywords":"Game","thumbnailUrl":"cover.jpg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍怎样配置Minecraft服务器\n\n\nJava Edition在Oracle官网下载JDK8，要注册账号解压文件\n1tar -zxvf\n检查Java\n1/app/jdk1.8.0_241/jre/bin/java -version\n配置 screen\n1nano .bashrc\n123alias sl=&quot;screen -ls&quot;alias sb=&quot;screen bash&quot;alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;\n测试命令行\n1cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui\n同意eula并编辑server.properties(注意要改PVP、online)\n死亡不掉落\n1/gamerule keepInventory true\n防爆\n1/gamerule mobGriefing false\n管理员锚\n1/give Sean railcraft:worldspike 64 0\n查看在线玩家\n1list\nBedrock Edition注意，编译后不要移动位置，因为编译后的文件含有不可更改的路径信息MCPE安卓下载 \nPocketMine-MP下载\nPHP build scripts for PocketMine-MP环境设置完代理再编译\n12export https_proxy=http://192.168.2.3:2333./compile.sh -j4 -f -l (-l启用多读少写优化-f启用滥用优化)\n开启了服务器\n1./start.sh\n配置命令行\n1alias mcpe=&#x27;cd /app/mcpe&amp;&amp; screen -dm bash start.sh&#x27;","dateCreated":"2022-06-03T00:00:00+08:00","dateModified":"2022-06-13T21:36:31+08:00","datePublished":"2022-06-03T00:00:00+08:00","description":"本文介绍怎样配置Minecraft服务器","headline":"配置Minecraft服务器","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/68fb587df8c3/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/68fb587df8c3/","keywords":"Game","thumbnailUrl":"cover.jpg"}</script>
     <meta name="description" content="本文介绍怎样配置Minecraft服务器">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="配置Minecraft服务器">
-<meta property="og:url" content="http://192.168.192.100/68fb587df8c3/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/68fb587df8c3/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍怎样配置Minecraft服务器">
 <meta property="og:locale" content="zh_CN">
@@ -32,11 +32,11 @@
         
     
     
-        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
-        <meta property="og:image" content="http://192.168.192.100/68fb587df8c3/cover.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://192.168.192.100/68fb587df8c3/cover.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/68fb587df8c3/cover.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://panxiuwen.github.io/68fb587df8c3/cover.jpg"/>
     
     
     
@@ -374,9 +374,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/1626adb5e0a9/"
-                    data-tooltip="Linux服务的配置方法"
-                    aria-label="上一篇: Linux服务的配置方法"
+                    href="/912b5bcb1b81/"
+                    data-tooltip="在Android设备上使用Linux"
+                    aria-label="上一篇: 在Android设备上使用Linux"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -388,9 +388,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/554bf8e9a142/"
-                    data-tooltip="实现流量转发"
-                    aria-label="下一篇: 实现流量转发"
+                    href="/1804cb72fa91/"
+                    data-tooltip="Lean固件编译"
+                    aria-label="下一篇: Lean固件编译"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -450,9 +450,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/1626adb5e0a9/"
-                    data-tooltip="Linux服务的配置方法"
-                    aria-label="上一篇: Linux服务的配置方法"
+                    href="/912b5bcb1b81/"
+                    data-tooltip="在Android设备上使用Linux"
+                    aria-label="上一篇: 在Android设备上使用Linux"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -464,9 +464,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/554bf8e9a142/"
-                    data-tooltip="实现流量转发"
-                    aria-label="下一篇: 实现流量转发"
+                    href="/1804cb72fa91/"
+                    data-tooltip="Lean固件编译"
+                    aria-label="下一篇: Lean固件编译"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
