@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"硬盘有价，数据无价，本文介绍了一些备份软件\n\n数据丢失是一件非常可怕的事情，特别是自己产生的数据，无论是硬件损毁或丢失、软件误删或者中病毒都会导致不可挽回的数据丢失。所以养成备份的好习惯是有必要的，都2202年了，笔者就总结一些备份软件。\n\n各种网盘&amp;云服务现在国际国内各大厂都有自己的网盘，硬件、软件厂商也会在产品中针对的自己的用户群体来集成自己的云服务。1.大容量+低速类最典型的是百度网盘，免费容量2TB，不仅限速100kB，而且到一定流量后限速10kB百度网盘其实主打文件分享，文件审查+低下载速度就注定它不可能成为好的个人数据备份软件。甚至有同学和我吐槽把图片上传到百度网盘搜索就会推送类似的东西所以不敢用了。2.小容量+高速腾讯微云的容量相比3.同步网盘主打同步网盘的产品相对来讲就比较少了，大厂中就只有微云同步助手还活着了，只提供Win版和Mac版，同步目录占用微云的空间，但看起来做的不如腾讯微云做的用心，当然腾讯微云做的也不用心。坚果云是按月流量计费，免费上传1G下载3G，难免有点捉襟见肘，但是只写写文档还是绰绰有余的，也比微云好用的多。4.集成网盘/云服务典型的例子是集成手机系统里的云服务，Apple的iCloud，miui等国产系统自带的云服务，用于同步手机里的相册、录音集成在网易云音乐里的5.不稳定的国外网盘最典型的是MiroSoft的OneDrive6.被墙的国外网盘最典型的是大名鼎鼎的GoogleDrive\nFreeFileSyncFreeFileSync可用于同一设备不同文件夹的改动检测和同步，本身提供Win、Linux、Mac三平台及源代码，综合来看应用场景应该是用U盘或者移动硬盘进行数据备份。\n坚果云坚果云也是跨平台同步软件，提供Win、Linux、Mac、Android、IOS和网页客户端，自带markdown编辑器，看样子是主打内容创作。PS：笔者写网页用的就是坚果云，安卓上直接使用”坚果云markdown” app进行查看和写作，大部分内容不同步到移动设备。PPS：由于网页源代码都比较小，所以免费版流量对于我来说也足够了。\n群晖助手我觉得群晖的app做的不错，PC端其实完全用不到，还是Syncthing更香安卓上有一堆群晖/DS的应用程序，笔者喜欢用DS audio听歌\nSyncthing的使用Syncthing可用于不同设备间的备份，具有去中心化的特点\n安装与配置假设Linux上的目录是/app/syncthing，用户为root安装syncthing并写配置文件先下载，后上传到服务器\n解压命令是\n1tar -zxvf syncthing-linux-arm64-v1.19.1.tar.gz\n首先启动./syncthing，初始化完毕后按下Ctrl+C终止操作\n打开/root/.config/syncthing/config.xml\n1修改&lt;address&gt;为0.0.0.0:8384\n设置自启动修改文件名称/app/syncthing/etc/linux-systemd/system/&#x73;&#121;&#x6e;&#99;&#116;&#104;&#x69;&#x6e;&#103;&#x40;&#114;&#111;&#111;&#x74;&#x2e;&#x73;&#x65;&#114;&#118;&#105;&#x63;&#101;\n拷贝到systemd文件夹\n1cp syncthing@root.service /etc/systemd/system/\n修改&#x73;&#x79;&#x6e;&#x63;&#x74;&#x68;&#105;&#x6e;&#x67;&#x40;&#114;&#x6f;&#x6f;&#x74;&#x2e;&#115;&#x65;&#114;&#118;&#x69;&#99;&#x65;内容\n12nano /etc/systemd/system/syncthing@root.serviceExecStart=/app/syncthing/syncthing\n使用命令启动服务\n12systemctl enable syncthing@root.servicesystemctl start syncthing@root.service\n在控制端打开网页进行配置创建文件夹后配制文件夹，等待扫描完成后可以开启共享发送给添加的设备\n","dateCreated":"2022-06-08T00:00:00+08:00","dateModified":"2022-06-15T00:02:07+08:00","datePublished":"2022-06-08T00:00:00+08:00","description":"硬盘有价，数据无价，本文介绍了一些备份软件","headline":"备份软件的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/86cbed8c4a74/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/86cbed8c4a74/","keywords":"Backups"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"硬盘有价，数据无价，本文介绍了一些备份软件\n\n数据丢失是一件非常可怕的事情，特别是自己产生的数据，无论是硬件损毁或丢失、软件误删或者中病毒都会导致不可挽回的数据丢失。所以养成备份的好习惯是有必要的，都2202年了，笔者就总结一些备份软件。\n\n各种网盘&amp;云服务现在国际国内各大厂都有自己的网盘，硬件、软件厂商也会在产品中针对的自己的用户群体来集成自己的云服务。1.大容量+低速类最典型的是百度网盘，免费容量2TB，不仅限速100kB，而且到一定流量后限速10kB百度网盘其实主打文件分享，文件审查+低下载速度就注定它不可能成为好的个人数据备份软件。甚至有同学和我吐槽把图片上传到百度网盘搜索就会推送类似的东西所以不敢用了。2.小容量+高速腾讯微云的容量相比3.同步网盘主打同步网盘的产品相对来讲就比较少了，大厂中就只有微云同步助手还活着了，只提供Win版和Mac版，同步目录占用微云的空间，但看起来做的不如腾讯微云做的用心，当然腾讯微云做的也不用心。坚果云是按月流量计费，免费上传1G下载3G，难免有点捉襟见肘，但是只写写文档还是绰绰有余的，也比微云好用的多。4.集成网盘/云服务典型的例子是集成手机系统里的云服务，Apple的iCloud，miui等国产系统自带的云服务，用于同步手机里的相册、录音集成在网易云音乐里的5.不稳定的国外网盘最典型的是MiroSoft的OneDrive6.被墙的国外网盘最典型的是大名鼎鼎的GoogleDrive\nFreeFileSyncFreeFileSync可用于同一设备不同文件夹的改动检测和同步，本身提供Win、Linux、Mac三平台及源代码，综合来看应用场景应该是用U盘或者移动硬盘进行数据备份。\n坚果云坚果云也是跨平台同步软件，提供Win、Linux、Mac、Android、IOS和网页客户端，自带markdown编辑器，看样子是主打内容创作。PS：笔者写网页用的就是坚果云，安卓上直接使用”坚果云markdown” app进行查看和写作，大部分内容不同步到移动设备。PPS：由于网页源代码都比较小，所以免费版流量对于我来说也足够了。\n群晖助手我觉得群晖的app做的不错，PC端其实完全用不到，还是Syncthing更香安卓上有一堆群晖/DS的应用程序，笔者喜欢用DS audio听歌\nSyncthing的使用Syncthing可用于不同设备间的备份，具有去中心化的特点\n安装与配置假设Linux上的目录是/app/syncthing，用户为root安装syncthing并写配置文件先下载，后上传到服务器\n解压命令是\n1tar -zxvf syncthing-linux-arm64-v1.19.1.tar.gz\n首先启动./syncthing，初始化完毕后按下Ctrl+C终止操作\n打开/root/.config/syncthing/config.xml\n1修改&lt;address&gt;为0.0.0.0:8384\n设置自启动修改文件名称/app/syncthing/etc/linux-systemd/system/&#x73;&#121;&#x6e;&#x63;&#x74;&#x68;&#105;&#110;&#103;&#64;&#x72;&#111;&#x6f;&#x74;&#x2e;&#115;&#x65;&#114;&#x76;&#105;&#x63;&#x65;\n拷贝到systemd文件夹\n1cp syncthing@root.service /etc/systemd/system/\n修改&#x73;&#x79;&#110;&#x63;&#x74;&#104;&#105;&#110;&#x67;&#64;&#x72;&#x6f;&#111;&#116;&#x2e;&#115;&#x65;&#114;&#118;&#x69;&#99;&#101;内容\n12nano /etc/systemd/system/syncthing@root.serviceExecStart=/app/syncthing/syncthing\n使用命令启动服务\n12systemctl enable syncthing@root.servicesystemctl start syncthing@root.service\n在控制端打开网页进行配置创建文件夹后配制文件夹，等待扫描完成后可以开启共享发送给添加的设备\n","dateCreated":"2022-06-08T00:00:00+08:00","dateModified":"2022-06-15T00:02:07+08:00","datePublished":"2022-06-08T00:00:00+08:00","description":"硬盘有价，数据无价，本文介绍了一些备份软件","headline":"备份软件的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/86cbed8c4a74/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/86cbed8c4a74/","keywords":"Backups"}</script>
     <meta name="description" content="硬盘有价，数据无价，本文介绍了一些备份软件">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="备份软件的使用">
-<meta property="og:url" content="http://192.168.192.100/86cbed8c4a74/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/86cbed8c4a74/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="硬盘有价，数据无价，本文介绍了一些备份软件">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
         
     
     
-        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
     
@@ -334,10 +334,10 @@
 <p>首先启动./syncthing，初始化完毕后按下Ctrl+C终止操作</p>
 <p>打开/root/.config/syncthing/config.xml</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改&lt;address&gt;为0.0.0.0:8384</span><br></pre></td></tr></table></figure>
-<h4 id="设置自启动"><a href="#设置自启动" class="headerlink" title="设置自启动"></a>设置自启动</h4><p>修改文件名称/app/syncthing/etc/linux-systemd/system/<a href="mailto:&#x73;&#121;&#x6e;&#99;&#116;&#104;&#x69;&#x6e;&#103;&#x40;&#114;&#111;&#111;&#x74;&#x2e;&#x73;&#x65;&#114;&#118;&#105;&#x63;&#101;">&#x73;&#121;&#x6e;&#99;&#116;&#104;&#x69;&#x6e;&#103;&#x40;&#114;&#111;&#111;&#x74;&#x2e;&#x73;&#x65;&#114;&#118;&#105;&#x63;&#101;</a></p>
+<h4 id="设置自启动"><a href="#设置自启动" class="headerlink" title="设置自启动"></a>设置自启动</h4><p>修改文件名称/app/syncthing/etc/linux-systemd/system/<a href="mailto:&#x73;&#121;&#x6e;&#x63;&#x74;&#x68;&#105;&#110;&#103;&#64;&#x72;&#111;&#x6f;&#x74;&#x2e;&#115;&#x65;&#114;&#x76;&#105;&#x63;&#x65;">&#x73;&#121;&#x6e;&#x63;&#x74;&#x68;&#105;&#110;&#103;&#64;&#x72;&#111;&#x6f;&#x74;&#x2e;&#115;&#x65;&#114;&#x76;&#105;&#x63;&#x65;</a></p>
 <p>拷贝到systemd文件夹</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp syncthing@root.service /etc/systemd/system/</span><br></pre></td></tr></table></figure>
-<p>修改<a href="mailto:&#x73;&#x79;&#x6e;&#x63;&#x74;&#x68;&#105;&#x6e;&#x67;&#x40;&#114;&#x6f;&#x6f;&#x74;&#x2e;&#115;&#x65;&#114;&#118;&#x69;&#99;&#x65;">&#x73;&#x79;&#x6e;&#x63;&#x74;&#x68;&#105;&#x6e;&#x67;&#x40;&#114;&#x6f;&#x6f;&#x74;&#x2e;&#115;&#x65;&#114;&#118;&#x69;&#99;&#x65;</a>内容</p>
+<p>修改<a href="mailto:&#x73;&#x79;&#110;&#x63;&#x74;&#104;&#105;&#110;&#x67;&#64;&#x72;&#x6f;&#111;&#116;&#x2e;&#115;&#x65;&#114;&#118;&#x69;&#99;&#101;">&#x73;&#x79;&#110;&#x63;&#x74;&#104;&#105;&#110;&#x67;&#64;&#x72;&#x6f;&#111;&#116;&#x2e;&#115;&#x65;&#114;&#118;&#x69;&#99;&#101;</a>内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/systemd/system/syncthing@root.service</span><br><span class="line">ExecStart=/app/syncthing/syncthing</span><br></pre></td></tr></table></figure>
 <p>使用命令启动服务</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable syncthing@root.service</span><br><span class="line">systemctl start syncthing@root.service</span><br></pre></td></tr></table></figure>
@@ -366,9 +366,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/0ce056bd6018/"
-                    data-tooltip="经过翻译的咒语还有魔法效力吗?"
-                    aria-label="上一篇: 经过翻译的咒语还有魔法效力吗?"
+                    href="/961c86b1bbd7/"
+                    data-tooltip="Markdown的高阶用法"
+                    aria-label="上一篇: Markdown的高阶用法"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -380,9 +380,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/961c86b1bbd7/"
-                    data-tooltip="Markdown的高阶用法"
-                    aria-label="下一篇: Markdown的高阶用法"
+                    href="/62dd0d2b9670/"
+                    data-tooltip="Windows的软件"
+                    aria-label="下一篇: Windows的软件"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -442,9 +442,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/0ce056bd6018/"
-                    data-tooltip="经过翻译的咒语还有魔法效力吗?"
-                    aria-label="上一篇: 经过翻译的咒语还有魔法效力吗?"
+                    href="/961c86b1bbd7/"
+                    data-tooltip="Markdown的高阶用法"
+                    aria-label="上一篇: Markdown的高阶用法"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -456,9 +456,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/961c86b1bbd7/"
-                    data-tooltip="Markdown的高阶用法"
-                    aria-label="下一篇: Markdown的高阶用法"
+                    href="/62dd0d2b9670/"
+                    data-tooltip="Windows的软件"
+                    aria-label="下一篇: Windows的软件"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
