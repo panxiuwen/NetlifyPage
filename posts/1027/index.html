@@ -13,7 +13,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了Windows配置SSH服务器的方法\n\nOpenSSH服务器特点：开源的钦定软件更稳定，兼容性强，but需要本地账号有密码，空密码反正我没成功过，配置文件很迷，反正我的配置文件没生效过\n1.设置-应用-可选功能-添加功能-OpenSSH服务器\n2.任务管理器-服务-sshd-启动\n3.管理员cmd输入net start sshd\n输入你本地账号密码登录就行了\nFreeSSHD(软件老，bug多)1.下载安装\n2.配置：User添加个账号，输密码，\nBug1：使用密码登录的时候在authentication中将Password那项选为required；将public key选为disable\nBug2：不支持X11，xshell字母乱蹦\nBug3：putty不支持GBK，所以只能手动调UTF-8，要在注册表里面建立一个键，然而putty的UTF-8还是不支持中文\nBitvise SSH Server官网\n基于Crypto++ 5.3    开发，功能强大，很牛逼，简约漂亮，最新版为8.39，更新日期16 January 2020，网上有注册机可以用，和xshell+xftp配合非常完美，让人感叹商业软件做的就是牛逼，FreeSSHD就是一坨屎\n注意：建立虚拟用户的shell命令选Command Prompt，sftp目录选所有，不要作死把文件放在你自己的个人文件夹里面运行，会报权限不够的错误\n可以SSH的程序有：易语言程序、ffmpeg、Python\n","dateCreated":"2022-06-01T00:00:00+08:00","dateModified":"2022-06-16T17:57:17+08:00","datePublished":"2022-06-01T00:00:00+08:00","description":"本文介绍了Windows配置SSH服务器的方法","headline":"Windows配置SSH","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1027/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1027/","keywords":"Windows"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了Windows配置SSH服务器的方法\n\nOpenSSH服务器特点：开源的钦定软件更稳定，兼容性强，but需要本地账号有密码，空密码反正我没成功过，配置文件很迷，反正我的配置文件没生效过\n1.设置-应用-可选功能-添加功能-OpenSSH服务器\n2.任务管理器-服务-sshd-启动\n3.管理员cmd输入net start sshd\n输入你本地账号密码登录就行了\nFreeSSHD(软件老，bug多)1.下载安装\n2.配置：User添加个账号，输密码，\nBug1：使用密码登录的时候在authentication中将Password那项选为required；将public key选为disable\nBug2：不支持X11，xshell字母乱蹦\nBug3：putty不支持GBK，所以只能手动调UTF-8，要在注册表里面建立一个键，然而putty的UTF-8还是不支持中文\nBitvise SSH Server官网\n基于Crypto++ 5.3    开发，功能强大，很牛逼，简约漂亮，最新版为8.39，更新日期16 January 2020，网上有注册机可以用，和xshell+xftp配合非常完美，让人感叹商业软件做的就是牛逼，FreeSSHD就是一坨屎\n注意：建立虚拟用户的shell命令选Command Prompt，sftp目录选所有，不要作死把文件放在你自己的个人文件夹里面运行，会报权限不够的错误\n可以SSH的程序有：易语言程序、ffmpeg、Python\n","dateCreated":"2018-09-24T00:00:00+08:00","dateModified":"2022-06-16T21:30:33+08:00","datePublished":"2018-09-24T00:00:00+08:00","description":"本文介绍了Windows配置SSH服务器的方法","headline":"Windows配置SSH","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1027/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1027/","keywords":"Server, Windows"}</script>
     <meta name="description" content="本文介绍了Windows配置SSH服务器的方法">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Windows配置SSH">
@@ -21,9 +21,10 @@
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了Windows配置SSH服务器的方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-16T09:57:17.202Z">
+<meta property="article:published_time" content="2018-09-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-16T13:30:33.383Z">
 <meta property="article:author" content="Sean Pan">
+<meta property="article:tag" content="Server">
 <meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@982202733">
@@ -294,9 +295,9 @@
     
     
         <div class="post-meta">
-    <time datetime="2022-06-01T00:00:00+08:00">
+    <time datetime="2018-09-24T00:00:00+08:00">
 	
-		    2022, 6月, 01
+		    2018年 9月 24日
     	
     </time>
     
@@ -335,7 +336,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/Windows/" rel="tag">Windows</a>
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Server/" rel="tag">Server</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Windows/" rel="tag">Windows</a>
 
             </div>
         
@@ -348,9 +349,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1024/"
-                    data-tooltip="Pip的使用"
-                    aria-label="上一篇: Pip的使用"
+                    href="/posts/1014/"
+                    data-tooltip="内网穿透软件"
+                    aria-label="上一篇: 内网穿透软件"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -362,9 +363,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1019/"
-                    data-tooltip="红米路由器ac2100刷机"
-                    aria-label="下一篇: 红米路由器ac2100刷机"
+                    href="/posts/1032/"
+                    data-tooltip="Linux配置定时任务"
+                    aria-label="下一篇: Linux配置定时任务"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -424,9 +425,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1024/"
-                    data-tooltip="Pip的使用"
-                    aria-label="上一篇: Pip的使用"
+                    href="/posts/1014/"
+                    data-tooltip="内网穿透软件"
+                    aria-label="上一篇: 内网穿透软件"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -438,9 +439,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1019/"
-                    data-tooltip="红米路由器ac2100刷机"
-                    aria-label="下一篇: 红米路由器ac2100刷机"
+                    href="/posts/1032/"
+                    data-tooltip="Linux配置定时任务"
+                    aria-label="下一篇: Linux配置定时任务"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>

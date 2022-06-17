@@ -13,18 +13,19 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"Debian是较为好用的GNU/Linux的一个分支，资源占用很少，以树莓派为代表的单片机非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法\n\n\n一、安装过程安装时语言应该选英文，否则安装后中文一定会出现乱码，安装软件选择SSH Server，标准系统工具，如果只是作为服务器，可以不勾选桌面，注意安装的时候换源，否则安装会特别慢，并且会导致安装失败\n\n二、安装完成解决运行什么命令都command not find的问题\n12nano .bashrcexport PATH=$PATH:/usr/sbin\n使修改生效\n1source .bashrc\n设置管理员密码\n1sudo passwd root\n修改用户密码\n1sudo passwd pi\n允许root登录SSH\n12nano /etc/ssh/sshd_config找到PermitRootLogin prohibit-password 改为 PermitRootLogin yes ，并把前面的#去掉\n重启ssh服务生效\n1sudo systemctl restart ssh\n\n三、安装软件一些必要软件\n1apt-get install sudo curl gnupg net-tools\n安装Python3&amp;GCC\n1apt-get install python3-pip python3-dev libffi-dev gcc make\n安装带php的apache\n1apt-get install apache2 php libapache2-mod-php\n安装pi-dashboard\n\n下载后解压后文件夹丢到/var/www/html里\n\n安装mysql\n123apt install mariadb-server mariadb-client php-mysql/etc/init.d/apache2 restart/etc/init.d/mysql restart\n安装opencv\n12apt-get install aptitudeaptitude install python3-opencv libopencv-dev\n卸载软件\n12apt-get purge\t\t\t//安装purgeaptitude purge nginx\t//卸载nginx\n四、FTP服务器的搭建安装与配置\n123sudo apt-get install vsftpdsudo service vsftpd startsudo nano /etc/vsftpd.conf\n找到并修改\n1234anonymous_enable=NO //不允许匿名访问local_enable=YES //允许本地用户访问write_enable=YES //允许写local_umask=022 //设定上传后文件权限掩码\n重启vsftpd服务使配置文件生效\n1sudo service vsftpd restart\n允许root登录\n12nano /etc/ftpusers注释掉 root即可\n连不上的错误排查\n检查21端口\n1lsof -i:21\n查看/home/username目录是否存在\n\n五、SMB服务器的使用安装SMB 服务器\n1apt-get install samba\n安装webmin配置web界面\n如果你已经熟练使用配置文件来管理smb内容，此步骤可以跳过\nwget下载，或者迅雷下载后上传\n1wget http://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb\n安装webmin及其依赖\n12apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python unzipdpkg --install webmin_1.994_all.deb\n有关Linux的权限说明注意SMB里的文件权限可能不一样，可以使用chown修复文件夹权限\n1chown -R nobody public\n\n六、常见命令查看时间\n1date\n设置时区\n1cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\n给权限\n1chmod 777 n.sh\n察看文件夹占用\n1du -h --max-depth=1\n七、错误排查查看占用的端口\n1lsof -i:21\n修复apt\n1apt --fix-broken install\n清除cache\n1echo 2 &gt; /proc/sys/vm/drop_caches\n清除apt缓存\n123sudo apt-get autocleansudo apt-get cleansudo apt-get autoremove\n八、性能调节器查看调节器\n1cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor\n调整调节器\n123echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor\t//性能模式echo powersave &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor\t\t//节能模式echo ondemand &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor\t\t//平衡模式\n九、挂载硬盘查找磁盘：\n1sudo fdisk -l\n挂载硬盘\n12mkdir /mnt/diskmount -o uid=root,gid=root /dev/sda1 /mnt/disk\n卸载硬盘\n1umount /dev/sda1\n十、网络相关设置代理，详见\n1234nano /etc/apt/apt-proxy.confAcquire::http::proxy &quot;http://192.168.1.5:2333/&quot;;Acquire::https::proxy &quot;http://192.168.1.5:2333/&quot;;apt-get update -c /etc/apt/apt-proxy.conf\nwifi配置文件：\n1nano /etc/wpa_supplicant/wpa_supplicant.conf\n关闭wifi：\n1rfkill unblock wifi\n激活网卡：\n1sudo ifconfig wlan0 up\n扫描热点：\n1sudo iwlist scan | grep ESSID\n十一、定时任务1.安装cronie\n1apt install cron\n2.编辑任务列表\n1crontab -e  #root用户选择1\n3.打开cron日志\n1nano /etc/rsyslog.conf\n在文件中找到cron.*一行：，反注释掉\n1#cron.*                     /var/log/cron.log\n重启rsyslog\n1service rsyslog restart\n4.每天的 6、11、17点 执行Python命令，并将结果保存到/root/pxw.log\n11 3,9,22 * * * python3 /app/Crontab/pxw/index.py &gt;pxw.log\n5.察看cron日志\n1nano /var/log/cron.log\n6.重启cron\n1service cron restart\n7.察看cron\n1pgrep cron\n十二、使用Systemd配置服务开机初始化脚本\n1nano /etc/systemd/system/rc-local.service\n写入内容\n1234567891011121314[Unit]Description=/etc/rc.local CompatibilityConditionPathExists=/etc/rc.local[Service]Type=forkingExecStart=/etc/rc.local startTimeoutSec=0StandardOutput=ttyRemainAfterExit=yesSysVStartPriority=99[Install]WantedBy=multi-user.target\n执行脚本\n1nano /etc/rc.local\n写入内容\n12345678910111213141516#!/bin/sh -e## rc.local## This script is executed at the end of each multiuser runlevel.# Make sure that the script will &quot;exit 0&quot; on success or any other# value on error.## In order to enable or disable this script just change the execution# bits.## By default this script does nothing.echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governorscreen -dm cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -jar /app/mcs/1.12.2.jar nogui  -Xms 4G -Xmx 4G –serverecho &quot;看到这行字，说明添加自启动脚本成功。&quot;exit 0\n使用脚本\n1234chmod 755 /etc/rc.localsystemctl enable rc-local.servicesystemctl start rc-local.servicesystemctl status rc-local.service\n\n十三、使用init.d配置服务在init.d目录下增加启动脚本\n1sudo nano /etc/init.d/aria2c \n添加脚本内容\n1234567891011121314151617181920#!/bin/shcase &quot;$1&quot; instart) echo -n &quot;已开启Aria2c&quot; sudo aria2c --conf-path=Aria2绝对路径aria2.conf -D;;stop) echo -n &quot;已关闭Aria2c&quot; killall aria2c;;restart) killall aria2c sudo aria2c --conf-path=Aria2绝对路径/aria2.conf -D;;esacexit\n使用脚本\n12345sudo chmod 755 /etc/init.d/aria2csudo update-rc.d aria2c defaultssudo service aria2c startsudo service aria2c stopsudo service aria2c restart\n香橙派相关连接串口后CH340的串口波特率为115200、8、1、N、Nubuntu默认帐号和密码orangepi  sudo passwd root设置root密码armbian默认帐号密码root 1234登陆成功后需要修改密码\n","dateCreated":"2018-08-15T00:00:00+08:00","dateModified":"2022-06-16T19:06:25+08:00","datePublished":"2018-08-15T00:00:00+08:00","description":"Debian是较为好用的GNU/Linux的一个分支，资源占用很少，以树莓派为代表的单片机非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法","headline":"Debian的初始化","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1009/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1009/","keywords":"Linux","thumbnailUrl":"cover.jpg"}</script>
-    <meta name="description" content="Debian是较为好用的GNU&#x2F;Linux的一个分支，资源占用很少，以树莓派为代表的单片机非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"Debian是较为好用的GNU/Linux的一个分支，有Ubuntu、armbian、Raspbian等衍生版本，以资源占用很少和稳定著称。以树莓派为代表的单片机和开发板非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法\n\n\n一、安装过程安装时语言应该选英文，否则安装后中文一定会出现乱码，安装软件选择SSH Server，标准系统工具，如果只是作为服务器，可以不勾选桌面，注意安装的时候换源，否则安装会特别慢，并且会导致安装失败\n\n二、安装完成解决运行什么命令都command not find的问题\n12nano .bashrcexport PATH=$PATH:/usr/sbin\n使修改生效\n1source .bashrc\n设置管理员密码\n1sudo passwd root\n修改用户密码\n1sudo passwd pi\n允许root登录SSH\n12nano /etc/ssh/sshd_config找到PermitRootLogin prohibit-password 改为 PermitRootLogin yes ，并把前面的#去掉\n重启ssh服务生效\n1sudo systemctl restart ssh\n\n三、安装软件一些必要软件\n1apt-get install sudo curl gnupg net-tools\n安装Python3&amp;GCC\n1apt-get install python3-pip python3-dev libffi-dev gcc make\n安装带php的apache\n1apt-get install apache2 php libapache2-mod-php\n安装pi-dashboard\n\n下载后解压后文件夹丢到/var/www/html里\n\n安装mysql\n123apt install mariadb-server mariadb-client php-mysql/etc/init.d/apache2 restart/etc/init.d/mysql restart\n安装opencv\n12apt-get install aptitudeaptitude install python3-opencv libopencv-dev\n卸载软件\n12apt-get purge\t\t\t//安装purgeaptitude purge nginx\t//卸载nginx\n\n四、常见命令查看时间\n1date\n设置时区\n1cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\n给权限\n1chmod 777 n.sh\n察看文件夹占用\n1du -h --max-depth=1\n\n五、挂载硬盘查找磁盘：\n1sudo fdisk -l\n挂载硬盘\n12mkdir /mnt/diskmount -o uid=root,gid=root /dev/sda1 /mnt/disk\n卸载硬盘\n1umount /dev/sda1\n\n六、性能调节器查看调节器\n1cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor\n调整调节器\n123echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor\t//性能模式echo powersave &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor\t\t//节能模式echo ondemand &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor\t\t//平衡模式\n\n七、网络相关设置代理，详见\n1234nano /etc/apt/apt-proxy.confAcquire::http::proxy &quot;http://192.168.1.5:2333/&quot;;Acquire::https::proxy &quot;http://192.168.1.5:2333/&quot;;apt-get update -c /etc/apt/apt-proxy.conf\nwifi配置文件：\n1nano /etc/wpa_supplicant/wpa_supplicant.conf\n关闭wifi：\n1rfkill unblock wifi\n激活网卡：\n1sudo ifconfig wlan0 up\n扫描热点：\n1sudo iwlist scan | grep ESSID\n\n八、错误排查查看占用的端口\n1lsof -i:21\n修复apt\n1apt --fix-broken install\n清除cache\n1echo 2 &gt; /proc/sys/vm/drop_caches\n清除apt缓存\n123sudo apt-get autocleansudo apt-get cleansudo apt-get autoremove\n\n香橙派相关连接串口后CH340的串口波特率为115200、8、1、N、Nubuntu默认帐号和密码orangepi  sudo passwd root设置root密码armbian默认帐号密码root 1234登陆成功后需要修改密码\n","dateCreated":"2018-08-15T00:00:00+08:00","dateModified":"2022-06-17T01:00:54+08:00","datePublished":"2018-08-15T00:00:00+08:00","description":"Debian是较为好用的GNU/Linux的一个分支，有Ubuntu、armbian、Raspbian等衍生版本，以资源占用很少和稳定著称。以树莓派为代表的单片机和开发板非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法","headline":"Debian的初始化","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1009/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1009/","keywords":"Linux, System","thumbnailUrl":"cover.jpg"}</script>
+    <meta name="description" content="Debian是较为好用的GNU&#x2F;Linux的一个分支，有Ubuntu、armbian、Raspbian等衍生版本，以资源占用很少和稳定著称。以树莓派为代表的单片机和开发板非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Debian的初始化">
 <meta property="og:url" content="https://panxiuwen.github.io/posts/1009/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
-<meta property="og:description" content="Debian是较为好用的GNU&#x2F;Linux的一个分支，资源占用很少，以树莓派为代表的单片机非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法">
+<meta property="og:description" content="Debian是较为好用的GNU&#x2F;Linux的一个分支，有Ubuntu、armbian、Raspbian等衍生版本，以资源占用很少和稳定著称。以树莓派为代表的单片机和开发板非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-08-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-16T11:06:25.637Z">
+<meta property="article:modified_time" content="2022-06-16T17:00:54.000Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="System">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@982202733">
 <meta property="fb:app_id" content="[object Object]">
@@ -299,7 +300,7 @@
         <div class="post-meta">
     <time datetime="2018-08-15T00:00:00+08:00">
 	
-		    2018, 8月, 15
+		    2018年 8月 15日
     	
     </time>
     
@@ -311,7 +312,7 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>Debian是较为好用的GNU/Linux的一个分支，资源占用很少，以树莓派为代表的单片机非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法</p>
+            <p>Debian是较为好用的GNU/Linux的一个分支，有Ubuntu、armbian、Raspbian等衍生版本，以资源占用很少和稳定著称。以树莓派为代表的单片机和开发板非常喜欢用，本文也作为Linux的通用操作介绍Debian的一些使用方法</p>
 <span id="more"></span>
 <hr>
 <h3 id="一、安装过程"><a href="#一、安装过程" class="headerlink" title="一、安装过程"></a>一、安装过程</h3><p>安装时语言应该选英文，否则安装后中文一定会出现乱码，安装软件选择SSH Server，标准系统工具，如果只是作为服务器，可以不勾选桌面，注意安装的时候换源，否则安装会特别慢，并且会导致安装失败</p>
@@ -345,31 +346,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install aptitude</span><br><span class="line">aptitude install python3-opencv libopencv-dev</span><br></pre></td></tr></table></figure>
 <p>卸载软件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get purge			//安装purge</span><br><span class="line">aptitude purge nginx	//卸载nginx</span><br></pre></td></tr></table></figure>
-<h3 id="四、FTP服务器的搭建"><a href="#四、FTP服务器的搭建" class="headerlink" title="四、FTP服务器的搭建"></a>四、FTP服务器的搭建</h3><p>安装与配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br><span class="line">sudo service vsftpd start</span><br><span class="line">sudo nano /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-<p>找到并修改</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO //不允许匿名访问</span><br><span class="line">local_enable=YES //允许本地用户访问</span><br><span class="line">write_enable=YES //允许写</span><br><span class="line">local_umask=022 //设定上传后文件权限掩码</span><br></pre></td></tr></table></figure>
-<p>重启vsftpd服务使配置文件生效</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
-<p>允许root登录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/ftpusers</span><br><span class="line">注释掉 root即可</span><br></pre></td></tr></table></figure>
-<p>连不上的错误排查</p>
-<p>检查21端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:21</span><br></pre></td></tr></table></figure>
-<p>查看/home/username目录是否存在</p>
 <hr>
-<h3 id="五、SMB服务器的使用"><a href="#五、SMB服务器的使用" class="headerlink" title="五、SMB服务器的使用"></a>五、SMB服务器的使用</h3><p>安装SMB 服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install samba</span><br></pre></td></tr></table></figure>
-<p>安装<a target="_blank" rel="noopener" href="https://www.webmin.com/deb.html">webmin</a>配置web界面</p>
-<p>如果你已经熟练使用配置文件来管理smb内容，此步骤可以跳过</p>
-<p>wget下载，或者迅雷下载后上传</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb</span><br></pre></td></tr></table></figure>
-<p>安装webmin及其依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python unzip</span><br><span class="line">dpkg --install webmin_1.994_all.deb</span><br></pre></td></tr></table></figure>
-<p>有关Linux的权限说明<br>注意SMB里的文件权限可能不一样，可以使用chown修复文件夹权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R nobody public</span><br></pre></td></tr></table></figure>
-
-<h3 id="六、常见命令"><a href="#六、常见命令" class="headerlink" title="六、常见命令"></a>六、常见命令</h3><p>查看时间</p>
+<h3 id="四、常见命令"><a href="#四、常见命令" class="headerlink" title="四、常见命令"></a>四、常见命令</h3><p>查看时间</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date</span><br></pre></td></tr></table></figure>
 <p>设置时区</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
@@ -377,25 +355,20 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 n.sh</span><br></pre></td></tr></table></figure>
 <p>察看文件夹占用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h --max-depth=1</span><br></pre></td></tr></table></figure>
-<h3 id="七、错误排查"><a href="#七、错误排查" class="headerlink" title="七、错误排查"></a>七、错误排查</h3><p>查看占用的端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:21</span><br></pre></td></tr></table></figure>
-<p>修复apt</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt --fix-broken install</span><br></pre></td></tr></table></figure>
-<p>清除cache</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
-<p>清除apt缓存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
-<h3 id="八、性能调节器"><a href="#八、性能调节器" class="headerlink" title="八、性能调节器"></a>八、性能调节器</h3><p>查看调节器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor</span><br></pre></td></tr></table></figure>
-<p>调整调节器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor	//性能模式</span><br><span class="line">echo powersave &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor		//节能模式</span><br><span class="line">echo ondemand &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor		//平衡模式</span><br></pre></td></tr></table></figure>
-<h3 id="九、挂载硬盘"><a href="#九、挂载硬盘" class="headerlink" title="九、挂载硬盘"></a>九、挂载硬盘</h3><p>查找磁盘：</p>
+<hr>
+<h3 id="五、挂载硬盘"><a href="#五、挂载硬盘" class="headerlink" title="五、挂载硬盘"></a>五、挂载硬盘</h3><p>查找磁盘：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure>
 <p>挂载硬盘</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /mnt/disk</span><br><span class="line">mount -o uid=root,gid=root /dev/sda1 /mnt/disk</span><br></pre></td></tr></table></figure>
 <p>卸载硬盘</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/sda1</span><br></pre></td></tr></table></figure>
-<h3 id="十、网络相关"><a href="#十、网络相关" class="headerlink" title="十、网络相关"></a>十、网络相关</h3><p>设置代理，详见</p>
+<hr>
+<h3 id="六、性能调节器"><a href="#六、性能调节器" class="headerlink" title="六、性能调节器"></a>六、性能调节器</h3><p>查看调节器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor</span><br></pre></td></tr></table></figure>
+<p>调整调节器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor	//性能模式</span><br><span class="line">echo powersave &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor		//节能模式</span><br><span class="line">echo ondemand &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor		//平衡模式</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、网络相关"><a href="#七、网络相关" class="headerlink" title="七、网络相关"></a>七、网络相关</h3><p>设置代理，详见</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apt/apt-proxy.conf</span><br><span class="line">Acquire::http::proxy &quot;http://192.168.1.5:2333/&quot;;</span><br><span class="line">Acquire::https::proxy &quot;http://192.168.1.5:2333/&quot;;</span><br><span class="line">apt-get update -c /etc/apt/apt-proxy.conf</span><br></pre></td></tr></table></figure>
 <p>wifi配置文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
@@ -405,41 +378,16 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig wlan0 up</span><br></pre></td></tr></table></figure>
 <p>扫描热点：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iwlist scan | grep ESSID</span><br></pre></td></tr></table></figure>
-<h3 id="十一、定时任务"><a href="#十一、定时任务" class="headerlink" title="十一、定时任务"></a>十一、定时任务</h3><p>1.安装cronie</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install cron</span><br></pre></td></tr></table></figure>
-<p>2.编辑任务列表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e  #root用户选择1</span><br></pre></td></tr></table></figure>
-<p>3.打开cron日志</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/rsyslog.conf</span><br></pre></td></tr></table></figure>
-<p>在文件中找到cron.*一行：，反注释掉</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#cron.*                     /var/log/cron.log</span><br></pre></td></tr></table></figure>
-<p>重启rsyslog</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service rsyslog restart</span><br></pre></td></tr></table></figure>
-<p>4.每天的 6、11、17点 执行Python命令，并将结果保存到/root/pxw.log</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 3,9,22 * * * python3 /app/Crontab/pxw/index.py &gt;pxw.log</span><br></pre></td></tr></table></figure>
-<p>5.察看cron日志</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /var/log/cron.log</span><br></pre></td></tr></table></figure>
-<p>6.重启cron</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service cron restart</span><br></pre></td></tr></table></figure>
-<p>7.察看cron</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgrep cron</span><br></pre></td></tr></table></figure>
-<h3 id="十二、使用Systemd配置服务"><a href="#十二、使用Systemd配置服务" class="headerlink" title="十二、使用Systemd配置服务"></a>十二、使用Systemd配置服务</h3><p>开机初始化脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/systemd/system/rc-local.service</span><br></pre></td></tr></table></figure>
-<p>写入内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=/etc/rc.local Compatibility</span><br><span class="line">ConditionPathExists=/etc/rc.local</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/etc/rc.local start</span><br><span class="line">TimeoutSec=0</span><br><span class="line">StandardOutput=tty</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line">SysVStartPriority=99</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>执行脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/rc.local</span><br></pre></td></tr></table></figure>
-<p>写入内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh -e</span><br><span class="line">#</span><br><span class="line"># rc.local</span><br><span class="line">#</span><br><span class="line"># This script is executed at the end of each multiuser runlevel.</span><br><span class="line"># Make sure that the script will &quot;exit 0&quot; on success or any other</span><br><span class="line"># value on error.</span><br><span class="line">#</span><br><span class="line"># In order to enable or disable this script just change the execution</span><br><span class="line"># bits.</span><br><span class="line">#</span><br><span class="line"># By default this script does nothing.</span><br><span class="line">echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</span><br><span class="line">screen -dm cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -jar /app/mcs/1.12.2.jar nogui  -Xms 4G -Xmx 4G –server</span><br><span class="line">echo &quot;看到这行字，说明添加自启动脚本成功。&quot;</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
-<p>使用脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 /etc/rc.local</span><br><span class="line">systemctl enable rc-local.service</span><br><span class="line">systemctl start rc-local.service</span><br><span class="line">systemctl status rc-local.service</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="十三、使用init-d配置服务"><a href="#十三、使用init-d配置服务" class="headerlink" title="十三、使用init.d配置服务"></a>十三、使用init.d配置服务</h3><p>在init.d目录下增加启动脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/init.d/aria2c </span><br></pre></td></tr></table></figure>
-<p>添加脚本内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line"></span><br><span class="line"> echo -n &quot;已开启Aria2c&quot;</span><br><span class="line"> sudo aria2c --conf-path=Aria2绝对路径aria2.conf -D</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line"></span><br><span class="line"> echo -n &quot;已关闭Aria2c&quot;</span><br><span class="line"> killall aria2c</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line"></span><br><span class="line"> killall aria2c</span><br><span class="line"> sudo aria2c --conf-path=Aria2绝对路径/aria2.conf -D</span><br><span class="line">;;</span><br><span class="line">esac</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
-<p>使用脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 755 /etc/init.d/aria2c</span><br><span class="line">sudo update-rc.d aria2c defaults</span><br><span class="line">sudo service aria2c start</span><br><span class="line">sudo service aria2c stop</span><br><span class="line">sudo service aria2c restart</span><br></pre></td></tr></table></figure>
+<h3 id="八、错误排查"><a href="#八、错误排查" class="headerlink" title="八、错误排查"></a>八、错误排查</h3><p>查看占用的端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:21</span><br></pre></td></tr></table></figure>
+<p>修复apt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt --fix-broken install</span><br></pre></td></tr></table></figure>
+<p>清除cache</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+<p>清除apt缓存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="香橙派相关"><a href="#香橙派相关" class="headerlink" title="香橙派相关"></a>香橙派相关</h3><p>连接串口后CH340的串口波特率为115200、8、1、N、N<br>ubuntu默认帐号和密码orangepi  sudo passwd root设置root密码<br>armbian默认帐号密码root 1234登陆成功后需要修改密码</p>
 
             
@@ -452,7 +400,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/Linux/" rel="tag">Linux</a>
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Linux/" rel="tag">Linux</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/System/" rel="tag">System</a>
 
             </div>
         
@@ -465,9 +413,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1014/"
-                    data-tooltip="内网穿透软件"
-                    aria-label="上一篇: 内网穿透软件"
+                    href="/posts/1032/"
+                    data-tooltip="Linux配置定时任务"
+                    aria-label="上一篇: Linux配置定时任务"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -479,9 +427,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1029/"
-                    data-tooltip="Windows的初始化"
-                    aria-label="下一篇: Windows的初始化"
+                    href="/posts/1033/"
+                    data-tooltip="搭建文件服务器"
+                    aria-label="下一篇: 搭建文件服务器"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -541,9 +489,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1014/"
-                    data-tooltip="内网穿透软件"
-                    aria-label="上一篇: 内网穿透软件"
+                    href="/posts/1032/"
+                    data-tooltip="Linux配置定时任务"
+                    aria-label="上一篇: Linux配置定时任务"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -555,9 +503,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1029/"
-                    data-tooltip="Windows的初始化"
-                    aria-label="下一篇: Windows的初始化"
+                    href="/posts/1033/"
+                    data-tooltip="搭建文件服务器"
+                    aria-label="下一篇: 搭建文件服务器"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>

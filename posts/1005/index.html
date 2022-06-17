@@ -6,25 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Pan&#39;s websit">
-    <title>苹果MacOS的安装 - Pan&#39;s websit</title>
+    <title>MacOS的安装 - Pan&#39;s websit</title>
     <meta name="author" content="Sean Pan">
     
         <meta name="keywords" content="hexo,javascript">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了如何从零生成黑苹果的EFI文件以及安装\n\n\n使用OC-Gen-X生成主要的驱动您可能需要一台装有mac的设备运行OC-Gen-X，如果没有，也可以在Github上找相似的，直接跳到[获取镜像与安装]这一步获取OC-Gen-X，一步步走完Kext-Essentaial 选Lilu和VirtualSMCKext-VirtualSMC Plugins 选SMCProcessor、SMCSuperIO和SMClightSensor，SMCBatteryManager可能不生效或者导致一些问题Kext-Graphics 选WhateverGreenKext-Audio 选AppleALC，但是需要查看支持列表确定设备声卡是否支持，需要自己调试layout-id，如果可用，更推荐VoodooHDA驱动，还不行的话只能USB声卡了Kext-Ethernet根据自己都设备选Kext-USB 选USBInjectALLKext-Wifi and bluetooth 如果是博通卡就5选4，如果是英特尔网卡需要itlwm，更推荐AirportItlwm，和IntelBluetoothFirmwareFirmare Drivers-UEFI 选OpenRuntimehe HfsPluseSMBBIOS根据自己都需求选选完就可以Generate EFI\n\n生成APCI需要SSDTTime，注意安装Python时勾选tcl/tk库，第一次运行需要下载一些东西，建议挂加速器按8 Dump DSDT，提取DSDT.aml按1 FixHPET，生成SSDT-HPET.aml根据设备，台式机是2，笔记本是3生成SSDT-EC.aml按4生成SSDT-PLUG.aml如果是300系列主板，按5按6 AWAC Disable，可能会找不到AWAC设备，就不生成文件按7生成SSDT-USB-Reset.aml这一步生成的文件与上一步的生成驱动的文件夹合并\n\n更新ACPI文件列表下载ProperTree，启动ProperTree.bat，File-Open选择有config.plist的文件夹，再File-OC clean snapshot，选择放config.plist的文件夹，然后退出\n\n完善config.plist使用文本编辑器(不要用记事本)打开config.plist搜索boot-args，\n1在&lt;string&gt;&lt;/string&gt;中间写上keepsyms=1 -v debug=0x100\n如果使用AppleALC，还需要在上一句话后加上alcid=3，加debug=0x100 内核崩溃后不重启，加-v 开启跑代码(啰嗦)模式 ，加keepsyms=1是遇到致命错误需要重启的错误就卡在这里，就方便排除错误搜索prev-lang:kbd，\n1把&lt;data&gt;&lt;/data&gt;中间的内容改为emgtSGFuczoyNTI=\n设置显示设备注意：Mac不支持VGA和DVI如果那有核显并且使用核显输出的话我们需要进行这一步操作，建议备份config.plist后再操作，查看列表根据自己的设备设置\n检查配置文件把config.plist上传到OpenCore Sanity Checker，改到全部通过\n设置BIOS参考，禁用CSM、禁用安全启动、将操作系统类型设置为其他操作系统、将SATA设置为AHCI、禁用CFG锁定、禁用英特尔虚拟化技术/ VT-X、禁用VT-D、启用XHCI Hand-off，禁用USB键盘和鼠标模拟器当然其实要求也没那么严格，比如我用的HDMI转VGA的头，被BIOS发现不能用UEFI，但是实际上还是UEFI启动成功了有些设置如果在BIOS里面改不了可以改配置文件加参数什么的禁用：CSM、安全启动、快速启动、虚拟化、Intel SGX、CFG LOCK开启：超线程、Above 4G decoding、Execute Disable Bit(执行禁止位)、EHCI/XHCI Hand-off、Legacy RTC DeviceSATA设置为AHCI，这年头还有用IDE的吗？\n获取镜像与安装使用gibMacOS获取镜像，运行gibMacOS.bat下载镜像，运行MakeInstall.bat安装系统到U盘，使用DiskGenius将我们做的EFI写到制作好的U盘的EFI分区里，启动就完了\n安装中的可能遇到的问题磁盘工具格式化磁盘，如果用SSD选APFS，如果用机械硬盘选MacOS日志无法与恢复服务器取得联系的情况，我们根据教程同步时区\n安装完成后完善ACPIOC-little参考大部分通用的ACPI\n12笔记本背光亮度调节 SSDT-PNLF.aml SSDT-ALS0.aml睡眠秒唤醒 SSDT-GPRW SSDT-UPRW\n不通用的ACPI\n12345电量显示0 SSDT-BATT.aml节能 SSDT-PLUG禁用独显 SSDT-DDGPU.aml解除USB端口限制 SSDT-EC.aml苹果原生电源管理SSDT-PLUG.aml\n使用Opencore Configurator内置的一些也可以使用Clover，先按F4 Save oem DSDT Save，然后按F5 patched DSDT，接下来就可以在U盘里找到DSDT了\n","dateCreated":"2021-03-30T00:00:00+08:00","dateModified":"2022-06-16T19:01:22+08:00","datePublished":"2021-03-30T00:00:00+08:00","description":"本文介绍了如何从零生成黑苹果的EFI文件以及安装","headline":"苹果MacOS的安装","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1005/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1005/","keywords":"Mac","thumbnailUrl":"cover.jpg"}</script>
-    <meta name="description" content="本文介绍了如何从零生成黑苹果的EFI文件以及安装">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了\n\n\n使用OC-Gen-X生成主要的驱动您可能需要一台装有mac的设备运行OC-Gen-X，如果没有，也可以在Github上找相似的，直接跳到[获取镜像与安装]这一步获取OC-Gen-X，一步步走完Kext-Essentaial 选Lilu和VirtualSMCKext-VirtualSMC Plugins 选SMCProcessor、SMCSuperIO和SMClightSensor，SMCBatteryManager可能不生效或者导致一些问题Kext-Graphics 选WhateverGreenKext-Audio 选AppleALC，但是需要查看支持列表确定设备声卡是否支持，需要自己调试layout-id，如果可用，更推荐VoodooHDA驱动，还不行的话只能USB声卡了Kext-Ethernet根据自己都设备选Kext-USB 选USBInjectALLKext-Wifi and bluetooth 如果是博通卡就5选4，如果是英特尔网卡需要itlwm，更推荐AirportItlwm，和IntelBluetoothFirmwareFirmare Drivers-UEFI 选OpenRuntimehe HfsPluseSMBBIOS根据自己都需求选选完就可以Generate EFI\n\n生成APCI需要SSDTTime，注意安装Python时勾选tcl/tk库，第一次运行需要下载一些东西，建议挂加速器按8 Dump DSDT，提取DSDT.aml按1 FixHPET，生成SSDT-HPET.aml根据设备，台式机是2，笔记本是3生成SSDT-EC.aml按4生成SSDT-PLUG.aml如果是300系列主板，按5按6 AWAC Disable，可能会找不到AWAC设备，就不生成文件按7生成SSDT-USB-Reset.aml这一步生成的文件与上一步的生成驱动的文件夹合并\n\n更新ACPI文件列表下载ProperTree，启动ProperTree.bat，File-Open选择有config.plist的文件夹，再File-OC clean snapshot，选择放config.plist的文件夹，然后退出\n\n完善config.plist使用文本编辑器(不要用记事本)打开config.plist搜索boot-args，\n1在&lt;string&gt;&lt;/string&gt;中间写上keepsyms=1 -v debug=0x100\n如果使用AppleALC，还需要在上一句话后加上alcid=3，加debug=0x100 内核崩溃后不重启，加-v 开启跑代码(啰嗦)模式 ，加keepsyms=1是遇到致命错误需要重启的错误就卡在这里，就方便排除错误搜索prev-lang:kbd，\n1把&lt;data&gt;&lt;/data&gt;中间的内容改为emgtSGFuczoyNTI=\n\n设置显示设备注意：Mac不支持VGA和DVI如果那有核显并且使用核显输出的话我们需要进行这一步操作，建议备份config.plist后再操作，查看列表根据自己的设备设置\n\n检查配置文件把config.plist上传到OpenCore Sanity Checker，改到全部通过\n\n设置BIOS参考，禁用CSM、禁用安全启动、将操作系统类型设置为其他操作系统、将SATA设置为AHCI、禁用CFG锁定、禁用英特尔虚拟化技术/ VT-X、禁用VT-D、启用XHCI Hand-off，禁用USB键盘和鼠标模拟器当然其实要求也没那么严格，比如我用的HDMI转VGA的头，被BIOS发现不能用UEFI，但是实际上还是UEFI启动成功了有些设置如果在BIOS里面改不了可以改配置文件加参数什么的禁用：CSM、安全启动、快速启动、虚拟化、Intel SGX、CFG LOCK开启：超线程、Above 4G decoding、Execute Disable Bit(执行禁止位)、EHCI/XHCI Hand-off、Legacy RTC DeviceSATA设置为AHCI，这年头还有用IDE的吗？\n\n获取镜像与安装使用gibMacOS获取镜像，运行gibMacOS.bat下载镜像，运行MakeInstall.bat安装系统到U盘，使用DiskGenius将我们做的EFI写到制作好的U盘的EFI分区里，启动就完了\n\n安装中的可能遇到的问题磁盘工具格式化磁盘，如果用SSD选APFS，如果用机械硬盘选MacOS日志无法与恢复服务器取得联系的情况，我们根据教程同步时区\n\n安装完成后完善ACPIOC-little参考大部分通用的ACPI\n12笔记本背光亮度调节 SSDT-PNLF.aml SSDT-ALS0.aml睡眠秒唤醒 SSDT-GPRW SSDT-UPRW\n不通用的ACPI\n12345电量显示0 SSDT-BATT.aml节能 SSDT-PLUG禁用独显 SSDT-DDGPU.aml解除USB端口限制 SSDT-EC.aml苹果原生电源管理SSDT-PLUG.aml\n使用Opencore Configurator内置的一些也可以使用Clover，先按F4 Save oem DSDT Save，然后按F5 patched DSDT，接下来就可以在U盘里找到DSDT了\n","dateCreated":"2021-03-30T00:00:00+08:00","dateModified":"2022-06-17T01:17:09+08:00","datePublished":"2021-03-30T00:00:00+08:00","description":"本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了","headline":"MacOS的安装","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1005/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1005/","keywords":"System","thumbnailUrl":"cover.jpg"}</script>
+    <meta name="description" content="本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="苹果MacOS的安装">
+<meta property="og:title" content="MacOS的安装">
 <meta property="og:url" content="https://panxiuwen.github.io/posts/1005/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
-<meta property="og:description" content="本文介绍了如何从零生成黑苹果的EFI文件以及安装">
+<meta property="og:description" content="本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-16T11:01:22.374Z">
+<meta property="article:modified_time" content="2022-06-16T17:17:09.000Z">
 <meta property="article:author" content="Sean Pan">
-<meta property="article:tag" content="Mac">
+<meta property="article:tag" content="System">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@982202733">
 <meta property="fb:app_id" content="[object Object]">
@@ -292,14 +292,14 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            苹果MacOS的安装
+            MacOS的安装
         </h1>
     
     
         <div class="post-meta">
     <time datetime="2021-03-30T00:00:00+08:00">
 	
-		    2021, 3月, 30
+		    2021年 3月 30日
     	
     </time>
     
@@ -311,7 +311,7 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>本文介绍了如何从零生成黑苹果的EFI文件以及安装</p>
+            <p>本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了</p>
 <span id="more"></span>
 <hr>
 <h3 id="使用OC-Gen-X生成主要的驱动"><a href="#使用OC-Gen-X生成主要的驱动" class="headerlink" title="使用OC-Gen-X生成主要的驱动"></a>使用OC-Gen-X生成主要的驱动</h3><p><strong>您可能需要一台装有mac的设备运行OC-Gen-X</strong>，如果没有，也可以在Github上找相似的，直接跳到[获取镜像与安装]这一步<br>获取<a target="_blank" rel="noopener" href="https://github.com/Pavo-IM/OC-Gen-X">OC-Gen-X</a>，一步步走完<br>Kext-Essentaial 选Lilu和VirtualSMC<br>Kext-VirtualSMC Plugins 选SMCProcessor、SMCSuperIO和SMClightSensor，SMCBatteryManager可能不生效或者导致一些问题<br>Kext-Graphics 选WhateverGreen<br>Kext-Audio 选AppleALC，但是需要查看<a target="_blank" rel="noopener" href="https://github.com/acidanthera/AppleALC/wiki/Supported-codecs">支持列表</a>确定设备声卡是否支持，需要自己调试layout-id，如果可用，更推荐<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/voodoohda/files/">VoodooHDA</a>驱动，还不行的话只能USB声卡了<br>Kext-Ethernet根据自己都设备选<br>Kext-USB 选USBInjectALL<br>Kext-Wifi and bluetooth 如果是博通卡就5选4，如果是英特尔网卡需要<a target="_blank" rel="noopener" href="https://github.com/OpenIntelWireless/itlwm">itlwm</a>，更推荐AirportItlwm，和<a target="_blank" rel="noopener" href="https://github.com/OpenIntelWireless/IntelBluetoothFirmware">IntelBluetoothFirmware</a><br>Firmare Drivers-UEFI 选OpenRuntimehe HfsPluse<br>SMBBIOS根据自己都需求选<br>选完就可以Generate EFI</p>
@@ -324,11 +324,17 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在&lt;string&gt;&lt;/string&gt;中间写上keepsyms=1 -v debug=0x100</span><br></pre></td></tr></table></figure>
 <p>如果使用AppleALC，还需要在上一句话后加上alcid=3，加debug=0x100 内核崩溃后不重启，加-v 开启跑代码(啰嗦)模式 ，加keepsyms=1是遇到致命错误需要重启的错误就卡在这里，就方便排除错误<br>搜索prev-lang:kbd，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把&lt;data&gt;&lt;/data&gt;中间的内容改为emgtSGFuczoyNTI=</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="设置显示设备"><a href="#设置显示设备" class="headerlink" title="设置显示设备"></a>设置显示设备</h3><p><strong>注意：Mac不支持VGA和DVI</strong><br>如果那有核显并且使用核显输出的话我们需要进行这一步操作，建议备份config.plist后再操作，查看<a target="_blank" rel="noopener" href="https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/arrandale.html">列表</a>根据自己的设备设置</p>
+<hr>
 <h3 id="检查配置文件"><a href="#检查配置文件" class="headerlink" title="检查配置文件"></a>检查配置文件</h3><p>把config.plist上传到<a target="_blank" rel="noopener" href="https://opencore.slowgeek.com/">OpenCore Sanity Checker</a>，改到全部通过</p>
+<hr>
 <h3 id="设置BIOS"><a href="#设置BIOS" class="headerlink" title="设置BIOS"></a>设置BIOS</h3><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/90bc8fc822c5d8b752640c1c.html">参考</a>，禁用CSM、禁用安全启动、将操作系统类型设置为其他操作系统、将SATA设置为AHCI、禁用CFG锁定、禁用英特尔虚拟化技术/ VT-X、禁用VT-D、启用XHCI Hand-off，禁用USB键盘和鼠标模拟器<br>当然其实要求也没那么严格，比如我用的HDMI转VGA的头，被BIOS发现不能用UEFI，但是实际上还是UEFI启动成功了<br>有些设置如果在BIOS里面改不了可以改配置文件加参数什么的<br>禁用：CSM、安全启动、快速启动、虚拟化、Intel SGX、CFG LOCK<br>开启：超线程、Above 4G decoding、Execute Disable Bit(执行禁止位)、EHCI/XHCI Hand-off、Legacy RTC Device<br>SATA设置为AHCI，这年头还有用IDE的吗？</p>
+<hr>
 <h3 id="获取镜像与安装"><a href="#获取镜像与安装" class="headerlink" title="获取镜像与安装"></a>获取镜像与安装</h3><p>使用<a target="_blank" rel="noopener" href="https://github.com/corpnewt/gibMacOS">gibMacOS</a>获取镜像，运行gibMacOS.bat下载镜像，运行MakeInstall.bat安装系统到U盘，使用<em>DiskGen</em>ius将我们做的EFI写到制作好的U盘的EFI分区里，启动就完了</p>
+<hr>
 <h3 id="安装中的可能遇到的问题"><a href="#安装中的可能遇到的问题" class="headerlink" title="安装中的可能遇到的问题"></a>安装中的可能遇到的问题</h3><p>磁盘工具格式化磁盘，如果用SSD选APFS，如果用机械硬盘选MacOS日志<br>无法与恢复服务器取得联系的情况，我们根据<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/282626105?sort=created">教程</a>同步时区</p>
+<hr>
 <h3 id="安装完成后完善ACPI"><a href="#安装完成后完善ACPI" class="headerlink" title="安装完成后完善ACPI"></a>安装完成后完善ACPI</h3><p><a target="_blank" rel="noopener" href="https://github.com/daliansky/OC-little">OC-little参考</a><br>大部分通用的ACPI</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">笔记本背光亮度调节 SSDT-PNLF.aml SSDT-ALS0.aml</span><br><span class="line">睡眠秒唤醒 SSDT-GPRW SSDT-UPRW</span><br></pre></td></tr></table></figure>
 <p>不通用的ACPI</p>
@@ -345,7 +351,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/Mac/" rel="tag">Mac</a>
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/System/" rel="tag">System</a>
 
             </div>
         
@@ -358,9 +364,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1030/"
-                    data-tooltip="在Windows上运行Linux"
-                    aria-label="上一篇: 在Windows上运行Linux"
+                    href="/posts/1038/"
+                    data-tooltip="电子能谱大全"
+                    aria-label="上一篇: 电子能谱大全"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -372,9 +378,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1013/"
-                    data-tooltip="配置Minecraft服务器"
-                    aria-label="下一篇: 配置Minecraft服务器"
+                    href="/posts/1001/"
+                    data-tooltip="集锦"
+                    aria-label="下一篇: 集锦"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -434,9 +440,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1030/"
-                    data-tooltip="在Windows上运行Linux"
-                    aria-label="上一篇: 在Windows上运行Linux"
+                    href="/posts/1038/"
+                    data-tooltip="电子能谱大全"
+                    aria-label="上一篇: 电子能谱大全"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -448,9 +454,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/posts/1013/"
-                    data-tooltip="配置Minecraft服务器"
-                    aria-label="下一篇: 配置Minecraft服务器"
+                    href="/posts/1001/"
+                    data-tooltip="集锦"
+                    aria-label="下一篇: 集锦"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
