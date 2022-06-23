@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"群晖(Synology)是一家提供专业的NAS设备和存储软件的企业，本文以小猫盘为例介绍群晖初始化中的一些操作\n\n一、猫盘1.三合一修复，问淘宝客服1wget -qO 120x http://code.imnks.com/mp7.x/120x &amp;&amp; chmod +x 120x &amp;&amp; ./120x\n2.增加矿神源1https://spk7.imnks.com/\n3.zerotier安装从矿神源安装后上无法启动的\n1234sed -i &#x27;s/package/root/g&#x27; /var/packages/zerotier/conf/privilege启用zerotier后运行cd /var/packages/zerotier/target/bin./zerotier-one -q join d5e5fb6537ebc5f5\n4.Syncthing配置12sudo -ichmod -R 777 Date\t//赋予需要同步的文件夹写入的权限，其实我也不知道怎么解决\n进入ssh，调换到root权限，chomod 777权限，否则添加指定的文件夹无法访问\n5.交叉编译下载Tool Chain\n12apt-get install xz-utilstar xJvf armada37xx-gcc750_glibc226_armv8-GPL.txz\n6.群晖上的App群晖助手：打开就可以直接连接远程设备进行远程管理，功能相当于ip:5000打开的那个网页，可以做到完全管理，毕竟群晖的网页不会适配移动设备群晖管家：默认先在局域网搜索，在子网搜索不到设备后可自定义连接，完全没什么用，在miui上连四个程序都安装不了SynologyPhoto：需要群晖上安装SynologyPhoto套件PS：DS photo已不可用DS audio:使它工作必须要在套间中心里添加Audio Station套件并设置音频目录，实测用起来很香PS：看起来有点老，啥时候更新成Synology Audio啊\n7.其他群晖设备也可以通过安装webserver使用Pi-dashboard\n参考猫盘/猫盘Plus 群晖系统初始化群晖DSM7.0使用zerotier套件的简单办法\n","dateCreated":"2021-06-30T00:00:00+08:00","dateModified":"2022-06-22T10:49:13+08:00","datePublished":"2021-06-30T00:00:00+08:00","description":"群晖(Synology)是一家提供专业的NAS设备和存储软件的企业，本文以小猫盘为例介绍群晖初始化中的一些操作","headline":"群晖的初始化","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/posts/2010/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/posts/2010/","keywords":"Linux, System, Backups","thumbnailUrl":"cover.jpg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"群晖(Synology)是一家提供专业的NAS设备和存储软件的企业，本文以小猫盘为例介绍群晖初始化中的一些操作\n\n一、猫盘1.三合一修复，问淘宝客服1wget -qO 120x http://code.imnks.com/mp7.x/120x &amp;&amp; chmod +x 120x &amp;&amp; ./120x\n2.增加矿神源1https://spk7.imnks.com/\n3.zerotier安装从矿神源安装后上无法启动的\n1234sed -i &#x27;s/package/root/g&#x27; /var/packages/zerotier/conf/privilege启用zerotier后运行cd /var/packages/zerotier/target/bin./zerotier-one -q join d5e5fb6537ebc5f5\n4.Syncthing配置12sudo -ichmod -R 777 Date\t//赋予需要同步的文件夹写入的权限，其实我也不知道怎么解决\n进入ssh，调换到root权限，chomod 777权限，否则添加指定的文件夹无法访问\n5.交叉编译下载Tool Chain\n12apt-get install xz-utilstar xJvf armada37xx-gcc750_glibc226_armv8-GPL.txz\n6.群晖上的App群晖助手：打开就可以直接连接远程设备进行远程管理，功能相当于ip:5000打开的那个网页，可以做到完全管理，毕竟群晖的网页不会适配移动设备群晖管家：默认先在局域网搜索，在子网搜索不到设备后可自定义连接，完全没什么用，在miui上连四个程序都安装不了SynologyPhoto：需要群晖上安装SynologyPhoto套件PS：DS photo已不可用DS audio:使它工作必须要在套间中心里添加Audio Station套件并设置音频目录，实测用起来很香PS：看起来有点老，啥时候更新成Synology Audio啊\n7.其他群晖设备也可以通过安装webserver使用Pi-dashboard\n参考猫盘/猫盘Plus 群晖系统初始化群晖DSM7.0使用zerotier套件的简单办法\n","dateCreated":"2021-06-30T00:00:00+08:00","dateModified":"2022-06-22T10:49:13+08:00","datePublished":"2021-06-30T00:00:00+08:00","description":"群晖(Synology)是一家提供专业的NAS设备和存储软件的企业，本文以小猫盘为例介绍群晖初始化中的一些操作","headline":"群晖的初始化","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2010/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2010/","keywords":"Linux, System, Backups","thumbnailUrl":"cover.jpg"}</script>
     <meta name="description" content="群晖(Synology)是一家提供专业的NAS设备和存储软件的企业，本文以小猫盘为例介绍群晖初始化中的一些操作">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="群晖的初始化">
-<meta property="og:url" content="http://192.168.192.100/posts/2010/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/posts/2010/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="群晖(Synology)是一家提供专业的NAS设备和存储软件的企业，本文以小猫盘为例介绍群晖初始化中的一些操作">
 <meta property="og:locale" content="zh_CN">
@@ -37,11 +37,11 @@
         
     
     
-        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
-        <meta property="og:image" content="http://192.168.192.100/posts/2010/cover.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://192.168.192.100/posts/2010/cover.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/posts/2010/cover.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://panxiuwen.github.io/posts/2010/cover.jpg"/>
     
     
     
