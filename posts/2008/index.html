@@ -13,16 +13,16 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"感觉调试树莓派这样的单片机并不是很方便本文介绍了LinuxDeploy和Termux的安装与使用\n\n\nLinuxDeploy的安装与使用####1.安装注意，LinuxDeploy需要root从Github上获取右下角-配置，修改配置文件\n\n发行版：Debian构架：arm64发行版：buster源地址:http://mirrors.aliyun.com/debian/安装类型：镜像文件安装路径：/sdcard/Documents/debian.img用户名：sean初始化：启用-sysv启用ssh服务器\n\n\n发行版：Ubuntu构架：arm64发行版：buster源地址:http://mirrors.aliyun.com/ubuntu-ports/安装类型：镜像文件安装路径：/sdcard/Documents/ubuntu.img用户名：sean初始化：启用-sysv启用ssh服务器右上角-安装，等log中出现注意，当文件中出现xxx下载失败的时候，肯定是安装不了的，直接停了就行\n\n12::Configuring extra/ssh ...&lt;&lt;&lt;deploy\n的时候，说明安装成功，如果出现xxx fail，请更换源重试几次左下角-启动当出现log中出现\n12::Starting extra/ssh ... done&lt;&lt;&lt; start\n的时候，就可以用ssh用配置文件中设置的用户名+密码连接设备了，连上后输入su，会好用一些接下来的操作就和原生debian/ubuntu一样的了\n2.使用 MySQL安装程序的时候会出现Running in chroot, ignoring request.让mysql能够使用socket\n1usermod -a -G aid_inet,aid_net_raw mysql\n启动mariadb\n1setsid mysqld_safe &gt; /dev/null 2&gt;&amp;1 &amp;\n关闭mysql\n1mysqladmin -uroot shutdown\n但是在\n\nTermux的安装与使用从F-droid上获取1.换清华源\n12sed -i &#x27;s@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#x27; $PREFIX/etc/apt/sources.listapt update &amp;&amp; apt upgrade\n2.安装ssh\n1pkg install openssh\n3.再设置密码\n1passwd\n4.开启ssh服务\n1sshd\n接下来就可以用ssh软件连接Linux了，帐号是user 密码是自己设置的端口是8022安装使用pkg install xxxxx常用软件基本上都有比如gcc(clang、make、cmake)有了这开源软件都可以编译了python3(python和python-dev) 不怕Python没库了screen(screen tsu)不怕网断了apche(apche2)可以搭建网站了注意网页文件的位置在/data/data/com.termux/files/usr/share/apache2/default-site/htdocs，端口是8080\n\n","dateCreated":"2020-07-27T00:00:00+08:00","dateModified":"2022-06-22T10:48:26+08:00","datePublished":"2020-07-27T00:00:00+08:00","description":"感觉调试树莓派这样的单片机并不是很方便本文介绍了LinuxDeploy和Termux的安装与使用","headline":"在Android设备上使用Linux","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/posts/2008/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/posts/2008/","keywords":"Linux, System","thumbnailUrl":"cover.jpg"}</script>
-    <meta name="description" content="感觉调试树莓派这样的单片机并不是很方便本文介绍了LinuxDeploy和Termux的安装与使用">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"在树莓派这样的单片机上调试Linux并不是很方便，不如直接在自己手机上调试，本文介绍了LinuxDeploy和Termux的安装与使用\n\n\nTermux的安装与使用从F-droid上获取\n1.初始化换清华源\n12sed -i &#x27;s@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#x27; $PREFIX/etc/apt/sources.listapt update &amp;&amp; apt upgrade\n安装ssh\n1pkg install openssh\n再设置密码\n1passwd\n查看用户名，当然用user登录也行\n1whoami\n开启ssh服务，端口是8022\n1sshd\n2.安装gcc添加源\n1nano $PREFIX/etc/apt/sources.list\n添加源\n1deb https://its-pointless.github.io/files/24 termux extras\n添加apt公钥并安装gcc\n12345wget https://its-pointless.github.io/pointless.gpgapt-key add pointless.gpgapt-get updateapt search gccapt install gcc-10\n查看版本\n1gcc-10 -v\n3.使用Mysql安装\n1pkg install mariadb\n启动\n1nohup mysqld &amp;\n查看进程\n1ps aux|grep mysql\n\npython3(python和python-dev) 不怕Python没库了screen(screen tsu)不怕网断了apche(apche2)可以搭建网站了注意网页文件的位置在/data/data/com.termux/files/usr/share/apache2/default-site/htdocs，端口是8080\n\nLinuxDeploy的安装与使用1.安装注意，LinuxDeploy需要root从Github上获取右下角-&gt;配置，修改配置文件\n\n发行版：Debian构架：arm64发行版：buster源地址:http://mirrors.aliyun.com/debian/安装类型：镜像文件安装路径：/sdcard/Documents/debian.img用户名：sean初始化：启用-sysv启用ssh服务器\n\n对于不同的发行版可使用不同的配置文件\n\n发行版：Ubuntu构架：arm64发行版：buster源地址:http://mirrors.aliyun.com/ubuntu-ports/安装类型：镜像文件安装路径：/sdcard/Documents/ubuntu.img用户名：sean初始化：启用-sysv启用ssh服务器\n\n右上角-&gt;安装，等log中出现注意，当文件中出现xxx下载失败的时候，肯定是安装不了的，直接停了就行，当控制台出现\n12::Configuring extra/ssh ...&lt;&lt;&lt;deploy\n的时候，说明安装成功，如果出现xxx fail，请更换源重试几次左下角-&gt;启动当出现log中出现\n12::Starting extra/ssh ... done&lt;&lt;&lt; start\n的时候，就可以用ssh用配置文件中设置的用户名+密码连接设备了，连上后直接输入su，会好用一些接下来的操作就和原生debian/ubuntu是差不多的了\n\n2.使用 MySQL安装程序的时候会出现Running in chroot, ignoring request.让mysql能够使用socket\n1usermod -a -G aid_inet,aid_net_raw mysql\n启动mariadb\n1setsid mysqld_safe &gt; /dev/null 2&gt;&amp;1 &amp;\n关闭mysql\n1mysqladmin -uroot shutdown\n\n","dateCreated":"2020-07-27T00:00:00+08:00","dateModified":"2022-06-25T13:19:08+08:00","datePublished":"2020-07-27T00:00:00+08:00","description":"在树莓派这样的单片机上调试Linux并不是很方便，不如直接在自己手机上调试，本文介绍了LinuxDeploy和Termux的安装与使用","headline":"在Android设备上使用Linux","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2008/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2008/","keywords":"Linux, System","thumbnailUrl":"cover.jpg"}</script>
+    <meta name="description" content="在树莓派这样的单片机上调试Linux并不是很方便，不如直接在自己手机上调试，本文介绍了LinuxDeploy和Termux的安装与使用">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="在Android设备上使用Linux">
-<meta property="og:url" content="http://192.168.192.100/posts/2008/index.html">
+<meta property="og:url" content="https://panxiuwen.github.io/posts/2008/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
-<meta property="og:description" content="感觉调试树莓派这样的单片机并不是很方便本文介绍了LinuxDeploy和Termux的安装与使用">
+<meta property="og:description" content="在树莓派这样的单片机上调试Linux并不是很方便，不如直接在自己手机上调试，本文介绍了LinuxDeploy和Termux的安装与使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-22T02:48:26.593Z">
+<meta property="article:modified_time" content="2022-06-25T05:19:08.521Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="System">
@@ -36,11 +36,11 @@
         
     
     
-        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
     
     
-        <meta property="og:image" content="http://192.168.192.100/posts/2008/cover.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://192.168.192.100/posts/2008/cover.jpg"/>
+        <meta property="og:image" content="https://panxiuwen.github.io/posts/2008/cover.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://panxiuwen.github.io/posts/2008/cover.jpg"/>
     
     
     
@@ -312,37 +312,57 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>感觉调试树莓派这样的单片机并不是很方便<br>本文介绍了LinuxDeploy和Termux的安装与使用</p>
+            <p>在树莓派这样的单片机上调试Linux并不是很方便，不如直接在自己手机上调试，本文介绍了LinuxDeploy和Termux的安装与使用</p>
 <span id="more"></span>
 <hr>
-<h3 id="LinuxDeploy的安装与使用"><a href="#LinuxDeploy的安装与使用" class="headerlink" title="LinuxDeploy的安装与使用"></a>LinuxDeploy的安装与使用</h3><p>####1.安装<br><strong>注意，LinuxDeploy需要root</strong><br><a target="_blank" rel="noopener" href="https://github.com/meefik/linuxdeploy/releases">从Github上获取</a><br>右下角-配置，修改配置文件</p>
+<h3 id="Termux的安装与使用"><a href="#Termux的安装与使用" class="headerlink" title="Termux的安装与使用"></a>Termux的安装与使用</h3><p><a target="_blank" rel="noopener" href="https://f-droid.org/packages/com.termux/">从F-droid上获取</a></p>
+<h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><p>换清华源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#x27; $PREFIX/etc/apt/sources.list</span><br><span class="line">apt update &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
+<p>安装ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
+<p>再设置密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p>查看用户名，当然用user登录也行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
+<p>开启ssh服务，端口是8022</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure>
+<h4 id="2-安装gcc"><a href="#2-安装gcc" class="headerlink" title="2.安装gcc"></a>2.安装gcc</h4><p>添加源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano $PREFIX/etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<p>添加源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb https://its-pointless.github.io/files/24 termux extras</span><br></pre></td></tr></table></figure>
+<p>添加apt公钥并安装gcc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://its-pointless.github.io/pointless.gpg</span><br><span class="line">apt-key add pointless.gpg</span><br><span class="line">apt-get update</span><br><span class="line">apt search gcc</span><br><span class="line">apt install gcc-10</span><br></pre></td></tr></table></figure>
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc-10 -v</span><br></pre></td></tr></table></figure>
+<h4 id="3-使用Mysql"><a href="#3-使用Mysql" class="headerlink" title="3.使用Mysql"></a>3.使用Mysql</h4><p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install mariadb</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup mysqld &amp;</span><br></pre></td></tr></table></figure>
+<p>查看进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>python3(python和python-dev) 不怕Python没库了<br>screen(screen tsu)不怕网断了<br>apche(apche2)可以搭建网站了<br>注意网页文件的位置在/data/data/com.termux/files/usr/share/apache2/default-site/htdocs，端口是8080</p>
+<hr>
+<h3 id="LinuxDeploy的安装与使用"><a href="#LinuxDeploy的安装与使用" class="headerlink" title="LinuxDeploy的安装与使用"></a>LinuxDeploy的安装与使用</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p><strong>注意，LinuxDeploy需要root</strong><br><a target="_blank" rel="noopener" href="https://github.com/meefik/linuxdeploy/releases">从Github上获取</a><br>右下角-&gt;配置，修改配置文件</p>
 <blockquote>
 <p>发行版：Debian<br>构架：arm64<br>发行版：buster<br>源地址:<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/debian/">http://mirrors.aliyun.com/debian/</a><br>安装类型：镜像文件<br>安装路径：/sdcard/Documents/debian.img<br>用户名：sean<br>初始化：启用-sysv<br>启用ssh服务器</p>
 </blockquote>
+<p><strong>对于不同的发行版可使用不同的配置文件</strong></p>
 <blockquote>
-<p>发行版：Ubuntu<br>构架：arm64<br>发行版：buster<br>源地址:<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu-ports/">http://mirrors.aliyun.com/ubuntu-ports/</a><br>安装类型：镜像文件<br>安装路径：/sdcard/Documents/ubuntu.img<br>用户名：sean<br>初始化：启用-sysv<br>启用ssh服务器<br>右上角-安装，等log中出现<br>注意，当文件中出现xxx下载失败的时候，肯定是安装不了的，直接停了就行</p>
+<p>发行版：Ubuntu<br>构架：arm64<br>发行版：buster<br>源地址:<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu-ports/">http://mirrors.aliyun.com/ubuntu-ports/</a><br>安装类型：镜像文件<br>安装路径：/sdcard/Documents/ubuntu.img<br>用户名：sean<br>初始化：启用-sysv<br>启用ssh服务器</p>
 </blockquote>
+<p>右上角-&gt;安装，等log中出现<br>注意，当文件中出现xxx下载失败的时候，肯定是安装不了的，直接停了就行，当控制台出现</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">::Configuring extra/ssh ...</span><br><span class="line">&lt;&lt;&lt;deploy</span><br></pre></td></tr></table></figure>
-<p>的时候，说明安装成功，如果出现xxx fail，请更换源重试几次<br>左下角-启动<br>当出现log中出现</p>
+<p>的时候，说明安装成功，如果出现xxx fail，请更换源重试几次<br>左下角-&gt;启动<br>当出现log中出现</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">::Starting extra/ssh ... done</span><br><span class="line">&lt;&lt;&lt; start</span><br></pre></td></tr></table></figure>
-<p>的时候，就可以用ssh用配置文件中设置的用户名+密码连接设备了，连上后输入su，会好用一些<br>接下来的操作就和原生debian/ubuntu一样的了</p>
+<p>的时候，就可以用ssh用配置文件中设置的用户名+密码连接设备了，连上后直接输入su，会好用一些<br>接下来的操作就和原生debian/ubuntu是差不多的了</p>
+<hr>
 <h4 id="2-使用-MySQL"><a href="#2-使用-MySQL" class="headerlink" title="2.使用 MySQL"></a>2.使用 MySQL</h4><p>安装程序的时候会出现<strong>Running in chroot, ignoring request.</strong><br>让mysql能够使用socket</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -a -G aid_inet,aid_net_raw mysql</span><br></pre></td></tr></table></figure>
 <p>启动mariadb</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsid mysqld_safe &gt; /dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 <p>关闭mysql</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -uroot shutdown</span><br></pre></td></tr></table></figure>
-<p>但是在</p>
-<hr>
-<h3 id="Termux的安装与使用"><a href="#Termux的安装与使用" class="headerlink" title="Termux的安装与使用"></a>Termux的安装与使用</h3><p><a target="_blank" rel="noopener" href="https://f-droid.org/packages/com.termux/">从F-droid上获取</a><br>1.换清华源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#x27; $PREFIX/etc/apt/sources.list</span><br><span class="line">apt update &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
-<p>2.安装ssh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
-<p>3.再设置密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<p>4.开启ssh服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure>
-<p>接下来就可以用ssh软件连接Linux了，帐号是user 密码是自己设置的端口是8022<br>安装使用pkg install xxxxx<br>常用软件基本上都有比如gcc(clang、make、cmake)有了这开源软件都可以编译了<br>python3(python和python-dev) 不怕Python没库了<br>screen(screen tsu)不怕网断了<br>apche(apche2)可以搭建网站了<br>注意网页文件的位置在/data/data/com.termux/files/usr/share/apache2/default-site/htdocs，端口是8080</p>
 <hr>
 
             
