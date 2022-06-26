@@ -13,7 +13,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用\n\n前言这类软件一般分为两类，流量走公网穿透服务器和不走穿透服务器流量走公网穿透服务器的软件全部都会分配给用户二级域名，全部都是付费软件且价格很高，例如Natapp、花生壳等流量不走公网服务器的软件有Zerotier、Tailscale\n\nZeroTierZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算，几乎支持所有的联网设备\n\n1.安装Linux安装：\n1apt-get install zerotier-one\n或\n1curl -s https://install.zerotier.com | sudo bash\n\nSynology安装\n在套件中心里添加矿神源\n1https://spk7.imnks.com/\n安装后打开ssh并切换root\n1sed -i &#x27;s/package/root/g&#x27; /var/packages/zerotier/conf/privilege\n手动运行Zerotier\n12cd /var/packages/zerotier/target/bin./zerotier-one -q join d5e5fb6537ebc5f5\n\n2.使用加入网络：\n1zerotier-cli join d5e5fb6537ebc5f5\n退出网络：\n1zerotier-cli leave d5e5fb6537ebc5f5\n启动服务\n1zerotier-one -d\n重启服务：\n1service zerotier-one restart\n查看状态：\n1zerotier-cli status\n卸载：\n1apt-get purge zerotier-one\n\n3.在路由器上使用的方法优点：由于zerotier的免费绑定设备只有25个，使用路由器可以节约使用个数缺点：外网设备无法自由访问内网设备，需要结合Openwrt自带的或者socat做端口转发\n\n4.连接虚拟网络后无法连接其他网络原因：在zerotier虚拟网络上加入了与本地路由器冲突的路由表查看网关\n1netstat –rn\n或者\n1route -n\n添加网关\n1route default 192.168.2.1\n删除网关\n1route del -net 192.168.192.0 netmask 255.255.255.0\n\n花生壳花生壳绝对是国内老牌内网映射服务提供商1.资费免费通道速率1Mb/s，月流量1GB，必须拥有壳域名学生认证速率1Mb/s，月流量5GB，必须拥有壳域名最便宜的付费版1天1块起步，还不如买服务器2.安装\n\nNatapp1.资费免费版速率未知，不定时更换域名或端口PS：云南大学的校园网无法使用免费版付费9元：1Mb/s，月限流5G付费1MB/20元每月不限流2.下载[https://natapp.cn/#download]支持Win、Mac、Linux和FreeBSD这些主流平台3.使用在后台配置好映射之后使用命令运行\n1natapp -authtoken=你的authtoken\n","dateCreated":"2018-12-21T00:00:00+08:00","dateModified":"2022-06-22T10:48:10+08:00","datePublished":"2018-12-21T00:00:00+08:00","description":"本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用","headline":"内网穿透软件","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2007/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2007/","keywords":"Server","thumbnailUrl":"cover.jpg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用\n\n一、前言内网穿透软件一般分为两类，流量走公网穿透服务器和不走穿透服务器的软件。流量走公网穿透服务器的软件全部都会分配给用户二级域名，全部都是付费软件且价格很高，例如Natapp、花生壳等。流量不走公网服务器的软件有Zerotier、Tailscale、TeamViewer以及Hamachi，这类软件一般会分给用户192或10开头的内网ip，流量使用p2p传输并进行加密，tcp连接的稳定性一般受nat环境的影响，udp只要是打洞成功了一般都没问题。\n\n二、ZeroTierZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算，几乎支持所有的联网设备免费子网设备是25个，隐藏设备不算，不知道是不是bug\n\n1.安装Linux安装\n1apt-get install zerotier-one\n或\n1curl -s https://install.zerotier.com | sudo bash\n\nSynology安装\n在套件中心里添加矿神源\n1https://spk7.imnks.com/\n安装后打开ssh并切换root\n1sed -i &#x27;s/package/root/g&#x27; /var/packages/zerotier/conf/privilege\n手动运行Zerotier\n12cd /var/packages/zerotier/target/bin./zerotier-one -q join d5e5fb6537ebc5f5\n\n2.使用加入网络：\n1zerotier-cli join d5e5fb6537ebc5f5\n退出网络：\n1zerotier-cli leave d5e5fb6537ebc5f5\n启动服务\n1zerotier-one -d\n重启服务：\n1service zerotier-one restart\n查看状态：\n1zerotier-cli status\n卸载：\n1apt-get purge zerotier-one\n\n3.在路由器上使用的方法优点：由于zerotier的免费绑定设备只有25个，使用路由器可以节约使用个数缺点：外网设备无法自由访问内网设备，需要结合Openwrt自带的或者socat做端口转发\n\n4.连接虚拟网络后无法连接其他网络原因：在zerotier虚拟网络上加入了与本地路由器冲突的路由表查看网关\n1netstat –rn\n或者\n1route -n\n添加网关\n1route default 192.168.2.1\n删除网关\n1route del -net 192.168.192.0 netmask 255.255.255.0\n\n三、花生壳花生壳绝对是国内老牌内网映射服务提供商\n1. 安装按着官网要求来就行，Synlogy用矿神源\n2.资费免费通道速率1Mb/s，月流量1GB，必须拥有壳域名学生认证速率1Mb/s，月流量5GB，必须拥有壳域名最便宜的付费版1天1块起步，还不如买服务器\n\n四、Natapp1.安装下载,支持Win、Mac、Linux和FreeBSD这些主流平台在后台配置好映射之后使用命令运行\n1natapp -authtoken=你的authtokenl\n2.资费免费版速率未知，不定时更换域名或端口PS：云南大学的校园网无法使用免费版付费9元：1Mb/s，月限流5G付费20元:1MB/s，每月不限流\n","dateCreated":"2018-12-21T00:00:00+08:00","dateModified":"2022-06-26T12:19:05+08:00","datePublished":"2018-12-21T00:00:00+08:00","description":"本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用","headline":"内网穿透软件","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2007/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2007/","keywords":"Server","thumbnailUrl":"cover.jpg"}</script>
     <meta name="description" content="本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="内网穿透软件">
@@ -22,7 +22,7 @@
 <meta property="og:description" content="本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-22T02:48:10.964Z">
+<meta property="article:modified_time" content="2022-06-26T04:19:05.394Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Server">
 <meta name="twitter:card" content="summary">
@@ -45,7 +45,7 @@
     
     <!--STYLES-->
     
-<link rel="stylesheet" href="/assets/css/style-ugcpbieivliwnoaslqv3bxtnrpxx2tp0pimsnkpypxun1cwcx7syz92ocp9b.min.css">
+<link rel="stylesheet" href="/assets/css/style-haszctu9si6wdofvc4so9ykqjysbg2c0x4hniyggbqhbulb7glthmjktclfo.min.css">
 
     <!--STYLES END-->
     
@@ -313,11 +313,11 @@
         <div class="main-content-wrap">
             <p>本文介绍了内网穿透软件ZeroTier、花生壳和natapp的使用</p>
 <span id="more"></span>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这类软件一般分为两类，流量走公网穿透服务器和不走穿透服务器<br>流量走公网穿透服务器的软件全部都会分配给用户二级域名，全部都是付费软件且价格很高，例如Natapp、花生壳等<br>流量不走公网服务器的软件有<a target="_blank" rel="noopener" href="https://www.zerotier.com/">Zerotier</a>、<a target="_blank" rel="noopener" href="https://login.tailscale.com/admin/welcome">Tailscale</a></p>
+<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>内网穿透软件一般分为两类，流量走公网穿透服务器和不走穿透服务器的软件。<br>流量走公网穿透服务器的软件全部都会分配给用户二级域名，全部都是付费软件且价格很高，例如Natapp、花生壳等。<br>流量不走公网服务器的软件有<a target="_blank" rel="noopener" href="https://www.zerotier.com/">Zerotier</a>、<a target="_blank" rel="noopener" href="https://login.tailscale.com/admin/welcome">Tailscale</a>、TeamViewer以及Hamachi，这类软件一般会分给用户192或10开头的内网ip，流量使用p2p传输并进行加密，tcp连接的稳定性一般受nat环境的影响，udp只要是打洞成功了一般都没问题。</p>
 <hr>
-<h3 id="ZeroTier"><a href="#ZeroTier" class="headerlink" title="ZeroTier"></a>ZeroTier</h3><p>ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算，几乎支持所有的联网设备</p>
+<h3 id="二、ZeroTier"><a href="#二、ZeroTier" class="headerlink" title="二、ZeroTier"></a>二、ZeroTier</h3><p>ZeroTier通过其建立的虚拟局域网络，直接连接各地的设备，方便实现去中心化的管理、通讯和计算，几乎支持所有的联网设备<br><strong>免费子网设备是25个，隐藏设备不算，不知道是不是bug</strong></p>
 <hr>
-<h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p><strong>Linux安装：</strong></p>
+<h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p><strong>Linux安装</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install zerotier-one</span><br></pre></td></tr></table></figure>
 <p>或</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://install.zerotier.com | sudo bash</span><br></pre></td></tr></table></figure>
@@ -343,9 +343,9 @@
 <p>卸载：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get purge zerotier-one</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="3-在路由器上使用的方法"><a href="#3-在路由器上使用的方法" class="headerlink" title="3.在路由器上使用的方法"></a>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/433880308">在路由器上使用的方法</a></h3><p>优点：由于zerotier的免费绑定设备只有25个，使用路由器可以节约使用个数<br>缺点：外网设备无法自由访问内网设备，需要结合Openwrt自带的或者socat做端口转发</p>
+<h4 id="3-在路由器上使用的方法"><a href="#3-在路由器上使用的方法" class="headerlink" title="3.在路由器上使用的方法"></a>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/433880308">在路由器上使用的方法</a></h4><p>优点：由于zerotier的免费绑定设备只有25个，使用路由器可以节约使用个数<br>缺点：外网设备无法自由访问内网设备，需要结合Openwrt自带的或者socat做端口转发</p>
 <hr>
-<h3 id="4-连接虚拟网络后无法连接其他网络"><a href="#4-连接虚拟网络后无法连接其他网络" class="headerlink" title="4.连接虚拟网络后无法连接其他网络"></a>4.连接虚拟网络后无法连接其他网络</h3><p>原因：在zerotier虚拟网络上加入了与本地路由器冲突的路由表<br>查看网关</p>
+<h4 id="4-连接虚拟网络后无法连接其他网络"><a href="#4-连接虚拟网络后无法连接其他网络" class="headerlink" title="4.连接虚拟网络后无法连接其他网络"></a>4.连接虚拟网络后无法连接其他网络</h4><p>原因：在zerotier虚拟网络上加入了与本地路由器冲突的路由表<br>查看网关</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –rn</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
@@ -354,10 +354,13 @@
 <p>删除网关</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route del -net 192.168.192.0 netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="花生壳"><a href="#花生壳" class="headerlink" title="花生壳"></a>花生壳</h3><p>花生壳绝对是国内老牌内网映射服务提供商<br>1.资费<br>免费通道速率1Mb/s，月流量1GB，必须拥有壳域名<br>学生认证速率1Mb/s，月流量5GB，必须拥有壳域名<br>最便宜的付费版1天1块起步，还不如买服务器<br>2.安装</p>
+<h3 id="三、花生壳"><a href="#三、花生壳" class="headerlink" title="三、花生壳"></a>三、花生壳</h3><p>花生壳绝对是国内老牌内网映射服务提供商</p>
+<h4 id="1-安装-1"><a href="#1-安装-1" class="headerlink" title="1. 安装"></a>1. 安装</h4><p>按着官网要求来就行，Synlogy用矿神源</p>
+<h4 id="2-资费"><a href="#2-资费" class="headerlink" title="2.资费"></a>2.资费</h4><p>免费通道速率1Mb/s，月流量1GB，必须拥有壳域名<br>学生认证速率1Mb/s，月流量5GB，必须拥有壳域名<br>最便宜的付费版1天1块起步，还不如买服务器</p>
 <hr>
-<h3 id="Natapp"><a href="#Natapp" class="headerlink" title="Natapp"></a>Natapp</h3><p>1.资费<br>免费版速率未知，不定时更换域名或端口<br>PS：云南大学的校园网无法使用免费版<br>付费9元：1Mb/s，月限流5G<br>付费1MB/20元每月不限流<br>2.下载[<a target="_blank" rel="noopener" href="https://natapp.cn/#download]">https://natapp.cn/#download]</a><br>支持Win、Mac、Linux和FreeBSD这些主流平台<br>3.使用<br>在后台配置好映射之后使用命令运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">natapp -authtoken=你的authtoken</span><br></pre></td></tr></table></figure>
+<h3 id="四、Natapp"><a href="#四、Natapp" class="headerlink" title="四、Natapp"></a>四、Natapp</h3><h4 id="1-安装-2"><a href="#1-安装-2" class="headerlink" title="1.安装"></a>1.安装</h4><p><a target="_blank" rel="noopener" href="https://natapp.cn/#download">下载</a>,支持Win、Mac、Linux和FreeBSD这些主流平台<br>在后台配置好映射之后使用命令运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">natapp -authtoken=你的authtokenl</span><br></pre></td></tr></table></figure>
+<h4 id="2-资费-1"><a href="#2-资费-1" class="headerlink" title="2.资费"></a>2.资费</h4><p>免费版速率未知，不定时更换域名或端口<br>PS：云南大学的校园网无法使用免费版<br>付费9元：1Mb/s，月限流5G<br>付费20元:1MB/s，每月不限流</p>
 
             
 
@@ -412,7 +415,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -423,7 +426,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -488,7 +491,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -499,7 +502,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -556,7 +559,7 @@
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
         <!--SCRIPTS-->
 
-<script src="/assets/js/script-83fla0bgeojapftrfusyfguda5zl4tkpdjin5ohxzxbvdeliluaioqsswfkn.min.js"></script>
+<script src="/assets/js/script-4y81lq33vcbtqyyyjvpckb66jkwrjc1turbbpfjvtsfdoyabr6hrfn7nowgj.min.js"></script>
 
 <!--SCRIPTS END-->
 
