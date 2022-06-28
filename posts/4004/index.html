@@ -13,11 +13,11 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了RedMi AC2100刷机方法\n\n参考\n更新/降级固件版本至 2.0.23获取Root，返回0就对了，注意替换STOK参数\n1http://192.168.31.1/cgi-bin/luci/;stok=[STOK]/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;user_id=longdike&amp;ssid=-h%3B%20nvram%20set%20ssh_en%3D1%3B%20nvram%20commit%3B%20sed%20-i%20&#x27;s%2Fchannel%3D.*%2Fchannel%3D%5C%22debug%5C%22%2Fg&#x27;%20%2Fetc%2Finit.d%2Fdropbear%3B%20%2Fetc%2Finit.d%2Fdropbear%20start%3B\nroot密码修改为 password\n1http://192.168.31.1/cgi-bin/luci/;stok=[STOK]/api/misystem/set_config_iotdev?bssid=gallifrey&amp;user_id=doctor&amp;ssid=-h%0Aecho%20-e%20%27password%5Cnpassword%27%20%7C%20passwd%20root%0A\n刷Breed\n1mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader\n按住reset键插电，，等蓝灯闪烁，松开访问192.168.1.1进入breed\n进Breed后新增一个值为2名为xiaomi.r3g.bootfw的环境变量\n刷入initramfs-kernel.bin 的固件，进入临时系统后更新squashfs-sysupgrade.bin的固件\n","dateCreated":"2022-01-27T00:00:00+08:00","dateModified":"2022-06-24T22:15:35+08:00","datePublished":"2022-01-27T00:00:00+08:00","description":"本文介绍了RedMi AC2100刷机方法","headline":"红米路由器ac2100刷机","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.vercel.app/posts/4004/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.vercel.app/posts/4004/","keywords":"Router"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了RedMi AC2100刷机方法\n\n参考\n更新/降级固件版本至 2.0.23获取Root，返回0就对了，注意替换STOK参数\n1http://192.168.31.1/cgi-bin/luci/;stok=[STOK]/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;user_id=longdike&amp;ssid=-h%3B%20nvram%20set%20ssh_en%3D1%3B%20nvram%20commit%3B%20sed%20-i%20&#x27;s%2Fchannel%3D.*%2Fchannel%3D%5C%22debug%5C%22%2Fg&#x27;%20%2Fetc%2Finit.d%2Fdropbear%3B%20%2Fetc%2Finit.d%2Fdropbear%20start%3B\nroot密码修改为 password\n1http://192.168.31.1/cgi-bin/luci/;stok=[STOK]/api/misystem/set_config_iotdev?bssid=gallifrey&amp;user_id=doctor&amp;ssid=-h%0Aecho%20-e%20%27password%5Cnpassword%27%20%7C%20passwd%20root%0A\n刷Breed\n1mtd -r write breed-mt7621-xiaomi-r3g.bin Bootloader\n按住reset键插电，，等蓝灯闪烁，松开访问192.168.1.1进入breed\n进Breed后新增一个值为2名为xiaomi.r3g.bootfw的环境变量\n刷入initramfs-kernel.bin 的固件，进入临时系统后更新squashfs-sysupgrade.bin的固件\n","dateCreated":"2022-01-27T00:00:00+08:00","dateModified":"2022-06-24T22:15:35+08:00","datePublished":"2022-01-27T00:00:00+08:00","description":"本文介绍了RedMi AC2100刷机方法","headline":"红米路由器ac2100刷机","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/posts/4004/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/posts/4004/","keywords":"Router"}</script>
     <meta name="description" content="本文介绍了RedMi AC2100刷机方法">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="红米路由器ac2100刷机">
-<meta property="og:url" content="https://panxiuwen.vercel.app/posts/4004/index.html">
+<meta property="og:url" content="http://192.168.192.100/posts/4004/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了RedMi AC2100刷机方法">
 <meta property="og:locale" content="zh_CN">
@@ -35,7 +35,7 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen.vercel.app/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
     
     
     
