@@ -13,7 +13,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"The benchmarks of some device, result of UnixBench 5.13. \n\n\nX86 CPU Benchmark’s Gather\n\n\nCPU\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nCeleron 1007U\nASUS X201E\nNative\nIvyBridge × 2\n646.9\n1153.2\n\n\nCore i5-5200U\nInspiron15 3543\nNative\nBroadwell × 2\n1200.5\n2740.6\n\n\nRyzen 7 4800H\nLenovo R9000X\nNative\nZen2 × 8\n1673.7\n7396.6\n\n\nCore i5-4590\nC7Z97-MF\nNative\nHaswell × 4\n1776.3\n4991.7\n\n\nCore i3-9100F\nTUF B360m\nNative\nCoffeeLake × 4\n1727.2\n5051.3\n\n\nCore i3-12100F\nPRIME B660M\nNative\nAlderLake × 4\n3206.1\n10314.9\n\n\nXeon E5507\nDELL R410\nNative\nHehalem × 4 × 2\n768\n3702\n\n\nE7-8891 v4\nUnknow\nNative\nBroadwell × 10 × 4\n1155.9\n10164.3\n\n\nHygon C86 7280\nUnknow\nNative\nZen × 32× 2\n923.4\n8491.9\n\n\nFT2000\nUnknow\nNative\nX86 × 64\n743.7\n4899\n\n\nX86 CPU in virtual machine Benchmark’s Gather\n\n\nCPU\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nCore i5-5200U\nInspiron15 3543\nNative\nBroadwell × 2\n1200.5\n2740.6\n\n\nCore i5-5200U\nInspiron15 3543\nVMware\nBroadwell × 2\n708.5\n1870.7\n\n\nCore i5-5200U\nInspiron15 3543\nWSL\nBroadwell × 2\n265.2\n478.4\n\n\nCore i3-9100F\nTUF B360m\nNative\nCoffeeLake × 4\n1727.2\n5051.3\n\n\nCore i3-9100F\nTUF B360m\nVMware\nCoffeeLake × 4\n1190.1\n4539.8\n\n\nCore i3-9100F\nTUF B360m\nWSL\nCoffeeLake × 4\n441\n1202.1\n\n\nEfficiency of Virtual Machine WSL：22.09%/17.46%    VMware：59.02%/68.26%Remarks：Windows LTSC 2019 / VMware Workstation Pro 16.1.2.8432 / Debian busterThe Native environment is debian 11\n\nMobile SOC Benchmark’s gather\n\n\nSOC\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nSD 625\nRedmi 4\nLinuxDeploy\nA53 × 8\n312\n1452.8\n\n\nSD 625\nRedmi 4\nRM TC\nA53 × 8\n313.8\n1714.5\n\n\nSD 835\nMi 6\nLinuxDeploy\nA73 × 4 + A53 × 4\n696.1\n1762\n\n\nSD 835\nMi 6\nRM TC\nA73 × 4 + A53 × 4\n788.5\n2250.9\n\n\nSD 870\nMi 10s\nLinuxDeploy\nA77 × 4 + A55 × 4\n1277.3\n2430.4\n\n\nSD 870\nMi 10s\nRM TC\nA77 × 4 + A55 × 4\n1426.3\n2549.4\n\n\nSD is the abbreviation of Snapdragon QualcommRM TC means remove temperature controlRemarks：LinuxDeploy 2.60 / Debian buster\nBoard SOC Benchmark’s gather\n\n\nSOC\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nMT7620A\nNewifi mini\nNative\nMips24kc × 1\n11.3\n-\n\n\nAM3359\nBeagle Bone Black\nNative\nA8\n150.2\n-\n\n\nBCM2836\nRaspberry Pi2\nNative\nA7 × 4\n171.3\n391.5\n\n\nAllwinner H2+\nOrange Pi Zero\nNative\nA7 × 4\n202.2\n-\n\n\nAllwinner H616\nOrange Pi Zero2\nNative\nA53 × 4\n325.2\n813.4\n\n\nLS2K1000\nLong Pi\nNative\nLong Arch × 2\n187.6\n203.2\n\n\nBCM 2711\nRaspberry Pi4\nNative\nA72 × 4\n416\n1038.9\n\n\n\nBenchmark’s gather Single Core of X86\n\n\nItem\n5200U\n4590\n9100F\n12100F\n1007U\n\n\n\nDhrystone 2\n2756.4\n3968.8\n4470.5\n5815.1\n1567.6\n\n\nWhetstone\n1148\n1287.7\n1606.2\n1765.3\n473.3\n\n\nThroughput\n1070.5\n1406.3\n1458.5\n2284.3\n513.6\n\n\nFileCopy 1024\n1595.1\n2492.7\n1992.7\n5285.6\n847.8\n\n\nFileCopy 256\n1089.7\n1555.7\n1228.2\n3446.1\n545.8\n\n\nFileCopy 4096\n2941.3\n4761.3\n4041.4\n8363.9\n1734.4\n\n\nPipe Throughput\n785.9\n1220.3\n837.3\n3166.9\n432.5\n\n\nPipe Switching\n470\n455.6\n673.3\n1056.5\n238.3\n\n\nProcess Creation\n435.3\n699.9\n1146.2\n1641.1\n383.6\n\n\nShell Scripts X1\n1696.6\n3512.5\n3216.2\n1525.9\n1191\n\n\nShell Scripts X8\n3854.5\n7933.8\n8577.8\n15197\n1599.1\n\n\nSystem Call\n491.9\n685.9\n381.7\n2593.7\n233.3\n\n\nIndex Score\n1200.5\n1776.3\n1727.2\n3206.1\n646.9\n\n\nIPC_Dhry\n1020.9\n1072.6\n1064.4\n1352.3\n1045.1\n\n\nIPC_Whet\n425.2\n348.0\n382.4\n410.5\n315.5\n\n\nIPC Dhry is the abbreviation of instruction per clock use Dhrystone 2 marksIPC Whet is the abbreviation of instruction per clock use Whetstone marks\nBenchmark’s Gather Multi Core of X86\n\n\nItem\n5200U\n4590\n9100F\n12100F\n1007U\n\n\n\nDhrystone 2\n6889\n14963.3\n17339.4\n34071.7\n3144.4\n\n\nWhetstone\n3629.3\n4877.5\n6159.8\n12484.3\n945.7\n\n\nThroughput\n2625.1\n4884.3\n5204\n10814.6\n989.5\n\n\nFileCopy 1024\n2293.4\n3748.3\n4398.6\n4220.1\n1574.7\n\n\nFileCopy 256\n1510.5\n2435.3\n2718.6\n2630\n1012.2\n\n\nFileCopy 4096\n4542.5\n7869.7\n9210.6\n8955\n3044.1\n\n\nPipe Throughput\n2113.8\n4612.9\n3211.6\n16149.5\n856.4\n\n\nPipe Switching\n1545.1\n2445.3\n2344.8\n6570.7\n449.7\n\n\nProcess Creation\n1935.3\n3868.1\n4210.2\n9019\n791.2\n\n\nShell Scripts X1\n4341\n9520\n10142.2\n20524.1\n1736.5\n\n\nShell Scripts X8\n4272.3\n9401.6\n9979.8\n19611.9\n1640.4\n\n\nSystem Call\n1482.7\n2392.9\n1404.8\n8237.1\n446.3\n\n\nIndex Score\n2740.6\n4991.7\n5051.3\n10314.9\n1153.2\n\n\nME_Dhry\n125.0\n94.3\n97.0\n146.5\n100.3\n\n\nME_Whet\n158.1\n94.7\n95.9\n176.8\n99.9\n\n\nME Dhry is the abbreviation of multicore efficiency use Dhrystone 2ME Whet is the abbreviation of multicore efficiency use Whetstone\n\nBenchmark’s gather Single Core of X86 in virtual machine\n\n\nItem\n5200U\n9100F\n5200U-VMware\n9100F-VMware\n5200U-WSL\n9100F-WSL\n\n\n\nDhrystone 2\n2756.4\n4470.5\n2685.3\n4354.8\n2749.6\n4466\n\n\nWhetstone\n1148\n1606.2\n1017.7\n1555\n1036\n1602.5\n\n\nThroughput\n1070.5\n1458.5\n673\n1072.6\n104.4\n177.9\n\n\nFileCopy 1024\n1595.1\n1992.7\n1145.4\n1846.4\n252.6\n361.5\n\n\nFileCopy 256\n1089.7\n1228.2\n776.2\n1172.8\n154.7\n223\n\n\nFileCopy 4096\n2941.3\n4041.4\n2285.8\n3755.1\n508.7\n790\n\n\nPipe Throughput\n785.9\n837.3\n544.7\n803.9\n169.5\n226.7\n\n\nPipe Switching\n470\n673.3\n28.4\n51.5\n66.6\n126.3\n\n\nProcess Creation\n435.3\n1146.2\n254\n467.4\n65.9\n119.7\n\n\nShell Scripts X1\n1696.6\n3216.2\n1541.9\n2811.7\n396.9\n825.3\n\n\nShell Scripts X8\n3854.5\n8577.8\n2724.3\n6723.6\n514.8\n1518.5\n\n\nSystem Call\n491.9\n381.7\n259.8\n373.3\n134.7\n155.2\n\n\nIndex Score\n1200.5\n1727.2\n708.5\n1190.1\n265.2\n441\n\n\nIPC_Dhry\n1020.9\n1064.4\n994.6\n1036.9\n1018.4\n1038.6\n\n\nIPC_Whet\n425.2\n382.4\n376.9\n370.2\n383.7\n372.7\n\n\nBenchmark’s Gather Multi Core of X86 in virtual machine\n\n\nItem\n5200U\n9100F\n5200U-VMware\n9100F-VMware\n5200U-WSL\n9100F-WSL\n\n\n\nDhrystone 2\n6889\n17339.4\n6550.1\n17052.5\n6703.5\n17220.7\n\n\nWhetstone\n3629.3\n6159.8\n3281\n6051.1\n3377.6\n6111.4\n\n\nThroughput\n2625.1\n5204\n1587.3\n3950.2\n199.5\n580.6\n\n\nFileCopy 1024\n2293.4\n4398.6\n1673.5\n4241.3\n288.5\n736\n\n\nFileCopy 256\n1510.5\n2718.6\n1076.8\n2670.2\n179.5\n449\n\n\nFileCopy 4096\n4542.5\n9210.6\n3093.4\n8185.5\n452.1\n1367.9\n\n\nPipe Throughput\n2113.8\n3211.6\n1251.8\n3133.5\n382.2\n820.4\n\n\nPipe Switching\n1545.1\n2344.8\n1009.4\n2337.4\n353.1\n779.7\n\n\nProcess Creation\n1935.3\n4210.2\n1366.1\n3165.3\n100.2\n332.8\n\n\nShell Scripts X1\n4341\n10142.2\n3150.5\n7926.4\n544.6\n1698.9\n\n\nShell Scripts X8\n4272.3\n9979.8\n3052.1\n7956.7\n576.8\n1600.5\n\n\nSystem Call\n1482.7\n1404.8\n582.1\n1387.2\n320\n569.5\n\n\nIndex Score\n2740.6\n5051.3\n1870.7\n4539.8\n478.4\n1202.1\n\n\nME_Dhry\n125.0\n97.0\n122.0\n97.9\n121.9\n96.4\n\n\nME_Whet\n158.1\n95.9\n161.2\n97.3\n163.0\n95.3\n\n\n\nBenchmark’s gather Single Core of ARM and MIPS24k\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\nH2+\nMT7620\n\n\n\nDhrystone 2\n874.4\n1674\n3605.5\n1246\n151.8\n109.7\n\n\nWhetstone\n434\n725.3\n1340.2\n462.3\n63.2\n4.4\n\n\nThroughput\n415.3\n762.8\n1371.8\n384\n66.2\n78.7\n\n\nFileCopy 1024\n385\n1214.9\n2669.2\n413.7\n107.4\n110.8\n\n\nFileCopy 256\n262.8\n921.8\n2117\n285.4\n73.8\n98.9\n\n\nFileCopy 4096\n742.6\n1851.3\n2458.3\n765.8\n192\n27.0\n\n\nPipe Throughput\n251.2\n810.7\n1217.2\n215.7\n81.7\n118.0\n\n\nPipe Switching\n11\n71.5\n207.8\n127.4\n47\n97.8\n\n\nProcess Creation\n74.7\n100.4\n186.6\n229.5\n49.5\n71.6\n\n\nShell Scripts X1\n646.3\n402.8\n768.3\n834.5\n151.1\n-\n\n\nShell Scripts X8\n2144.8\n2068.5\n3512.3\n1589.6\n293.5\n-\n\n\nSystem Call\n563.4\n1279.8\n1607.3\n160.3\n139.5\n203.5\n\n\nIndex Score\n333.8\n691.3\n1277.3\n416\n101.1\n-\n\n\nIPC_Dhry\n437.2\n683.3\n1126.7\n830.7\n316.3\n137.1\n\n\nIPC_Whet\n217.0\n296.0\n418.8\n308.2\n131.7\n5.5\n\n\nRemarks：Allwinner H2+ runs at 480MHZ\nBenchmark’s Gather Multi Core of ARM and MIPS24k\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\nH2+\n\n\n\nDhrystone 2\n4581.2\n7160.1\n13835.2\n4987.5\n606.8\n\n\nWhetstone\n2617.7\n3231.2\n5662.3\n1845.2\n253.3\n\n\nThroughput\n1800\n2653.4\n3948.7\n1054.3\n173.1\n\n\nFileCopy 1024\n517.7\n658.1\n1185.5\n740.7\n177.1\n\n\nFileCopy 256\n322.7\n371.2\n671.7\n491.1\n118.6\n\n\nFileCopy 4096\n1202.8\n1700.3\n2273.3\n1216.8\n338.5\n\n\nPipe Throughput\n1236.8\n2455\n5268.2\n861.1\n325\n\n\nPipe Switching\n573.7\n455\n229.4\n451.1\n186.9\n\n\nProcess Creation\n907.2\n1035.3\n1020.1\n495.9\n126.3\n\n\nShell Scripts X1\n2638\n2864.2\n6524.2\n1784.7\n333.6\n\n\nShell Scripts X8\n2772.5\n3867.2\n6075.1\n1719.3\n293.6\n\n\nSystem Call\n2016.1\n2617.1\n1552.9\n623.1\n542.3\n\n\nIndex Score\n1363.2\n1755.2\n2430.4\n1038.9\n255.4\n\n\nMEDhrystone 2\n65.5\n53.5\n48.0\n100.1\n1.0\n\n\nMEWhetstone\n75.4\n55.7\n52.8\n99.8\n100.2\n\n\nRemarks：Due to temperature control, the multi-core efficiency of the Android platform is not credible\n","dateCreated":"2020-08-04T00:00:00+08:00","dateModified":"2022-06-24T23:42:32+08:00","datePublished":"2020-08-04T00:00:00+08:00","description":"The benchmarks of some device, result of UnixBench 5.13. ","headline":"一些设备的跑分","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2004/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2004/","keywords":"Performance","thumbnailUrl":"cover.jpg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"The benchmarks of some device, result of UnixBench 5.13. \n\n\nX86 CPU Benchmark’s Gather\n\n\nCPU\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nCeleron 1007U\nASUS X201E\nNative\nIvyBridge × 2\n646.9\n1153.2\n\n\nCore i5-5200U\nInspiron15 3543\nNative\nBroadwell × 2\n1200.5\n2740.6\n\n\nRyzen 7 4800H\nLenovo R9000X\nNative\nZen2 × 8\n1673.7\n7396.6\n\n\nCore i5-4590\nC7Z97-MF\nNative\nHaswell × 4\n1776.3\n4991.7\n\n\nCore i3-9100F\nTUF B360m\nNative\nCoffeeLake × 4\n1727.2\n5051.3\n\n\nCore i3-12100F\nPRIME B660M\nNative\nAlderLake × 4\n3206.1\n10314.9\n\n\nXeon E5507\nDELL R410\nNative\nHehalem × 4 × 2\n768\n3702\n\n\nE7-8891 v4\nUnknow\nNative\nBroadwell × 10 × 4\n1155.9\n10164.3\n\n\nHygon C86 7280\nUnknow\nNative\nZen × 32× 2\n923.4\n8491.9\n\n\nFT2000\nUnknow\nNative\nX86 × 64\n743.7\n4899\n\n\nX86 CPU in virtual machine Benchmark’s Gather\n\n\nCPU\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nCore i5-5200U\nInspiron15 3543\nNative\nBroadwell × 2\n1200.5\n2740.6\n\n\nCore i5-5200U\nInspiron15 3543\nVMware\nBroadwell × 2\n708.5\n1870.7\n\n\nCore i5-5200U\nInspiron15 3543\nWSL\nBroadwell × 2\n265.2\n478.4\n\n\nCore i5-5200U\nInspiron15 3543\nMojave\nBroadwell × 2\n569\n1138.6\n\n\nCore i3-9100F\nTUF B360m\nNative\nCoffeeLake × 4\n1727.2\n5051.3\n\n\nCore i3-9100F\nTUF B360m\nVMware\nCoffeeLake × 4\n1190.1\n4539.8\n\n\nCore i3-9100F\nTUF B360m\nWSL\nCoffeeLake × 4\n441\n1202.1\n\n\nEfficiency of Virtual Machine WSL：22.09%/17.46%    VMware：59.02%/68.26%Remarks：Windows LTSC 2019 / VMware Workstation Pro 16.1.2.8432 / Debian busterThe Native environment is debian 11\n\nMobile SOC Benchmark’s gather\n\n\nSOC\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nSD 625\nRedmi 4\nLinuxDeploy\nA53 × 8\n312\n1452.8\n\n\nSD 625\nRedmi 4\nRM TC\nA53 × 8\n313.8\n1714.5\n\n\nSD 835\nMi 6\nLinuxDeploy\nA73 × 4 + A53 × 4\n696.1\n1762\n\n\nSD 835\nMi 6\nRM TC\nA73 × 4 + A53 × 4\n788.5\n2250.9\n\n\nSD 870\nMi 10s\nLinuxDeploy\nA77 × 4 + A55 × 4\n1277.3\n2430.4\n\n\nSD 870\nMi 10s\nRM TC\nA77 × 4 + A55 × 4\n1426.3\n2549.4\n\n\nSD is the abbreviation of Snapdragon QualcommRM TC means remove temperature controlRemarks：LinuxDeploy 2.60 / Debian buster\nBoard SOC Benchmark’s gather\n\n\nSOC\nDevice\nRemark\nCore\nSingle\nMulti\n\n\n\nMT7620A\nNewifi mini\nNative\nMips24kc × 1\n11.3\n-\n\n\nAM3359\nBeagle Bone Black\nNative\nA8\n150.2\n-\n\n\nBCM2836\nRaspberry Pi2\nNative\nA7 × 4\n171.3\n391.5\n\n\nAllwinner H2+\nOrange Pi Zero\nNative\nA7 × 4\n202.2\n-\n\n\nAllwinner H616\nOrange Pi Zero2\nNative\nA53 × 4\n325.2\n813.4\n\n\nLS2K1000\nLong Pi\nNative\nLong Arch × 2\n187.6\n203.2\n\n\nBCM 2711\nRaspberry Pi4\nNative\nA72 × 4\n416\n1038.9\n\n\n\nBenchmark’s gather of singel CPU Dhrystone 2 , Whetstone and IPC\n\n\nItem\nDhrystone 2\nWhetstone\nIPC_Dhry\nIPC_Whet\n\n\n\n5200U\n2756.4\n1148\n1020.9\n425.2\n\n\n4590\n3968.8\n1287.7\n1072.6\n348.0\n\n\n9100F\n4470.5\n1606.2\n1064.4\n382.4\n\n\n12100F\n5815.1\n1765.3\n1352.3\n410.5\n\n\n1007U\n1567.6\n473.3\n1045.1\n315.5\n\n\n1230V5\n4055.8\n645.4\n1067.3\n169.8\n\n\n4800H\n4450.5\n1682.6\n1059.6\n400.6\n\n\nE5507×2\n1961.5\n540.8\n864.1\n238.2\n\n\n8891V4×4\n3713.7\n1474.7\n1061.1\n421.3\n\n\nHG7280×2\n1748\n666.1\n699.2\n266.4\n\n\nFT2000\n1960.3\n689.8\n891.0\n313.5\n\n\nSD 625\n874.4\n434\n437.2\n217.0\n\n\nSD 835\n1674\n725.3\n683.3\n296.0\n\n\nSD 870\n3605.5\n1340.2\n1126.7\n418.8\n\n\nBCM 2711\n1246\n462.3\n830.7\n308.2\n\n\nH2+\n151.8\n63.2\n316.3\n131.7\n\n\nH616\n658.6\n351.9\n439.1\n234.6\n\n\nBCM2836\n258.6\n79.5\n287.3\n88.3\n\n\nLS2K1000\n295.6\n122.3\n295.6\n122.3\n\n\nMT7620A\n108.1\n4.4\n186.4\n7.6\n\n\nAM3359\n304.7\n38.5\n304.7\n38.5\n\n\nBenchmark’s gather of Multi Core Dhrystone 2 , Whetstone and Multicore efficiency\n\n\nItem\nDhrystone 2\nWhetstone\nME_Dhry\nME_Whet\n\n\n\n5200U\n6889.0\n3629.3\n125.0\n158.1\n\n\n4590.0\n14963.3\n4877.5\n94.3\n94.7\n\n\n9100F\n17339.4\n6159.8\n97.0\n95.9\n\n\n12100F\n34071.7\n12484.3\n146.5\n176.8\n\n\n1007U\n3144.4\n945.7\n100.3\n99.9\n\n\n1230V5\n16756.8\n6583.8\n103.3\n255.0\n\n\n4800H\n42547.0\n22750.3\n119.5\n169.0\n\n\nE5507×2\n15565.3\n4322.0\n99.2\n99.9\n\n\n8891V4×4\n182892.1\n94822.8\n123.1\n160.7\n\n\nHG7280×2\n175189.1\n76374.7\n156.6\n179.2\n\n\nFT2000\n124182.1\n44043.5\n99.0\n99.8\n\n\nSD 625\n4581.2\n2617.7\n65.5\n75.4\n\n\nSD 835\n7160.1\n3231.2\n53.5\n55.7\n\n\nSD 870\n13835.2\n5662.3\n48.0\n52.8\n\n\nBCM 2711\n4987.5\n1845.2\n100.1\n99.8\n\n\nH2+\n606.8\n253.3\n99.9\n100.2\n\n\nH616\n2622.9\n1406.3\n99.6\n99.9\n\n\nBCM2836\n1005.0\n317.1\n97.2\n99.7\n\n\nLS2K1000\n595.7\n223.0\n100.8\n91.2\n\n\n\nBenchmark’s gather Single Core of X86\n\n\nItem\n5200U\n4590\n9100F\n12100F\n1007U\n1230V5\n4800H\nE5507×2\n8891V4×4\nHG7280×2\nFT2000\n\n\n\nDhrystone 2\n2756.4\n3968.8\n4470.5\n5815.1\n1567.6\n4055.8\n4450.5\n1961.5\n3713.7\n1748\n1960.3\n\n\nWhetstone\n1148\n1287.7\n1606.2\n1765.3\n473.3\n645.4\n1682.6\n540.8\n1474.7\n666.1\n689.8\n\n\nThroughput\n1070.5\n1406.3\n1458.5\n2284.3\n513.6\n309.9\n1265.2\n467.3\n1186\n603.1\n606\n\n\nFileCopy 1024\n1595.1\n2492.7\n1992.7\n5285.6\n847.8\n1138.5\n1789.6\n900.3\n2316.3\n1254.4\n1033.7\n\n\nFileCopy 256\n1089.7\n1555.7\n1228.2\n3446.1\n545.8\n687.6\n1184\n602\n1456.9\n830.5\n754.1\n\n\nFileCopy 4096\n2941.3\n4761.3\n4041.4\n8363.9\n1734.4\n2642.4\n3088.3\n1659.4\n5183.2\n2666.3\n1950.5\n\n\nPipe Throughput\n785.9\n1220.3\n837.3\n3166.9\n432.5\n425.7\n2265.1\n411.5\n999.4\n659.3\n562.5\n\n\nPipe Switching\n470\n455.6\n673.3\n1056.5\n238.3\n430.5\n172.4\n309.3\n183.2\n448\n263.2\n\n\nProcess Creation\n435.3\n699.9\n1146.2\n1641.1\n383.6\n966.2\n686.5\n267.8\n302\n370.3\n299.7\n\n\nShell Scripts X1\n1696.6\n3512.5\n3216.2\n1525.9\n1191\n1430.2\n1535.6\n1471.9\n720\n989.2\n812.2\n\n\nShell Scripts X8\n3854.5\n7933.8\n8577.8\n15197\n1599.1\n4890.1\n7919.4\n5540.8\n2352.7\n3577.5\n1754.1\n\n\nSystem Call\n491.9\n685.9\n381.7\n2593.7\n233.3\n241.6\n2391.5\n339.9\n534.5\n509.3\n363.3\n\n\nIndex Score\n1200.5\n1776.3\n1727.2\n3206.1\n646.9\n944.2\n1673.7\n768\n1155.9\n923.4\n743.7\n\n\nIPC_Dhry\n1020.9\n1072.6\n1064.4\n1352.3\n1045.1\n1067.3\n1059.6\n864.1\n1061.1\n699.2\n891.0\n\n\nIPC_Whet\n425.2\n348.0\n382.4\n410.5\n315.5\n169.8\n400.6\n238.2\n421.3\n266.44\n313.5\n\n\nIPC Dhry is the abbreviation of instruction per clock use Dhrystone 2 marksIPC Whet is the abbreviation of instruction per clock use Whetstone marks\nBenchmark’s Gather Multi Core of X86\n\n\nItem\n5200U\n4590\n9100F\n12100F\n1007U\n1230V5\n4800H\nE5507×2\n8891V4×4\nHG7280×2\nFT2000\n\n\n\nDhrystone 2\n6889\n14963.3\n17339.4\n34071.7\n3144.4\n16756.8\n42547\n15565.3\n182892.1\n175189.1\n124182.1\n\n\nWhetstone\n3629.3\n4877.5\n6159.8\n12484.3\n945.7\n6583.8\n22750.3\n4322\n94822.8\n76374.7\n44043.5\n\n\nThroughput\n2625.1\n4884.3\n5204\n10814.6\n989.5\n4019.3\n11330\n4028.8\n5118.7\n2411.1\n1346.9\n\n\nFileCopy 1024\n2293.4\n3748.3\n4398.6\n4220.1\n1574.7\n2960.3\n911.1\n1573.2\n1100.2\n771.4\n1091.7\n\n\nFileCopy 256\n1510.5\n2435.3\n2718.6\n2630\n1012.2\n1824.2\n577\n1009.9\n706.5\n456.3\n845.3\n\n\nFileCopy 4096\n4542.5\n7869.7\n9210.6\n8955\n3044.1\n6685.2\n2046.9\n3039\n2373.2\n1864.2\n2189.9\n\n\nPipe Throughput\n2113.8\n4612.9\n3211.6\n16149.5\n856.4\n2077\n20716.3\n3269.2\n53645.4\n85733.4\n35712.2\n\n\nPipe Switching\n1545.1\n2445.3\n2344.8\n6570.7\n449.7\n2091.3\n6768.1\n2536.2\n33985.9\n40786.1\n10179.6\n\n\nProcess Creation\n1935.3\n3868.1\n4210.2\n9019\n791.2\n4934.7\n5567.5\n3432.5\n3924.6\n3387.4\n1170.5\n\n\nShell Scripts X1\n4341\n9520\n10142.2\n20524.1\n1736.5\n6561.5\n17647.6\n9652.9\n16571.2\n11644.7\n4312.9\n\n\nShell Scripts X8\n4272.3\n9401.6\n9979.8\n19611.9\n1640.4\n6355.9\n14659.8\n8874.1\n16028.4\n11205.6\n3961.2\n\n\nSystem Call\n1482.7\n2392.9\n1404.8\n8237.1\n446.3\n1112.5\n11251.9\n2077\n3907.4\n4298.2\n1765.6\n\n\nIndex Score\n2740.6\n4991.7\n5051.3\n10314.9\n1153.2\n3982.5\n7396.6\n3702\n10164.3\n8491.9\n4899\n\n\nME_Dhry\n125.0\n94.3\n97.0\n146.5\n100.3\n103.3\n119.5\n99.2\n123.1\n156.6\n99.0\n\n\nME_Whet\n158.1\n94.7\n95.9\n176.8\n99.9\n255.0\n169.0\n99.9\n160.7\n179.2\n99.8\n\n\nME Dhry is the abbreviation of multicore efficiency use Dhrystone 2ME Whet is the abbreviation of multicore efficiency use Whetstone\n\nBenchmark’s gather Single Core of X86 in virtual machine\n\n\nItem\n5200U\n5200U-Mojave\n5200U-VMware\n5200U-WSL\n9100F\n9100F-VMware\n9100F-WSL\n\n\n\nDhrystone 2\n2756.4\n2724.7\n2685.3\n2749.6\n4470.5\n4354.8\n4466\n\n\nWhetstone\n1148\n1169.7\n1017.7\n1036\n1606.2\n1555\n1602.5\n\n\nThroughput\n1070.5\n90.9\n673\n104.4\n1458.5\n1072.6\n177.9\n\n\nFileCopy 1024\n1595.1\n800.8\n1145.4\n252.6\n1992.7\n1846.4\n361.5\n\n\nFileCopy 256\n1089.7\n594.4\n776.2\n154.7\n1228.2\n1172.8\n223\n\n\nFileCopy 4096\n2941.3\n1726.7\n2285.8\n508.7\n4041.4\n3755.1\n790\n\n\nPipe Throughput\n785.9\n592.9\n544.7\n169.5\n837.3\n803.9\n226.7\n\n\nPipe Switching\n470\n302.1\n28.4\n66.6\n673.3\n51.5\n126.3\n\n\nProcess Creation\n435.3\n133.8\n254\n65.9\n1146.2\n467.4\n119.7\n\n\nShell Scripts X1\n1696.6\n673.9\n1541.9\n396.9\n3216.2\n2811.7\n825.3\n\n\nShell Scripts X8\n3854.5\n1068.5\n2724.3\n514.8\n8577.8\n6723.6\n1518.5\n\n\nSystem Call\n491.9\n280.2\n259.8\n134.7\n381.7\n373.3\n155.2\n\n\nIndex Score\n1200.5\n569.0\n708.5\n265.2\n1727.2\n1190.1\n441\n\n\nIPC_Dhry\n1020.9\n1009.1\n994.6\n1018.4\n1064.4\n1036.9\n1038.6\n\n\nIPC_Whet\n425.2\n433.2\n376.9\n383.7\n382.4\n370.2\n372.7\n\n\nBenchmark’s Gather Multi Core of X86 in virtual machine\n\n\nItem\n5200U\n5200U-Mojave\n5200U-VMware\n5200U-WSL\n9100F\n9100F-VMware\n9100F-WSL\n\n\n\nDhrystone 2\n6889\n5927.7\n6550.1\n6703.5\n17339.4\n17052.5\n17220.7\n\n\nWhetstone\n3629.3\n3823.7\n3281\n3377.6\n6159.8\n6051.1\n6111.4\n\n\nThroughput\n2625.1\n229.3\n1587.3\n199.5\n5204\n3950.2\n580.6\n\n\nFileCopy 1024\n2293.4\n1195.8\n1673.5\n288.5\n4398.6\n4241.3\n736\n\n\nFileCopy 256\n1510.5\n875.5\n1076.8\n179.5\n2718.6\n2670.2\n449\n\n\nFileCopy 4096\n4542.5\n2285.7\n3093.4\n452.1\n9210.6\n8185.5\n1367.9\n\n\nPipe Throughput\n2113.8\n1408.3\n1251.8\n382.2\n3211.6\n3133.5\n820.4\n\n\nPipe Switching\n1545.1\n1009.9\n1009.4\n353.1\n2344.8\n2337.4\n779.7\n\n\nProcess Creation\n1935.3\n315.7\n1366.1\n100.2\n4210.2\n3165.3\n332.8\n\n\nShell Scripts X1\n4341\n1177.5\n3150.5\n544.6\n10142.2\n7926.4\n1698.9\n\n\nShell Scripts X8\n4272.3\n1148.3\n3052.1\n576.8\n9979.8\n7956.7\n1600.5\n\n\nSystem Call\n1482.7\n628.8\n582.1\n320\n1404.8\n1387.2\n569.5\n\n\nIndex Score\n2740.6\n1138.6\n1870.7\n478.4\n5051.3\n4539.8\n1202.1\n\n\nME_Dhry\n125.0\n108.8\n122.0\n121.9\n97.0\n97.9\n96.4\n\n\nME_Whet\n158.1\n163.4\n161.2\n163.0\n95.9\n97.3\n95.3\n\n\n\nBenchmark’s gather Single Core of ARM and MIPS\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\nH2+\nH616\nBCM2836\nLS2K1000\nMT7620A\nAM3359\n\n\n\nDhrystone 2\n874.4\n1674\n3605.5\n1246\n151.8\n658.6\n258.6\n295.6\n108.1\n304.7\n\n\nWhetstone\n434\n725.3\n1340.2\n462.3\n63.2\n351.9\n79.5\n122.3\n4.4\n38.5\n\n\nThroughput\n415.3\n762.8\n1371.8\n384\n66.2\n176.3\n91.3\n141.3\n105.2\n123.3\n\n\nFileCopy 1024\n385\n1214.9\n2669.2\n413.7\n107.4\n351.4\n197.4\n190.7\n0.1\n205.2\n\n\nFileCopy 256\n262.8\n921.8\n2117\n285.4\n73.8\n245.5\n138.1\n156.8\n0.1\n161.9\n\n\nFileCopy 4096\n742.6\n1851.3\n2458.3\n765.8\n192\n650.6\n351.2\n329\n0.2\n285.3\n\n\nPipe Throughput\n251.2\n810.7\n1217.2\n215.7\n81.7\n213\n131.8\n199.8\n124.5\n128.5\n\n\nPipe Switching\n11\n71.5\n207.8\n127.4\n47\n118.3\n75.1\n67.7\n127.9\n63.7\n\n\nProcess Creation\n74.7\n100.4\n186.6\n229.5\n49.5\n169.4\n96.9\n109\n100.1\n140.1\n\n\nShell Scripts X1\n646.3\n402.8\n768.3\n834.5\n151.1\n520.9\n275.5\n291.8\n10.2\n197.5\n\n\nShell Scripts X8\n2144.8\n2068.5\n3512.3\n1589.6\n293.5\n961.8\n439.5\n376.5\n10.9\n174.1\n\n\nSystem Call\n563.4\n1279.8\n1607.3\n160.3\n139.5\n285.2\n306.7\n232.8\n206.0\n244.7\n\n\nIndex Score\n333.8\n691.3\n1277.3\n416\n101.1\n325.2\n171.3\n187.6\n11.3\n150.2\n\n\nIPC_Dhry\n437.2\n683.3\n1126.7\n830.7\n316.3\n439.1\n287.3\n295.6\n186.4\n304.7\n\n\nIPC_Whet\n217.0\n296.0\n418.8\n308.2\n131.7\n234.6\n88.3\n122.3\n7.6\n38.5\n\n\nRemarks：Allwinner H2+ runs at 480MHZ\nBenchmark’s Gather Multi Core of ARM and MIPS\n\n\nItem\nSD 625\nSD 835\nSD 870\nBCM 2711\nH2+\nH616\nBCM2836\nLS2K1000\n\n\n\nDhrystone 2\n4581.2\n7160.1\n13835.2\n4987.5\n606.8\n2622.9\n1005\n595.7\n\n\nWhetstone\n2617.7\n3231.2\n5662.3\n1845.2\n253.3\n1406.3\n317.1\n223\n\n\nThroughput\n1800\n2653.4\n3948.7\n1054.3\n173.1\n524.3\n264.1\n176.1\n\n\nFileCopy 1024\n517.7\n658.1\n1185.5\n740.7\n177.1\n596.4\n265.3\n137.5\n\n\nFileCopy 256\n322.7\n371.2\n671.7\n491.1\n118.6\n378\n171.3\n93.4\n\n\nFileCopy 4096\n1202.8\n1700.3\n2273.3\n1216.8\n338.5\n1217.4\n475.4\n219.1\n\n\nPipe Throughput\n1236.8\n2455\n5268.2\n861.1\n325\n845.8\n505.3\n284.6\n\n\nPipe Switching\n573.7\n455\n229.4\n451.1\n186.9\n424.6\n264.9\n57.9\n\n\nProcess Creation\n907.2\n1035.3\n1020.1\n495.9\n126.3\n366.2\n201.4\n84.9\n\n\nShell Scripts X1\n2638\n2864.2\n6524.2\n1784.7\n333.6\n1060.2\n497\n395.3\n\n\nShell Scripts X8\n2772.5\n3867.2\n6075.1\n1719.3\n293.6\n1013\n462.7\n377.5\n\n\nSystem Call\n2016.1\n2617.1\n1552.9\n623.1\n542.3\n1118.9\n1149.2\n361.3\n\n\nIndex Score\n1363.2\n1755.2\n2430.4\n1038.9\n255.4\n813.4\n391.5\n203.2\n\n\nMEDhrystone 2\n65.5\n53.5\n48.0\n100.1\n99.9\n99.6\n97.2\n100.8\n\n\nMEWhetstone\n75.4\n55.7\n52.8\n99.8\n100.2\n99.9\n99.7\n91.2\n\n\nRemarks：Due to temperature control, the multi-core efficiency of the Android platform is not credible\n","dateCreated":"2020-08-04T00:00:00+08:00","dateModified":"2022-06-27T18:45:10+08:00","datePublished":"2020-08-04T00:00:00+08:00","description":"The benchmarks of some device, result of UnixBench 5.13. ","headline":"一些设备的跑分","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2004/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2004/","keywords":"Performance","thumbnailUrl":"cover.jpg"}</script>
     <meta name="description" content="The benchmarks of some device, result of UnixBench 5.13.">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="一些设备的跑分">
@@ -22,7 +22,7 @@
 <meta property="og:description" content="The benchmarks of some device, result of UnixBench 5.13.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-24T15:42:32.000Z">
+<meta property="article:modified_time" content="2022-06-27T10:45:10.863Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Performance">
 <meta name="twitter:card" content="summary">
@@ -442,6 +442,14 @@
 <td align="center">478.4</td>
 </tr>
 <tr>
+<td align="center">Core i5-5200U</td>
+<td align="center">Inspiron15 3543</td>
+<td align="center">Mojave</td>
+<td align="center">Broadwell × 2</td>
+<td align="center">569</td>
+<td align="center">1138.6</td>
+</tr>
+<tr>
 <td align="center">Core i3-9100F</td>
 <td align="center">TUF B360m</td>
 <td align="center">Native</td>
@@ -598,6 +606,309 @@
 </tr>
 </tbody></table>
 <hr>
+<h3 id="Benchmark’s-gather-of-singel-CPU-Dhrystone-2-Whetstone-and-IPC"><a href="#Benchmark’s-gather-of-singel-CPU-Dhrystone-2-Whetstone-and-IPC" class="headerlink" title="Benchmark’s gather of singel CPU Dhrystone 2 , Whetstone and IPC"></a>Benchmark’s gather of singel CPU Dhrystone 2 , Whetstone and IPC</h3><table>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th align="center">Dhrystone 2</th>
+<th align="center">Whetstone</th>
+<th align="center">IPC_Dhry</th>
+<th align="center">IPC_Whet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">5200U</td>
+<td align="center">2756.4</td>
+<td align="center">1148</td>
+<td align="center">1020.9</td>
+<td align="center">425.2</td>
+</tr>
+<tr>
+<td align="center">4590</td>
+<td align="center">3968.8</td>
+<td align="center">1287.7</td>
+<td align="center">1072.6</td>
+<td align="center">348.0</td>
+</tr>
+<tr>
+<td align="center">9100F</td>
+<td align="center">4470.5</td>
+<td align="center">1606.2</td>
+<td align="center">1064.4</td>
+<td align="center">382.4</td>
+</tr>
+<tr>
+<td align="center">12100F</td>
+<td align="center">5815.1</td>
+<td align="center">1765.3</td>
+<td align="center">1352.3</td>
+<td align="center">410.5</td>
+</tr>
+<tr>
+<td align="center">1007U</td>
+<td align="center">1567.6</td>
+<td align="center">473.3</td>
+<td align="center">1045.1</td>
+<td align="center">315.5</td>
+</tr>
+<tr>
+<td align="center">1230V5</td>
+<td align="center">4055.8</td>
+<td align="center">645.4</td>
+<td align="center">1067.3</td>
+<td align="center">169.8</td>
+</tr>
+<tr>
+<td align="center">4800H</td>
+<td align="center">4450.5</td>
+<td align="center">1682.6</td>
+<td align="center">1059.6</td>
+<td align="center">400.6</td>
+</tr>
+<tr>
+<td align="center">E5507×2</td>
+<td align="center">1961.5</td>
+<td align="center">540.8</td>
+<td align="center">864.1</td>
+<td align="center">238.2</td>
+</tr>
+<tr>
+<td align="center">8891V4×4</td>
+<td align="center">3713.7</td>
+<td align="center">1474.7</td>
+<td align="center">1061.1</td>
+<td align="center">421.3</td>
+</tr>
+<tr>
+<td align="center">HG7280×2</td>
+<td align="center">1748</td>
+<td align="center">666.1</td>
+<td align="center">699.2</td>
+<td align="center">266.4</td>
+</tr>
+<tr>
+<td align="center">FT2000</td>
+<td align="center">1960.3</td>
+<td align="center">689.8</td>
+<td align="center">891.0</td>
+<td align="center">313.5</td>
+</tr>
+<tr>
+<td align="center">SD 625</td>
+<td align="center">874.4</td>
+<td align="center">434</td>
+<td align="center">437.2</td>
+<td align="center">217.0</td>
+</tr>
+<tr>
+<td align="center">SD 835</td>
+<td align="center">1674</td>
+<td align="center">725.3</td>
+<td align="center">683.3</td>
+<td align="center">296.0</td>
+</tr>
+<tr>
+<td align="center">SD 870</td>
+<td align="center">3605.5</td>
+<td align="center">1340.2</td>
+<td align="center">1126.7</td>
+<td align="center">418.8</td>
+</tr>
+<tr>
+<td align="center">BCM 2711</td>
+<td align="center">1246</td>
+<td align="center">462.3</td>
+<td align="center">830.7</td>
+<td align="center">308.2</td>
+</tr>
+<tr>
+<td align="center">H2+</td>
+<td align="center">151.8</td>
+<td align="center">63.2</td>
+<td align="center">316.3</td>
+<td align="center">131.7</td>
+</tr>
+<tr>
+<td align="center">H616</td>
+<td align="center">658.6</td>
+<td align="center">351.9</td>
+<td align="center">439.1</td>
+<td align="center">234.6</td>
+</tr>
+<tr>
+<td align="center">BCM2836</td>
+<td align="center">258.6</td>
+<td align="center">79.5</td>
+<td align="center">287.3</td>
+<td align="center">88.3</td>
+</tr>
+<tr>
+<td align="center">LS2K1000</td>
+<td align="center">295.6</td>
+<td align="center">122.3</td>
+<td align="center">295.6</td>
+<td align="center">122.3</td>
+</tr>
+<tr>
+<td align="center">MT7620A</td>
+<td align="center">108.1</td>
+<td align="center">4.4</td>
+<td align="center">186.4</td>
+<td align="center">7.6</td>
+</tr>
+<tr>
+<td align="center">AM3359</td>
+<td align="center">304.7</td>
+<td align="center">38.5</td>
+<td align="center">304.7</td>
+<td align="center">38.5</td>
+</tr>
+</tbody></table>
+<h3 id="Benchmark’s-gather-of-Multi-Core-Dhrystone-2-Whetstone-and-Multicore-efficiency"><a href="#Benchmark’s-gather-of-Multi-Core-Dhrystone-2-Whetstone-and-Multicore-efficiency" class="headerlink" title="Benchmark’s gather of Multi Core Dhrystone 2 , Whetstone and Multicore efficiency"></a>Benchmark’s gather of Multi Core Dhrystone 2 , Whetstone and Multicore efficiency</h3><table>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th align="center">Dhrystone 2</th>
+<th align="center">Whetstone</th>
+<th align="center">ME_Dhry</th>
+<th align="center">ME_Whet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">5200U</td>
+<td align="center">6889.0</td>
+<td align="center">3629.3</td>
+<td align="center">125.0</td>
+<td align="center">158.1</td>
+</tr>
+<tr>
+<td align="center">4590.0</td>
+<td align="center">14963.3</td>
+<td align="center">4877.5</td>
+<td align="center">94.3</td>
+<td align="center">94.7</td>
+</tr>
+<tr>
+<td align="center">9100F</td>
+<td align="center">17339.4</td>
+<td align="center">6159.8</td>
+<td align="center">97.0</td>
+<td align="center">95.9</td>
+</tr>
+<tr>
+<td align="center">12100F</td>
+<td align="center">34071.7</td>
+<td align="center">12484.3</td>
+<td align="center">146.5</td>
+<td align="center">176.8</td>
+</tr>
+<tr>
+<td align="center">1007U</td>
+<td align="center">3144.4</td>
+<td align="center">945.7</td>
+<td align="center">100.3</td>
+<td align="center">99.9</td>
+</tr>
+<tr>
+<td align="center">1230V5</td>
+<td align="center">16756.8</td>
+<td align="center">6583.8</td>
+<td align="center">103.3</td>
+<td align="center">255.0</td>
+</tr>
+<tr>
+<td align="center">4800H</td>
+<td align="center">42547.0</td>
+<td align="center">22750.3</td>
+<td align="center">119.5</td>
+<td align="center">169.0</td>
+</tr>
+<tr>
+<td align="center">E5507×2</td>
+<td align="center">15565.3</td>
+<td align="center">4322.0</td>
+<td align="center">99.2</td>
+<td align="center">99.9</td>
+</tr>
+<tr>
+<td align="center">8891V4×4</td>
+<td align="center">182892.1</td>
+<td align="center">94822.8</td>
+<td align="center">123.1</td>
+<td align="center">160.7</td>
+</tr>
+<tr>
+<td align="center">HG7280×2</td>
+<td align="center">175189.1</td>
+<td align="center">76374.7</td>
+<td align="center">156.6</td>
+<td align="center">179.2</td>
+</tr>
+<tr>
+<td align="center">FT2000</td>
+<td align="center">124182.1</td>
+<td align="center">44043.5</td>
+<td align="center">99.0</td>
+<td align="center">99.8</td>
+</tr>
+<tr>
+<td align="center">SD 625</td>
+<td align="center">4581.2</td>
+<td align="center">2617.7</td>
+<td align="center">65.5</td>
+<td align="center">75.4</td>
+</tr>
+<tr>
+<td align="center">SD 835</td>
+<td align="center">7160.1</td>
+<td align="center">3231.2</td>
+<td align="center">53.5</td>
+<td align="center">55.7</td>
+</tr>
+<tr>
+<td align="center">SD 870</td>
+<td align="center">13835.2</td>
+<td align="center">5662.3</td>
+<td align="center">48.0</td>
+<td align="center">52.8</td>
+</tr>
+<tr>
+<td align="center">BCM 2711</td>
+<td align="center">4987.5</td>
+<td align="center">1845.2</td>
+<td align="center">100.1</td>
+<td align="center">99.8</td>
+</tr>
+<tr>
+<td align="center">H2+</td>
+<td align="center">606.8</td>
+<td align="center">253.3</td>
+<td align="center">99.9</td>
+<td align="center">100.2</td>
+</tr>
+<tr>
+<td align="center">H616</td>
+<td align="center">2622.9</td>
+<td align="center">1406.3</td>
+<td align="center">99.6</td>
+<td align="center">99.9</td>
+</tr>
+<tr>
+<td align="center">BCM2836</td>
+<td align="center">1005.0</td>
+<td align="center">317.1</td>
+<td align="center">97.2</td>
+<td align="center">99.7</td>
+</tr>
+<tr>
+<td align="center">LS2K1000</td>
+<td align="center">595.7</td>
+<td align="center">223.0</td>
+<td align="center">100.8</td>
+<td align="center">91.2</td>
+</tr>
+</tbody></table>
+<hr>
 <h3 id="Benchmark’s-gather-Single-Core-of-X86"><a href="#Benchmark’s-gather-Single-Core-of-X86" class="headerlink" title="Benchmark’s gather Single Core of X86"></a>Benchmark’s gather Single Core of X86</h3><table>
 <thead>
 <tr>
@@ -607,6 +918,12 @@
 <th align="center">9100F</th>
 <th align="center">12100F</th>
 <th align="center">1007U</th>
+<th align="center">1230V5</th>
+<th align="center">4800H</th>
+<th align="center">E5507×2</th>
+<th align="center">8891V4×4</th>
+<th align="center">HG7280×2</th>
+<th align="center">FT2000</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -616,6 +933,12 @@
 <td align="center">4470.5</td>
 <td align="center">5815.1</td>
 <td align="center">1567.6</td>
+<td align="center">4055.8</td>
+<td align="center">4450.5</td>
+<td align="center">1961.5</td>
+<td align="center">3713.7</td>
+<td align="center">1748</td>
+<td align="center">1960.3</td>
 </tr>
 <tr>
 <td align="center">Whetstone</td>
@@ -624,6 +947,12 @@
 <td align="center">1606.2</td>
 <td align="center">1765.3</td>
 <td align="center">473.3</td>
+<td align="center">645.4</td>
+<td align="center">1682.6</td>
+<td align="center">540.8</td>
+<td align="center">1474.7</td>
+<td align="center">666.1</td>
+<td align="center">689.8</td>
 </tr>
 <tr>
 <td align="center">Throughput</td>
@@ -632,6 +961,12 @@
 <td align="center">1458.5</td>
 <td align="center">2284.3</td>
 <td align="center">513.6</td>
+<td align="center">309.9</td>
+<td align="center">1265.2</td>
+<td align="center">467.3</td>
+<td align="center">1186</td>
+<td align="center">603.1</td>
+<td align="center">606</td>
 </tr>
 <tr>
 <td align="center">FileCopy 1024</td>
@@ -640,6 +975,12 @@
 <td align="center">1992.7</td>
 <td align="center">5285.6</td>
 <td align="center">847.8</td>
+<td align="center">1138.5</td>
+<td align="center">1789.6</td>
+<td align="center">900.3</td>
+<td align="center">2316.3</td>
+<td align="center">1254.4</td>
+<td align="center">1033.7</td>
 </tr>
 <tr>
 <td align="center">FileCopy 256</td>
@@ -648,6 +989,12 @@
 <td align="center">1228.2</td>
 <td align="center">3446.1</td>
 <td align="center">545.8</td>
+<td align="center">687.6</td>
+<td align="center">1184</td>
+<td align="center">602</td>
+<td align="center">1456.9</td>
+<td align="center">830.5</td>
+<td align="center">754.1</td>
 </tr>
 <tr>
 <td align="center">FileCopy 4096</td>
@@ -656,6 +1003,12 @@
 <td align="center">4041.4</td>
 <td align="center">8363.9</td>
 <td align="center">1734.4</td>
+<td align="center">2642.4</td>
+<td align="center">3088.3</td>
+<td align="center">1659.4</td>
+<td align="center">5183.2</td>
+<td align="center">2666.3</td>
+<td align="center">1950.5</td>
 </tr>
 <tr>
 <td align="center">Pipe Throughput</td>
@@ -664,6 +1017,12 @@
 <td align="center">837.3</td>
 <td align="center">3166.9</td>
 <td align="center">432.5</td>
+<td align="center">425.7</td>
+<td align="center">2265.1</td>
+<td align="center">411.5</td>
+<td align="center">999.4</td>
+<td align="center">659.3</td>
+<td align="center">562.5</td>
 </tr>
 <tr>
 <td align="center">Pipe Switching</td>
@@ -672,6 +1031,12 @@
 <td align="center">673.3</td>
 <td align="center">1056.5</td>
 <td align="center">238.3</td>
+<td align="center">430.5</td>
+<td align="center">172.4</td>
+<td align="center">309.3</td>
+<td align="center">183.2</td>
+<td align="center">448</td>
+<td align="center">263.2</td>
 </tr>
 <tr>
 <td align="center">Process Creation</td>
@@ -680,6 +1045,12 @@
 <td align="center">1146.2</td>
 <td align="center">1641.1</td>
 <td align="center">383.6</td>
+<td align="center">966.2</td>
+<td align="center">686.5</td>
+<td align="center">267.8</td>
+<td align="center">302</td>
+<td align="center">370.3</td>
+<td align="center">299.7</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X1</td>
@@ -688,6 +1059,12 @@
 <td align="center">3216.2</td>
 <td align="center">1525.9</td>
 <td align="center">1191</td>
+<td align="center">1430.2</td>
+<td align="center">1535.6</td>
+<td align="center">1471.9</td>
+<td align="center">720</td>
+<td align="center">989.2</td>
+<td align="center">812.2</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X8</td>
@@ -696,6 +1073,12 @@
 <td align="center">8577.8</td>
 <td align="center">15197</td>
 <td align="center">1599.1</td>
+<td align="center">4890.1</td>
+<td align="center">7919.4</td>
+<td align="center">5540.8</td>
+<td align="center">2352.7</td>
+<td align="center">3577.5</td>
+<td align="center">1754.1</td>
 </tr>
 <tr>
 <td align="center">System Call</td>
@@ -704,6 +1087,12 @@
 <td align="center">381.7</td>
 <td align="center">2593.7</td>
 <td align="center">233.3</td>
+<td align="center">241.6</td>
+<td align="center">2391.5</td>
+<td align="center">339.9</td>
+<td align="center">534.5</td>
+<td align="center">509.3</td>
+<td align="center">363.3</td>
 </tr>
 <tr>
 <td align="center">Index Score</td>
@@ -712,6 +1101,12 @@
 <td align="center">1727.2</td>
 <td align="center">3206.1</td>
 <td align="center">646.9</td>
+<td align="center">944.2</td>
+<td align="center">1673.7</td>
+<td align="center">768</td>
+<td align="center">1155.9</td>
+<td align="center">923.4</td>
+<td align="center">743.7</td>
 </tr>
 <tr>
 <td align="center">IPC_Dhry</td>
@@ -720,6 +1115,12 @@
 <td align="center">1064.4</td>
 <td align="center">1352.3</td>
 <td align="center">1045.1</td>
+<td align="center">1067.3</td>
+<td align="center">1059.6</td>
+<td align="center">864.1</td>
+<td align="center">1061.1</td>
+<td align="center">699.2</td>
+<td align="center">891.0</td>
 </tr>
 <tr>
 <td align="center">IPC_Whet</td>
@@ -728,6 +1129,12 @@
 <td align="center">382.4</td>
 <td align="center">410.5</td>
 <td align="center">315.5</td>
+<td align="center">169.8</td>
+<td align="center">400.6</td>
+<td align="center">238.2</td>
+<td align="center">421.3</td>
+<td align="center">266.44</td>
+<td align="center">313.5</td>
 </tr>
 </tbody></table>
 <p>IPC Dhry is the abbreviation of instruction per clock use Dhrystone 2 marks<br>IPC Whet is the abbreviation of instruction per clock use Whetstone marks</p>
@@ -740,6 +1147,12 @@
 <th align="center">9100F</th>
 <th align="center">12100F</th>
 <th align="center">1007U</th>
+<th align="center">1230V5</th>
+<th align="center">4800H</th>
+<th align="center">E5507×2</th>
+<th align="center">8891V4×4</th>
+<th align="center">HG7280×2</th>
+<th align="center">FT2000</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -749,6 +1162,12 @@
 <td align="center">17339.4</td>
 <td align="center">34071.7</td>
 <td align="center">3144.4</td>
+<td align="center">16756.8</td>
+<td align="center">42547</td>
+<td align="center">15565.3</td>
+<td align="center">182892.1</td>
+<td align="center">175189.1</td>
+<td align="center">124182.1</td>
 </tr>
 <tr>
 <td align="center">Whetstone</td>
@@ -757,6 +1176,12 @@
 <td align="center">6159.8</td>
 <td align="center">12484.3</td>
 <td align="center">945.7</td>
+<td align="center">6583.8</td>
+<td align="center">22750.3</td>
+<td align="center">4322</td>
+<td align="center">94822.8</td>
+<td align="center">76374.7</td>
+<td align="center">44043.5</td>
 </tr>
 <tr>
 <td align="center">Throughput</td>
@@ -765,6 +1190,12 @@
 <td align="center">5204</td>
 <td align="center">10814.6</td>
 <td align="center">989.5</td>
+<td align="center">4019.3</td>
+<td align="center">11330</td>
+<td align="center">4028.8</td>
+<td align="center">5118.7</td>
+<td align="center">2411.1</td>
+<td align="center">1346.9</td>
 </tr>
 <tr>
 <td align="center">FileCopy 1024</td>
@@ -773,6 +1204,12 @@
 <td align="center">4398.6</td>
 <td align="center">4220.1</td>
 <td align="center">1574.7</td>
+<td align="center">2960.3</td>
+<td align="center">911.1</td>
+<td align="center">1573.2</td>
+<td align="center">1100.2</td>
+<td align="center">771.4</td>
+<td align="center">1091.7</td>
 </tr>
 <tr>
 <td align="center">FileCopy 256</td>
@@ -781,6 +1218,12 @@
 <td align="center">2718.6</td>
 <td align="center">2630</td>
 <td align="center">1012.2</td>
+<td align="center">1824.2</td>
+<td align="center">577</td>
+<td align="center">1009.9</td>
+<td align="center">706.5</td>
+<td align="center">456.3</td>
+<td align="center">845.3</td>
 </tr>
 <tr>
 <td align="center">FileCopy 4096</td>
@@ -789,6 +1232,12 @@
 <td align="center">9210.6</td>
 <td align="center">8955</td>
 <td align="center">3044.1</td>
+<td align="center">6685.2</td>
+<td align="center">2046.9</td>
+<td align="center">3039</td>
+<td align="center">2373.2</td>
+<td align="center">1864.2</td>
+<td align="center">2189.9</td>
 </tr>
 <tr>
 <td align="center">Pipe Throughput</td>
@@ -797,6 +1246,12 @@
 <td align="center">3211.6</td>
 <td align="center">16149.5</td>
 <td align="center">856.4</td>
+<td align="center">2077</td>
+<td align="center">20716.3</td>
+<td align="center">3269.2</td>
+<td align="center">53645.4</td>
+<td align="center">85733.4</td>
+<td align="center">35712.2</td>
 </tr>
 <tr>
 <td align="center">Pipe Switching</td>
@@ -805,6 +1260,12 @@
 <td align="center">2344.8</td>
 <td align="center">6570.7</td>
 <td align="center">449.7</td>
+<td align="center">2091.3</td>
+<td align="center">6768.1</td>
+<td align="center">2536.2</td>
+<td align="center">33985.9</td>
+<td align="center">40786.1</td>
+<td align="center">10179.6</td>
 </tr>
 <tr>
 <td align="center">Process Creation</td>
@@ -813,6 +1274,12 @@
 <td align="center">4210.2</td>
 <td align="center">9019</td>
 <td align="center">791.2</td>
+<td align="center">4934.7</td>
+<td align="center">5567.5</td>
+<td align="center">3432.5</td>
+<td align="center">3924.6</td>
+<td align="center">3387.4</td>
+<td align="center">1170.5</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X1</td>
@@ -821,6 +1288,12 @@
 <td align="center">10142.2</td>
 <td align="center">20524.1</td>
 <td align="center">1736.5</td>
+<td align="center">6561.5</td>
+<td align="center">17647.6</td>
+<td align="center">9652.9</td>
+<td align="center">16571.2</td>
+<td align="center">11644.7</td>
+<td align="center">4312.9</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X8</td>
@@ -829,6 +1302,12 @@
 <td align="center">9979.8</td>
 <td align="center">19611.9</td>
 <td align="center">1640.4</td>
+<td align="center">6355.9</td>
+<td align="center">14659.8</td>
+<td align="center">8874.1</td>
+<td align="center">16028.4</td>
+<td align="center">11205.6</td>
+<td align="center">3961.2</td>
 </tr>
 <tr>
 <td align="center">System Call</td>
@@ -837,6 +1316,12 @@
 <td align="center">1404.8</td>
 <td align="center">8237.1</td>
 <td align="center">446.3</td>
+<td align="center">1112.5</td>
+<td align="center">11251.9</td>
+<td align="center">2077</td>
+<td align="center">3907.4</td>
+<td align="center">4298.2</td>
+<td align="center">1765.6</td>
 </tr>
 <tr>
 <td align="center">Index Score</td>
@@ -845,6 +1330,12 @@
 <td align="center">5051.3</td>
 <td align="center">10314.9</td>
 <td align="center">1153.2</td>
+<td align="center">3982.5</td>
+<td align="center">7396.6</td>
+<td align="center">3702</td>
+<td align="center">10164.3</td>
+<td align="center">8491.9</td>
+<td align="center">4899</td>
 </tr>
 <tr>
 <td align="center">ME_Dhry</td>
@@ -853,6 +1344,12 @@
 <td align="center">97.0</td>
 <td align="center">146.5</td>
 <td align="center">100.3</td>
+<td align="center">103.3</td>
+<td align="center">119.5</td>
+<td align="center">99.2</td>
+<td align="center">123.1</td>
+<td align="center">156.6</td>
+<td align="center">99.0</td>
 </tr>
 <tr>
 <td align="center">ME_Whet</td>
@@ -861,6 +1358,12 @@
 <td align="center">95.9</td>
 <td align="center">176.8</td>
 <td align="center">99.9</td>
+<td align="center">255.0</td>
+<td align="center">169.0</td>
+<td align="center">99.9</td>
+<td align="center">160.7</td>
+<td align="center">179.2</td>
+<td align="center">99.8</td>
 </tr>
 </tbody></table>
 <p>ME Dhry is the abbreviation of multicore efficiency use Dhrystone 2<br>ME Whet is the abbreviation of multicore efficiency use Whetstone</p>
@@ -870,146 +1373,162 @@
 <tr>
 <th align="center">Item</th>
 <th align="center">5200U</th>
-<th align="center">9100F</th>
+<th align="center">5200U-Mojave</th>
 <th align="center">5200U-VMware</th>
-<th align="center">9100F-VMware</th>
 <th align="center">5200U-WSL</th>
+<th align="center">9100F</th>
+<th align="center">9100F-VMware</th>
 <th align="center">9100F-WSL</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">Dhrystone 2</td>
 <td align="center">2756.4</td>
-<td align="center">4470.5</td>
+<td align="center">2724.7</td>
 <td align="center">2685.3</td>
-<td align="center">4354.8</td>
 <td align="center">2749.6</td>
+<td align="center">4470.5</td>
+<td align="center">4354.8</td>
 <td align="center">4466</td>
 </tr>
 <tr>
 <td align="center">Whetstone</td>
 <td align="center">1148</td>
-<td align="center">1606.2</td>
+<td align="center">1169.7</td>
 <td align="center">1017.7</td>
-<td align="center">1555</td>
 <td align="center">1036</td>
+<td align="center">1606.2</td>
+<td align="center">1555</td>
 <td align="center">1602.5</td>
 </tr>
 <tr>
 <td align="center">Throughput</td>
 <td align="center">1070.5</td>
-<td align="center">1458.5</td>
+<td align="center">90.9</td>
 <td align="center">673</td>
-<td align="center">1072.6</td>
 <td align="center">104.4</td>
+<td align="center">1458.5</td>
+<td align="center">1072.6</td>
 <td align="center">177.9</td>
 </tr>
 <tr>
 <td align="center">FileCopy 1024</td>
 <td align="center">1595.1</td>
-<td align="center">1992.7</td>
+<td align="center">800.8</td>
 <td align="center">1145.4</td>
-<td align="center">1846.4</td>
 <td align="center">252.6</td>
+<td align="center">1992.7</td>
+<td align="center">1846.4</td>
 <td align="center">361.5</td>
 </tr>
 <tr>
 <td align="center">FileCopy 256</td>
 <td align="center">1089.7</td>
-<td align="center">1228.2</td>
+<td align="center">594.4</td>
 <td align="center">776.2</td>
-<td align="center">1172.8</td>
 <td align="center">154.7</td>
+<td align="center">1228.2</td>
+<td align="center">1172.8</td>
 <td align="center">223</td>
 </tr>
 <tr>
 <td align="center">FileCopy 4096</td>
 <td align="center">2941.3</td>
-<td align="center">4041.4</td>
+<td align="center">1726.7</td>
 <td align="center">2285.8</td>
-<td align="center">3755.1</td>
 <td align="center">508.7</td>
+<td align="center">4041.4</td>
+<td align="center">3755.1</td>
 <td align="center">790</td>
 </tr>
 <tr>
 <td align="center">Pipe Throughput</td>
 <td align="center">785.9</td>
-<td align="center">837.3</td>
+<td align="center">592.9</td>
 <td align="center">544.7</td>
-<td align="center">803.9</td>
 <td align="center">169.5</td>
+<td align="center">837.3</td>
+<td align="center">803.9</td>
 <td align="center">226.7</td>
 </tr>
 <tr>
 <td align="center">Pipe Switching</td>
 <td align="center">470</td>
-<td align="center">673.3</td>
+<td align="center">302.1</td>
 <td align="center">28.4</td>
-<td align="center">51.5</td>
 <td align="center">66.6</td>
+<td align="center">673.3</td>
+<td align="center">51.5</td>
 <td align="center">126.3</td>
 </tr>
 <tr>
 <td align="center">Process Creation</td>
 <td align="center">435.3</td>
-<td align="center">1146.2</td>
+<td align="center">133.8</td>
 <td align="center">254</td>
-<td align="center">467.4</td>
 <td align="center">65.9</td>
+<td align="center">1146.2</td>
+<td align="center">467.4</td>
 <td align="center">119.7</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X1</td>
 <td align="center">1696.6</td>
-<td align="center">3216.2</td>
+<td align="center">673.9</td>
 <td align="center">1541.9</td>
-<td align="center">2811.7</td>
 <td align="center">396.9</td>
+<td align="center">3216.2</td>
+<td align="center">2811.7</td>
 <td align="center">825.3</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X8</td>
 <td align="center">3854.5</td>
-<td align="center">8577.8</td>
+<td align="center">1068.5</td>
 <td align="center">2724.3</td>
-<td align="center">6723.6</td>
 <td align="center">514.8</td>
+<td align="center">8577.8</td>
+<td align="center">6723.6</td>
 <td align="center">1518.5</td>
 </tr>
 <tr>
 <td align="center">System Call</td>
 <td align="center">491.9</td>
-<td align="center">381.7</td>
+<td align="center">280.2</td>
 <td align="center">259.8</td>
-<td align="center">373.3</td>
 <td align="center">134.7</td>
+<td align="center">381.7</td>
+<td align="center">373.3</td>
 <td align="center">155.2</td>
 </tr>
 <tr>
 <td align="center">Index Score</td>
 <td align="center">1200.5</td>
-<td align="center">1727.2</td>
+<td align="center">569.0</td>
 <td align="center">708.5</td>
-<td align="center">1190.1</td>
 <td align="center">265.2</td>
+<td align="center">1727.2</td>
+<td align="center">1190.1</td>
 <td align="center">441</td>
 </tr>
 <tr>
 <td align="center">IPC_Dhry</td>
 <td align="center">1020.9</td>
-<td align="center">1064.4</td>
+<td align="center">1009.1</td>
 <td align="center">994.6</td>
-<td align="center">1036.9</td>
 <td align="center">1018.4</td>
+<td align="center">1064.4</td>
+<td align="center">1036.9</td>
 <td align="center">1038.6</td>
 </tr>
 <tr>
 <td align="center">IPC_Whet</td>
 <td align="center">425.2</td>
-<td align="center">382.4</td>
+<td align="center">433.2</td>
 <td align="center">376.9</td>
-<td align="center">370.2</td>
 <td align="center">383.7</td>
+<td align="center">382.4</td>
+<td align="center">370.2</td>
 <td align="center">372.7</td>
 </tr>
 </tbody></table>
@@ -1018,151 +1537,167 @@
 <tr>
 <th align="center">Item</th>
 <th align="center">5200U</th>
-<th align="center">9100F</th>
+<th align="center">5200U-Mojave</th>
 <th align="center">5200U-VMware</th>
-<th align="center">9100F-VMware</th>
 <th align="center">5200U-WSL</th>
+<th align="center">9100F</th>
+<th align="center">9100F-VMware</th>
 <th align="center">9100F-WSL</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">Dhrystone 2</td>
 <td align="center">6889</td>
-<td align="center">17339.4</td>
+<td align="center">5927.7</td>
 <td align="center">6550.1</td>
-<td align="center">17052.5</td>
 <td align="center">6703.5</td>
+<td align="center">17339.4</td>
+<td align="center">17052.5</td>
 <td align="center">17220.7</td>
 </tr>
 <tr>
 <td align="center">Whetstone</td>
 <td align="center">3629.3</td>
-<td align="center">6159.8</td>
+<td align="center">3823.7</td>
 <td align="center">3281</td>
-<td align="center">6051.1</td>
 <td align="center">3377.6</td>
+<td align="center">6159.8</td>
+<td align="center">6051.1</td>
 <td align="center">6111.4</td>
 </tr>
 <tr>
 <td align="center">Throughput</td>
 <td align="center">2625.1</td>
-<td align="center">5204</td>
+<td align="center">229.3</td>
 <td align="center">1587.3</td>
-<td align="center">3950.2</td>
 <td align="center">199.5</td>
+<td align="center">5204</td>
+<td align="center">3950.2</td>
 <td align="center">580.6</td>
 </tr>
 <tr>
 <td align="center">FileCopy 1024</td>
 <td align="center">2293.4</td>
-<td align="center">4398.6</td>
+<td align="center">1195.8</td>
 <td align="center">1673.5</td>
-<td align="center">4241.3</td>
 <td align="center">288.5</td>
+<td align="center">4398.6</td>
+<td align="center">4241.3</td>
 <td align="center">736</td>
 </tr>
 <tr>
 <td align="center">FileCopy 256</td>
 <td align="center">1510.5</td>
-<td align="center">2718.6</td>
+<td align="center">875.5</td>
 <td align="center">1076.8</td>
-<td align="center">2670.2</td>
 <td align="center">179.5</td>
+<td align="center">2718.6</td>
+<td align="center">2670.2</td>
 <td align="center">449</td>
 </tr>
 <tr>
 <td align="center">FileCopy 4096</td>
 <td align="center">4542.5</td>
-<td align="center">9210.6</td>
+<td align="center">2285.7</td>
 <td align="center">3093.4</td>
-<td align="center">8185.5</td>
 <td align="center">452.1</td>
+<td align="center">9210.6</td>
+<td align="center">8185.5</td>
 <td align="center">1367.9</td>
 </tr>
 <tr>
 <td align="center">Pipe Throughput</td>
 <td align="center">2113.8</td>
-<td align="center">3211.6</td>
+<td align="center">1408.3</td>
 <td align="center">1251.8</td>
-<td align="center">3133.5</td>
 <td align="center">382.2</td>
+<td align="center">3211.6</td>
+<td align="center">3133.5</td>
 <td align="center">820.4</td>
 </tr>
 <tr>
 <td align="center">Pipe Switching</td>
 <td align="center">1545.1</td>
-<td align="center">2344.8</td>
+<td align="center">1009.9</td>
 <td align="center">1009.4</td>
-<td align="center">2337.4</td>
 <td align="center">353.1</td>
+<td align="center">2344.8</td>
+<td align="center">2337.4</td>
 <td align="center">779.7</td>
 </tr>
 <tr>
 <td align="center">Process Creation</td>
 <td align="center">1935.3</td>
-<td align="center">4210.2</td>
+<td align="center">315.7</td>
 <td align="center">1366.1</td>
-<td align="center">3165.3</td>
 <td align="center">100.2</td>
+<td align="center">4210.2</td>
+<td align="center">3165.3</td>
 <td align="center">332.8</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X1</td>
 <td align="center">4341</td>
-<td align="center">10142.2</td>
+<td align="center">1177.5</td>
 <td align="center">3150.5</td>
-<td align="center">7926.4</td>
 <td align="center">544.6</td>
+<td align="center">10142.2</td>
+<td align="center">7926.4</td>
 <td align="center">1698.9</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X8</td>
 <td align="center">4272.3</td>
-<td align="center">9979.8</td>
+<td align="center">1148.3</td>
 <td align="center">3052.1</td>
-<td align="center">7956.7</td>
 <td align="center">576.8</td>
+<td align="center">9979.8</td>
+<td align="center">7956.7</td>
 <td align="center">1600.5</td>
 </tr>
 <tr>
 <td align="center">System Call</td>
 <td align="center">1482.7</td>
-<td align="center">1404.8</td>
+<td align="center">628.8</td>
 <td align="center">582.1</td>
-<td align="center">1387.2</td>
 <td align="center">320</td>
+<td align="center">1404.8</td>
+<td align="center">1387.2</td>
 <td align="center">569.5</td>
 </tr>
 <tr>
 <td align="center">Index Score</td>
 <td align="center">2740.6</td>
-<td align="center">5051.3</td>
+<td align="center">1138.6</td>
 <td align="center">1870.7</td>
-<td align="center">4539.8</td>
 <td align="center">478.4</td>
+<td align="center">5051.3</td>
+<td align="center">4539.8</td>
 <td align="center">1202.1</td>
 </tr>
 <tr>
 <td align="center">ME_Dhry</td>
 <td align="center">125.0</td>
-<td align="center">97.0</td>
+<td align="center">108.8</td>
 <td align="center">122.0</td>
-<td align="center">97.9</td>
 <td align="center">121.9</td>
+<td align="center">97.0</td>
+<td align="center">97.9</td>
 <td align="center">96.4</td>
 </tr>
 <tr>
 <td align="center">ME_Whet</td>
 <td align="center">158.1</td>
-<td align="center">95.9</td>
+<td align="center">163.4</td>
 <td align="center">161.2</td>
-<td align="center">97.3</td>
 <td align="center">163.0</td>
+<td align="center">95.9</td>
+<td align="center">97.3</td>
 <td align="center">95.3</td>
 </tr>
 </tbody></table>
 <hr>
-<h3 id="Benchmark’s-gather-Single-Core-of-ARM-and-MIPS24k"><a href="#Benchmark’s-gather-Single-Core-of-ARM-and-MIPS24k" class="headerlink" title="Benchmark’s gather Single Core of ARM and MIPS24k"></a>Benchmark’s gather Single Core of ARM and MIPS24k</h3><table>
+<h3 id="Benchmark’s-gather-Single-Core-of-ARM-and-MIPS"><a href="#Benchmark’s-gather-Single-Core-of-ARM-and-MIPS" class="headerlink" title="Benchmark’s gather Single Core of ARM and MIPS"></a>Benchmark’s gather Single Core of ARM and MIPS</h3><table>
 <thead>
 <tr>
 <th align="center">Item</th>
@@ -1171,7 +1706,11 @@
 <th align="center">SD 870</th>
 <th align="center">BCM 2711</th>
 <th align="center">H2+</th>
-<th align="center">MT7620</th>
+<th align="center">H616</th>
+<th align="center">BCM2836</th>
+<th align="center">LS2K1000</th>
+<th align="center">MT7620A</th>
+<th align="center">AM3359</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -1181,7 +1720,11 @@
 <td align="center">3605.5</td>
 <td align="center">1246</td>
 <td align="center">151.8</td>
-<td align="center">109.7</td>
+<td align="center">658.6</td>
+<td align="center">258.6</td>
+<td align="center">295.6</td>
+<td align="center">108.1</td>
+<td align="center">304.7</td>
 </tr>
 <tr>
 <td align="center">Whetstone</td>
@@ -1190,7 +1733,11 @@
 <td align="center">1340.2</td>
 <td align="center">462.3</td>
 <td align="center">63.2</td>
+<td align="center">351.9</td>
+<td align="center">79.5</td>
+<td align="center">122.3</td>
 <td align="center">4.4</td>
+<td align="center">38.5</td>
 </tr>
 <tr>
 <td align="center">Throughput</td>
@@ -1199,7 +1746,11 @@
 <td align="center">1371.8</td>
 <td align="center">384</td>
 <td align="center">66.2</td>
-<td align="center">78.7</td>
+<td align="center">176.3</td>
+<td align="center">91.3</td>
+<td align="center">141.3</td>
+<td align="center">105.2</td>
+<td align="center">123.3</td>
 </tr>
 <tr>
 <td align="center">FileCopy 1024</td>
@@ -1208,7 +1759,11 @@
 <td align="center">2669.2</td>
 <td align="center">413.7</td>
 <td align="center">107.4</td>
-<td align="center">110.8</td>
+<td align="center">351.4</td>
+<td align="center">197.4</td>
+<td align="center">190.7</td>
+<td align="center">0.1</td>
+<td align="center">205.2</td>
 </tr>
 <tr>
 <td align="center">FileCopy 256</td>
@@ -1217,7 +1772,11 @@
 <td align="center">2117</td>
 <td align="center">285.4</td>
 <td align="center">73.8</td>
-<td align="center">98.9</td>
+<td align="center">245.5</td>
+<td align="center">138.1</td>
+<td align="center">156.8</td>
+<td align="center">0.1</td>
+<td align="center">161.9</td>
 </tr>
 <tr>
 <td align="center">FileCopy 4096</td>
@@ -1226,7 +1785,11 @@
 <td align="center">2458.3</td>
 <td align="center">765.8</td>
 <td align="center">192</td>
-<td align="center">27.0</td>
+<td align="center">650.6</td>
+<td align="center">351.2</td>
+<td align="center">329</td>
+<td align="center">0.2</td>
+<td align="center">285.3</td>
 </tr>
 <tr>
 <td align="center">Pipe Throughput</td>
@@ -1235,7 +1798,11 @@
 <td align="center">1217.2</td>
 <td align="center">215.7</td>
 <td align="center">81.7</td>
-<td align="center">118.0</td>
+<td align="center">213</td>
+<td align="center">131.8</td>
+<td align="center">199.8</td>
+<td align="center">124.5</td>
+<td align="center">128.5</td>
 </tr>
 <tr>
 <td align="center">Pipe Switching</td>
@@ -1244,7 +1811,11 @@
 <td align="center">207.8</td>
 <td align="center">127.4</td>
 <td align="center">47</td>
-<td align="center">97.8</td>
+<td align="center">118.3</td>
+<td align="center">75.1</td>
+<td align="center">67.7</td>
+<td align="center">127.9</td>
+<td align="center">63.7</td>
 </tr>
 <tr>
 <td align="center">Process Creation</td>
@@ -1253,7 +1824,11 @@
 <td align="center">186.6</td>
 <td align="center">229.5</td>
 <td align="center">49.5</td>
-<td align="center">71.6</td>
+<td align="center">169.4</td>
+<td align="center">96.9</td>
+<td align="center">109</td>
+<td align="center">100.1</td>
+<td align="center">140.1</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X1</td>
@@ -1262,7 +1837,11 @@
 <td align="center">768.3</td>
 <td align="center">834.5</td>
 <td align="center">151.1</td>
-<td align="center">-</td>
+<td align="center">520.9</td>
+<td align="center">275.5</td>
+<td align="center">291.8</td>
+<td align="center">10.2</td>
+<td align="center">197.5</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X8</td>
@@ -1271,7 +1850,11 @@
 <td align="center">3512.3</td>
 <td align="center">1589.6</td>
 <td align="center">293.5</td>
-<td align="center">-</td>
+<td align="center">961.8</td>
+<td align="center">439.5</td>
+<td align="center">376.5</td>
+<td align="center">10.9</td>
+<td align="center">174.1</td>
 </tr>
 <tr>
 <td align="center">System Call</td>
@@ -1280,7 +1863,11 @@
 <td align="center">1607.3</td>
 <td align="center">160.3</td>
 <td align="center">139.5</td>
-<td align="center">203.5</td>
+<td align="center">285.2</td>
+<td align="center">306.7</td>
+<td align="center">232.8</td>
+<td align="center">206.0</td>
+<td align="center">244.7</td>
 </tr>
 <tr>
 <td align="center">Index Score</td>
@@ -1289,7 +1876,11 @@
 <td align="center">1277.3</td>
 <td align="center">416</td>
 <td align="center">101.1</td>
-<td align="center">-</td>
+<td align="center">325.2</td>
+<td align="center">171.3</td>
+<td align="center">187.6</td>
+<td align="center">11.3</td>
+<td align="center">150.2</td>
 </tr>
 <tr>
 <td align="center">IPC_Dhry</td>
@@ -1298,7 +1889,11 @@
 <td align="center">1126.7</td>
 <td align="center">830.7</td>
 <td align="center">316.3</td>
-<td align="center">137.1</td>
+<td align="center">439.1</td>
+<td align="center">287.3</td>
+<td align="center">295.6</td>
+<td align="center">186.4</td>
+<td align="center">304.7</td>
 </tr>
 <tr>
 <td align="center">IPC_Whet</td>
@@ -1307,11 +1902,15 @@
 <td align="center">418.8</td>
 <td align="center">308.2</td>
 <td align="center">131.7</td>
-<td align="center">5.5</td>
+<td align="center">234.6</td>
+<td align="center">88.3</td>
+<td align="center">122.3</td>
+<td align="center">7.6</td>
+<td align="center">38.5</td>
 </tr>
 </tbody></table>
 <p>Remarks：Allwinner H2+ runs at 480MHZ</p>
-<h3 id="Benchmark’s-Gather-Multi-Core-of-ARM-and-MIPS24k"><a href="#Benchmark’s-Gather-Multi-Core-of-ARM-and-MIPS24k" class="headerlink" title="Benchmark’s Gather Multi Core of ARM and MIPS24k"></a>Benchmark’s Gather Multi Core of ARM and MIPS24k</h3><table>
+<h3 id="Benchmark’s-Gather-Multi-Core-of-ARM-and-MIPS"><a href="#Benchmark’s-Gather-Multi-Core-of-ARM-and-MIPS" class="headerlink" title="Benchmark’s Gather Multi Core of ARM and MIPS"></a>Benchmark’s Gather Multi Core of ARM and MIPS</h3><table>
 <thead>
 <tr>
 <th align="center">Item</th>
@@ -1320,6 +1919,9 @@
 <th align="center">SD 870</th>
 <th align="center">BCM 2711</th>
 <th align="center">H2+</th>
+<th align="center">H616</th>
+<th align="center">BCM2836</th>
+<th align="center">LS2K1000</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -1329,6 +1931,9 @@
 <td align="center">13835.2</td>
 <td align="center">4987.5</td>
 <td align="center">606.8</td>
+<td align="center">2622.9</td>
+<td align="center">1005</td>
+<td align="center">595.7</td>
 </tr>
 <tr>
 <td align="center">Whetstone</td>
@@ -1337,6 +1942,9 @@
 <td align="center">5662.3</td>
 <td align="center">1845.2</td>
 <td align="center">253.3</td>
+<td align="center">1406.3</td>
+<td align="center">317.1</td>
+<td align="center">223</td>
 </tr>
 <tr>
 <td align="center">Throughput</td>
@@ -1345,6 +1953,9 @@
 <td align="center">3948.7</td>
 <td align="center">1054.3</td>
 <td align="center">173.1</td>
+<td align="center">524.3</td>
+<td align="center">264.1</td>
+<td align="center">176.1</td>
 </tr>
 <tr>
 <td align="center">FileCopy 1024</td>
@@ -1353,6 +1964,9 @@
 <td align="center">1185.5</td>
 <td align="center">740.7</td>
 <td align="center">177.1</td>
+<td align="center">596.4</td>
+<td align="center">265.3</td>
+<td align="center">137.5</td>
 </tr>
 <tr>
 <td align="center">FileCopy 256</td>
@@ -1361,6 +1975,9 @@
 <td align="center">671.7</td>
 <td align="center">491.1</td>
 <td align="center">118.6</td>
+<td align="center">378</td>
+<td align="center">171.3</td>
+<td align="center">93.4</td>
 </tr>
 <tr>
 <td align="center">FileCopy 4096</td>
@@ -1369,6 +1986,9 @@
 <td align="center">2273.3</td>
 <td align="center">1216.8</td>
 <td align="center">338.5</td>
+<td align="center">1217.4</td>
+<td align="center">475.4</td>
+<td align="center">219.1</td>
 </tr>
 <tr>
 <td align="center">Pipe Throughput</td>
@@ -1377,6 +1997,9 @@
 <td align="center">5268.2</td>
 <td align="center">861.1</td>
 <td align="center">325</td>
+<td align="center">845.8</td>
+<td align="center">505.3</td>
+<td align="center">284.6</td>
 </tr>
 <tr>
 <td align="center">Pipe Switching</td>
@@ -1385,6 +2008,9 @@
 <td align="center">229.4</td>
 <td align="center">451.1</td>
 <td align="center">186.9</td>
+<td align="center">424.6</td>
+<td align="center">264.9</td>
+<td align="center">57.9</td>
 </tr>
 <tr>
 <td align="center">Process Creation</td>
@@ -1393,6 +2019,9 @@
 <td align="center">1020.1</td>
 <td align="center">495.9</td>
 <td align="center">126.3</td>
+<td align="center">366.2</td>
+<td align="center">201.4</td>
+<td align="center">84.9</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X1</td>
@@ -1401,6 +2030,9 @@
 <td align="center">6524.2</td>
 <td align="center">1784.7</td>
 <td align="center">333.6</td>
+<td align="center">1060.2</td>
+<td align="center">497</td>
+<td align="center">395.3</td>
 </tr>
 <tr>
 <td align="center">Shell Scripts X8</td>
@@ -1409,6 +2041,9 @@
 <td align="center">6075.1</td>
 <td align="center">1719.3</td>
 <td align="center">293.6</td>
+<td align="center">1013</td>
+<td align="center">462.7</td>
+<td align="center">377.5</td>
 </tr>
 <tr>
 <td align="center">System Call</td>
@@ -1417,6 +2052,9 @@
 <td align="center">1552.9</td>
 <td align="center">623.1</td>
 <td align="center">542.3</td>
+<td align="center">1118.9</td>
+<td align="center">1149.2</td>
+<td align="center">361.3</td>
 </tr>
 <tr>
 <td align="center">Index Score</td>
@@ -1425,6 +2063,9 @@
 <td align="center">2430.4</td>
 <td align="center">1038.9</td>
 <td align="center">255.4</td>
+<td align="center">813.4</td>
+<td align="center">391.5</td>
+<td align="center">203.2</td>
 </tr>
 <tr>
 <td align="center">MEDhrystone 2</td>
@@ -1432,7 +2073,10 @@
 <td align="center">53.5</td>
 <td align="center">48.0</td>
 <td align="center">100.1</td>
-<td align="center">1.0</td>
+<td align="center">99.9</td>
+<td align="center">99.6</td>
+<td align="center">97.2</td>
+<td align="center">100.8</td>
 </tr>
 <tr>
 <td align="center">MEWhetstone</td>
@@ -1441,6 +2085,9 @@
 <td align="center">52.8</td>
 <td align="center">99.8</td>
 <td align="center">100.2</td>
+<td align="center">99.9</td>
+<td align="center">99.7</td>
+<td align="center">91.2</td>
 </tr>
 </tbody></table>
 <p>Remarks：Due to temperature control, the multi-core efficiency of the Android platform is not credible</p>

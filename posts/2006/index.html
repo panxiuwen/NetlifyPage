@@ -13,16 +13,16 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍如何搭建Minecraft服务器\n\n\nJava Edition在Oracle官网下载JDK8，要注册账号解压文件\n1tar -zxvf\n检查Java\n1/app/jdk1.8.0_241/jre/bin/java -version\n配置 screen\n1nano .bashrc\n123alias sl=&quot;screen -ls&quot;alias sb=&quot;screen bash&quot;alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;\n测试命令行\n1cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui\n同意eula并编辑server.properties(注意要改PVP、online)\n死亡不掉落\n1/gamerule keepInventory true\n防爆\n1/gamerule mobGriefing false\n管理员锚\n1/give Sean railcraft:worldspike 64 0\n查看在线玩家\n1list\nBedrock Edition注意，编译后不要移动位置，因为编译后的文件含有不可更改的路径信息MCPE安卓下载 \nPocketMine-MP下载\nPHP build scripts for PocketMine-MP环境设置完代理再编译\n12export https_proxy=http://192.168.2.3:2333./compile.sh -j4 -f -l (-l启用多读少写优化-f启用滥用优化)\n开启了服务器\n1./start.sh\n配置命令行\n1alias mcpe=&#x27;cd /app/mcpe&amp;&amp; screen -dm bash start.sh&#x27;\n","dateCreated":"2020-11-12T00:00:00+08:00","dateModified":"2022-06-22T10:47:54+08:00","datePublished":"2020-11-12T00:00:00+08:00","description":"本文介绍如何搭建Minecraft服务器","headline":"搭建Minecraft服务器","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2006/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2006/","keywords":"Server","thumbnailUrl":"cover.jpg"}</script>
-    <meta name="description" content="本文介绍如何搭建Minecraft服务器">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍如何在Linux环境搭建Minecraft服务器\n\n一、配置基本软件1.配置Java在Oracle官网下载JDK8，要注册账号解压文件\n1tar -zxvf \n假设java可执行文件文件在/app/jdk1.8.0_241/jre/bin/java，检查Java能否正确运行\n1/app/jdk1.8.0_241/jre/bin/java -version\n2.配置 screen安装screen\n1apt-get install screen\nnano .bashrc，写入下面的内容\n123alias sl=&quot;screen -ls&quot;\t\t\t\t//输入sl就可以查看运行中的screenalias sb=&quot;screen bash&quot;\t\t\t\t//输入sb就可以打开一个sreenalias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;\t//输入sr +screen_id就可以返回screen\n\n二、配置Minecraft服务器1.获取Minecraft服务器在Forge上下载喜欢的版本的Forge Installer，安装时选择Minecraft Server，随便选一个文件夹就行，下载不成功可以多试几次，下载成功上传到Linux上\n2.调试命令行假设主jar是/app/mcs/forge-1.12.2-14.23.5.2847-universal.jar，测试命令行\n1cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui\n如果启动成功，则可以为此命令设置alias，可以添加到开机启动项\n编辑eula.txt\n1eula=true\n编辑server.properties\n12pvp=falseonline-mode=false\n\n三、其他内容1.Minecraft指令死亡不掉落\n1/gamerule keepInventory true\n防爆\n1/gamerule mobGriefing false\n给管理员锚，需要铁路mod\n1/give Sean railcraft:worldspike 64 0\n查看在线玩家\n1list\n\n四、相关链接HMCL启动器BedRock版Android客户端下载BedRock版服务器下载\n","dateCreated":"2020-11-12T00:00:00+08:00","dateModified":"2022-06-28T01:10:41+08:00","datePublished":"2020-11-12T00:00:00+08:00","description":"本文介绍如何在Linux环境搭建Minecraft服务器","headline":"搭建Minecraft服务器","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/2006/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/2006/","keywords":"Server","thumbnailUrl":"cover.jpg"}</script>
+    <meta name="description" content="本文介绍如何在Linux环境搭建Minecraft服务器">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="搭建Minecraft服务器">
 <meta property="og:url" content="https://panxiuwen.github.io/posts/2006/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
-<meta property="og:description" content="本文介绍如何搭建Minecraft服务器">
+<meta property="og:description" content="本文介绍如何在Linux环境搭建Minecraft服务器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-22T02:47:54.920Z">
+<meta property="article:modified_time" content="2022-06-27T17:10:41.000Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Server">
 <meta name="twitter:card" content="summary">
@@ -311,35 +311,36 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>本文介绍如何搭建Minecraft服务器</p>
+            <p>本文介绍如何在Linux环境搭建Minecraft服务器</p>
 <span id="more"></span>
-
-<h3 id="Java-Edition"><a href="#Java-Edition" class="headerlink" title="Java Edition"></a>Java Edition</h3><p>在Oracle官网下载<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK8</a>，要注册账号<br>解压文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf</span><br></pre></td></tr></table></figure>
-<p>检查Java</p>
+<h3 id="一、配置基本软件"><a href="#一、配置基本软件" class="headerlink" title="一、配置基本软件"></a>一、配置基本软件</h3><h4 id="1-配置Java"><a href="#1-配置Java" class="headerlink" title="1.配置Java"></a>1.配置Java</h4><p>在Oracle官网下载<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK8</a>，要注册账号<br>解压文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf </span><br></pre></td></tr></table></figure>
+<p>假设java可执行文件文件在<code>/app/jdk1.8.0_241/jre/bin/java</code>，检查Java能否正确运行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/app/jdk1.8.0_241/jre/bin/java -version</span><br></pre></td></tr></table></figure>
-<p>配置 screen</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano .bashrc</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias sl=&quot;screen -ls&quot;</span><br><span class="line">alias sb=&quot;screen bash&quot;</span><br><span class="line">alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;</span><br></pre></td></tr></table></figure>
-<p>测试命令行</p>
+<h4 id="2-配置-screen"><a href="#2-配置-screen" class="headerlink" title="2.配置 screen"></a>2.配置 screen</h4><p>安装screen</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install screen</span><br></pre></td></tr></table></figure>
+<p>nano .bashrc，写入下面的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias sl=&quot;screen -ls&quot;				//输入sl就可以查看运行中的screen</span><br><span class="line">alias sb=&quot;screen bash&quot;				//输入sb就可以打开一个sreen</span><br><span class="line">alias sr=&#x27;func() &#123; screen -D -r $1;&#125;; func&#x27;	//输入sr +screen_id就可以返回screen</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、配置Minecraft服务器"><a href="#二、配置Minecraft服务器" class="headerlink" title="二、配置Minecraft服务器"></a>二、配置Minecraft服务器</h3><h4 id="1-获取Minecraft服务器"><a href="#1-获取Minecraft服务器" class="headerlink" title="1.获取Minecraft服务器"></a>1.获取Minecraft服务器</h4><p>在<a target="_blank" rel="noopener" href="https://files.minecraftforge.net/net/minecraftforge/forge/">Forge</a>上下载喜欢的版本的Forge Installer，安装时选择Minecraft Server，随便选一个文件夹就行，下载不成功可以多试几次，下载成功上传到Linux上</p>
+<h4 id="2-调试命令行"><a href="#2-调试命令行" class="headerlink" title="2.调试命令行"></a>2.调试命令行</h4><p>假设主jar是<code>/app/mcs/forge-1.12.2-14.23.5.2847-universal.jar</code>，测试命令行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /app/mcs&amp;&amp; screen -dm /app/jdk1.8.0_241/jre/bin/java -Xms4G -Xmx4G -jar /app/mcs/forge-1.12.2-14.23.5.2847-universal.jar nogui</span><br></pre></td></tr></table></figure>
-<p>同意eula并编辑server.properties(注意要改PVP、online)</p>
-<p>死亡不掉落</p>
+<p>如果启动成功，则可以为此命令设置alias，可以添加到开机启动项</p>
+<p>编辑eula.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eula=true</span><br></pre></td></tr></table></figure>
+<p>编辑server.properties</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pvp=false</span><br><span class="line">online-mode=false</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、其他内容"><a href="#三、其他内容" class="headerlink" title="三、其他内容"></a>三、其他内容</h3><h4 id="1-Minecraft指令"><a href="#1-Minecraft指令" class="headerlink" title="1.Minecraft指令"></a>1.Minecraft指令</h4><p>死亡不掉落</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/gamerule keepInventory true</span><br></pre></td></tr></table></figure>
 <p>防爆</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/gamerule mobGriefing false</span><br></pre></td></tr></table></figure>
-<p>管理员锚</p>
+<p>给管理员锚，需要铁路mod</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/give Sean railcraft:worldspike 64 0</span><br></pre></td></tr></table></figure>
 <p>查看在线玩家</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list</span><br></pre></td></tr></table></figure>
-<h3 id="Bedrock-Edition"><a href="#Bedrock-Edition" class="headerlink" title="Bedrock Edition"></a>Bedrock Edition</h3><p><strong>注意，编译后不要移动位置，因为编译后的文件含有不可更改的路径信息</strong><br><a target="_blank" rel="noopener" href="https://klpbbs.com/xz/">MCPE安卓下载</a> </p>
-<p><a target="_blank" rel="noopener" href="https://github.com/pmmp/PocketMine-MP/releases">PocketMine-MP下载</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/pmmp/php-build-scripts">PHP build scripts for PocketMine-MP环境</a><br>设置完代理再编译</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://192.168.2.3:2333</span><br><span class="line">./compile.sh -j4 -f -l (-l启用多读少写优化-f启用滥用优化)</span><br></pre></td></tr></table></figure>
-<p>开启了服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
-<p>配置命令行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias mcpe=&#x27;cd /app/mcpe&amp;&amp; screen -dm bash start.sh&#x27;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、相关链接"><a href="#四、相关链接" class="headerlink" title="四、相关链接"></a>四、相关链接</h3><p><a target="_blank" rel="noopener" href="https://github.com/huanghongxun/HMCL/releases/">HMCL启动器</a><br><a target="_blank" rel="noopener" href="https://klpbbs.com/xz/new/">BedRock版Android客户端下载</a><br><a target="_blank" rel="noopener" href="https://www.minecraft.net/en-us/download/server/bedrock">BedRock版服务器下载</a></p>
 
             
 
