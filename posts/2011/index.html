@@ -13,25 +13,25 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了使用dynv6提供的免费域名通过DNS-go实现IPv6动态域名解析\n\n\n1.禁用临时ipv6Linux向/etc/sysctl.conf添加下面内容禁用整个系统所有接口的临时IPv6\n123net.ipv6.conf.all.use_tempaddr=0net.ipv6.conf.eth0.use_tempaddr=0 net.ipv6.conf.default.use_tempaddr=0\n重启生效，笔者使用”sysctl -p /etc/sysctl.conf”无效Windows需要管理员运行cmd禁用临时ipv6\n1netsh interface ipv6 set privacy state=disable\n启用临时ipv6\n1netsh interface ipv6 set privacy state=ensable\n重启后生效\n\n2.注册dynv6先在dynv6上注册一个账号，创建一个域名并用邮箱验证，一定要确认否则无法登录，再创建一个token\n\n\n3.运行DDNS客户端下载DDNS-go，运行后自动或手动打开管理界面，按照图片配置\n\n填完了点Save，如果参数正确，log中会显示\n1Callback调用成功，返回数据：adress updated\n推荐配置服务启动\n\n4.验证DDNS打开dynv6的域名管理，选择域名后看Records里是否有指向正确IPv6的AAAA记录\n\n再执行ping XXX.dynv6.net，看能否解析出正确的ipv6\n\n\n其他笔记假如ipv6分发前缀为240c:cf81:5:22dd::/64路由器Lan口为192.168.X.1，那么Lan的ipv6为240c:cf81:5:22dd::1客户端的ip为192.168.X.100，那么客户端的ipv6地址为为240c:cf81:5:22dd::100(无法ping通)和240c:cf81:5:22dd:f07b:f512:8cf5:afcd客户端的ip为192.168.X.102，那么客户端的ipv6地址为为240c:cf81:5:22dd::102(无法ping通)和240c:cf81:5:22dd:195e:e735:f9f6:d450\n","dateCreated":"2022-06-21T00:00:00+08:00","dateModified":"2022-06-29T19:43:30+08:00","datePublished":"2022-06-21T00:00:00+08:00","description":"本文介绍了使用dynv6提供的免费域名通过DNS-go实现IPv6动态域名解析","headline":"设置ipv6DDNS","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen123.gitee.io/posts/2011/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen123.gitee.io/posts/2011/","keywords":"Network, Server","thumbnailUrl":"cover.jpg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了使用dynv6提供的免费域名通过DNS-go实现IPv6动态域名解析\n\n\n1.禁用临时ipv6Linux向/etc/sysctl.conf添加下面内容禁用整个系统所有接口的临时IPv6\n123net.ipv6.conf.all.use_tempaddr=0net.ipv6.conf.eth0.use_tempaddr=0 net.ipv6.conf.default.use_tempaddr=0\n重启生效，笔者使用”sysctl -p /etc/sysctl.conf”无效Windows需要管理员运行cmd禁用临时ipv6\n1netsh interface ipv6 set privacy state=disable\n启用临时ipv6\n1netsh interface ipv6 set privacy state=ensable\n重启后生效\n\n2.注册dynv6先在dynv6上注册一个账号，创建一个域名并用邮箱验证，一定要确认否则无法登录，再创建一个token\n\n\n3.运行DDNS客户端下载DDNS-go，运行后自动或手动打开管理界面，按照图片配置\n\n填完了点Save，如果参数正确，log中会显示\n1Callback调用成功，返回数据：adress updated\n推荐配置服务启动\n\n4.验证DDNS打开dynv6的域名管理，选择域名后看Records里是否有指向正确IPv6的AAAA记录\n\n再执行ping XXX.dynv6.net，看能否解析出正确的ipv6\n\n\n其他笔记假如ipv6分发前缀为240c:cf81:5:22dd::/64路由器Lan口为192.168.X.1，那么Lan的ipv6为240c:cf81:5:22dd::1客户端的ip为192.168.X.100，那么客户端的ipv6地址为为240c:cf81:5:22dd::100(无法ping通)和240c:cf81:5:22dd:f07b:f512:8cf5:afcd客户端的ip为192.168.X.102，那么客户端的ipv6地址为为240c:cf81:5:22dd::102(无法ping通)和240c:cf81:5:22dd:195e:e735:f9f6:d450\n","dateCreated":"2022-06-21T00:00:00+08:00","dateModified":"2022-06-29T19:43:30+08:00","datePublished":"2022-06-21T00:00:00+08:00","description":"本文介绍了使用dynv6提供的免费域名通过DNS-go实现IPv6动态域名解析","headline":"设置ipv6DDNS","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://192.168.192.100/posts/2011/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"http://192.168.192.100/posts/2011/","keywords":"Network, Server","thumbnailUrl":"cover.jpg"}</script>
     <meta name="description" content="本文介绍了使用dynv6提供的免费域名通过DNS-go实现IPv6动态域名解析">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="设置ipv6DDNS">
-<meta property="og:url" content="https://panxiuwen123.gitee.io/posts/2011/index.html">
+<meta property="og:url" content="http://192.168.192.100/posts/2011/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了使用dynv6提供的免费域名通过DNS-go实现IPv6动态域名解析">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/2011/01.jpg">
-<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/2011/02.jpg">
-<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/2011/03.jpg">
-<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/2011/04.jpg">
+<meta property="og:image" content="http://192.168.192.100/posts/2011/01.jpg">
+<meta property="og:image" content="http://192.168.192.100/posts/2011/02.jpg">
+<meta property="og:image" content="http://192.168.192.100/posts/2011/03.jpg">
+<meta property="og:image" content="http://192.168.192.100/posts/2011/04.jpg">
 <meta property="article:published_time" content="2022-06-20T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-06-29T11:43:30.380Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="Network">
 <meta property="article:tag" content="Server">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://panxiuwen123.gitee.io/posts/2011/01.jpg">
+<meta name="twitter:image" content="http://192.168.192.100/posts/2011/01.jpg">
 <meta name="twitter:creator" content="@982202733">
 <meta property="fb:app_id" content="[object Object]">
     
@@ -41,11 +41,11 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen123.gitee.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="http://192.168.192.100/assets/images/mitu.jpg"/>
     
     
-        <meta property="og:image" content="https://panxiuwen123.gitee.io/posts/2011/cover.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://panxiuwen123.gitee.io/posts/2011/cover.jpg"/>
+        <meta property="og:image" content="http://192.168.192.100/posts/2011/cover.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://192.168.192.100/posts/2011/cover.jpg"/>
     
     
     
