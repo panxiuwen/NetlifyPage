@@ -13,35 +13,35 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了\n\n\n使用OC-Gen-X生成主要的驱动您可能需要一台装有mac的设备运行OC-Gen-X，如果没有，也可以在Github上找相似的，直接跳到[获取镜像与安装]这一步获取OC-Gen-X，一步步走完我们只需要知道硬件信息就行，但是只有mac版本，如果您没有mac的话，可以使用VMware虚拟机运行，网上教程非常多不再赘述\n\n选择处理器需要考虑主板和其他因素，我发现很多人像我一样存在魔改主板的问题,比如我的电脑是i3 9100f(b0)，但是主板是Z170，实际上9100f是无法安装到z170上的，但是9100f(b0)是i5 7500的马甲，刷了微码当成7500塞到主板上的，所以选7代(KabyLake)，这种问题一般会出在台式机上，推荐台式机如果用独显启动的话推荐伪装的型号选择不挑CPU的MacPro，如果是集显的话再iMac里面选\n\nKext的第一个Essential全部勾上\n\nKext-VirtualSMC Plugins 选SMCProcessor、SMCSuperIO和SMClightSensor，SMCBatteryManager可能不生效或者导致一些问题\n\nKext-Graphics 选WhateverGreen\n\nKext-Audio 选AppleALC，但是需要查看支持列表确定设备声卡是否支持，需要自己调试layout-id，如果可用，更推荐VoodooHDA驱动，还不行的话只能USB声卡了\n\nKext-Ethernet根据自己都设备选\n\nKext-USB 选USBInjectALL\n\nKext-Wifi and bluetooth 如果是博通卡就5选4，如果是英特尔网卡需要itlwm，更推荐AirportItlwm，和IntelBluetoothFirmware\n\nFirmare Drivers-UEFI 选OpenRuntimehe HfsPluse\n\nSMBBIOS根据自己都需求选选完就可以Generate EFI\n\n生成APCI需要SSDTTime，\n\n注意安装Python时勾选tcl/tk库\n\n第一次运行需要下载一些东西，建议挂加速器按8 Dump DSDT，提取DSDT.aml按1 FixHPET，生成SSDT-HPET.aml根据设备，台式机是2，笔记本是3生成SSDT-EC.aml按4生成SSDT-PLUG.aml如果是300系列主板，按5按6 AWAC Disable，可能会找不到AWAC设备，就不生成文件按7生成SSDT-USB-Reset.aml这一步生成的文件与上一步的生成驱动的文件夹合并\n\n更新ACPI文件列表下载ProperTree，启动ProperTree.bat，File-Open\n\n选择有config.plist的文件夹，再File-OC clean snapshot，选择放config.plist的文件夹，然后退出\n\n完善config.plist使用文本编辑器(不要用记事本)打开config.plist搜索boot-args，\n1在&lt;string&gt;&lt;/string&gt;中间写上keepsyms=1 -v debug=0x100\n如果使用AppleALC，还需要在上一句话后加上alcid=3，加debug=0x100 内核崩溃后不重启，加-v 开启跑代码(啰嗦)模式 ，加keepsyms=1是遇到致命错误需要重启的错误就卡在这里，就方便排除错误搜索prev-lang:kbd，\n1把&lt;data&gt;&lt;/data&gt;中间的内容改为emgtSGFuczoyNTI=\n\n设置显示设备注意：Mac不支持VGA和DVI如果那有核显并且使用核显输出的话我们需要进行这一步操作，建议备份config.plist后再操作，查看列表根据自己的设备设置\n\n笔记本的i5 4210u HD4400的配置是这样的注意OC-Gen-X的默认语言是俄语，要改语言的话，在notepad++中修改 prev-lang:kbd，改为emgtSGFuczoyNTI=\n\n\n检查配置文件把config.plist上传到OpenCore Sanity Checker，改到全部通过\n\n设置BIOS参考，禁用CSM、禁用安全启动、将操作系统类型设置为其他操作系统、将SATA设置为AHCI、禁用CFG锁定、禁用英特尔虚拟化技术/ VT-X、禁用VT-D、启用XHCI Hand-off，禁用USB键盘和鼠标模拟器当然其实要求也没那么严格，比如我用的HDMI转VGA的头，被BIOS发现不能用UEFI，但是实际上还是UEFI启动成功了有些设置如果在BIOS里面改不了可以改配置文件加参数什么的禁用：CSM、安全启动、快速启动、虚拟化、Intel SGX、CFG LOCK开启：超线程、Above 4G decoding、Execute Disable Bit(执行禁止位)、EHCI/XHCI Hand-off、Legacy RTC DeviceSATA设置为AHCI\n\n获取镜像与安装从黑果小兵镜像站下载喜欢的dmg，然后使用etcher写入U盘镜像，最后用Diskgenius删除Fat分区的EFI文件夹后再复制配置文件EFI\n\n安装Mojave中的可能遇到的问题磁盘工具格式化磁盘，如果用SSD选APFS，如果用机械硬盘选MacOS日志提示这个“安装macOS Mojave”应用程序副本已损坏，不能用来安装macOS拔掉网线，打开终端，输入\n1date102400002019.00\n\n安装完成后完善ACPIOC-little参考大部分通用的ACPI\n12笔记本背光亮度调节 SSDT-PNLF.aml SSDT-ALS0.aml睡眠秒唤醒 SSDT-GPRW SSDT-UPRW\n不通用的ACPI\n12345电量显示0 SSDT-BATT.aml节能 SSDT-PLUG禁用独显 SSDT-DDGPU.aml解除USB端口限制 SSDT-EC.aml苹果原生电源管理SSDT-PLUG.aml\n使用Opencore Configurator内置的一些也可以使用Clover，先按F4 Save oem DSDT Save，然后按F5 patched DSDT，接下来就可以在U盘里找到DSDT了\n\n需要的软件Iasl-winGibMacOSOC-Gen-X检查配置SSDTTimeGenSMBIOSProperTreeHackintool\nIntel® Power GadgetMaciASLHIDPIRDM\n\n其他笔记允许任何软件；来源\n1sudo spctl --master-disable\n双系统时间不同步\n1Reg add HKLM\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1\n忽略更新\n12345sudo softwareupdate --ignore &quot;macOS Catalina&quot;sudo softwareupdate --ignore &quot;macOS Big Sur&quot;sudo softwareupdate --reset-ignoreddefaults write com.apple.systempreferences AttentionPrefBundleIDs 0killall Dock","dateCreated":"2021-03-30T00:00:00+08:00","dateModified":"2022-06-29T22:02:00+08:00","datePublished":"2021-03-30T00:00:00+08:00","description":"本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了","headline":"MacOS的安装","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen.github.io/posts/1005/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen.github.io/posts/1005/","keywords":"System","thumbnailUrl":"cover.jpg"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg"},"articleBody":"本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了\n\n\n使用OC-Gen-X生成主要的驱动您可能需要一台装有mac的设备运行OC-Gen-X，如果没有，也可以在Github上找相似的，直接跳到[获取镜像与安装]这一步获取OC-Gen-X，一步步走完我们只需要知道硬件信息就行，但是只有mac版本，如果您没有mac的话，可以使用VMware虚拟机运行，网上教程非常多不再赘述\n\n选择处理器需要考虑主板和其他因素，我发现很多人像我一样存在魔改主板的问题,比如我的电脑是i3 9100f(b0)，但是主板是Z170，实际上9100f是无法安装到z170上的，但是9100f(b0)是i5 7500的马甲，刷了微码当成7500塞到主板上的，所以选7代(KabyLake)，这种问题一般会出在台式机上，推荐台式机如果用独显启动的话推荐伪装的型号选择不挑CPU的MacPro，如果是集显的话再iMac里面选\n\nKext的第一个Essential全部勾上\n\nKext-VirtualSMC Plugins 选SMCProcessor、SMCSuperIO和SMClightSensor，SMCBatteryManager可能不生效或者导致一些问题\n\nKext-Graphics 选WhateverGreen\n\nKext-Audio 选AppleALC，但是需要查看支持列表确定设备声卡是否支持，需要自己调试layout-id，如果可用，更推荐VoodooHDA驱动，还不行的话只能USB声卡了\n\nKext-Ethernet根据自己都设备选\n\nKext-USB 选USBInjectALL\n\nKext-Wifi and bluetooth 如果是博通卡就5选4，如果是英特尔网卡需要itlwm，更推荐AirportItlwm，和IntelBluetoothFirmware\n\nFirmare Drivers-UEFI 选OpenRuntimehe HfsPluse\n\nSMBBIOS根据自己都需求选选完就可以Generate EFI\n\n生成APCI需要SSDTTime，\n\n注意安装Python时勾选tcl/tk库\n\n第一次运行需要下载一些东西，建议挂加速器按8 Dump DSDT，提取DSDT.aml按1 FixHPET，生成SSDT-HPET.aml根据设备，台式机是2，笔记本是3生成SSDT-EC.aml按4生成SSDT-PLUG.aml如果是300系列主板，按5按6 AWAC Disable，可能会找不到AWAC设备，就不生成文件按7生成SSDT-USB-Reset.aml这一步生成的文件与上一步的生成驱动的文件夹合并\n\n更新ACPI文件列表下载ProperTree，启动ProperTree.bat，File-Open\n\n选择有config.plist的文件夹，再File-OC clean snapshot，选择放config.plist的文件夹，然后退出\n\n完善config.plist使用文本编辑器(不要用记事本)打开config.plist搜索boot-args，\n1在&lt;string&gt;&lt;/string&gt;中间写上keepsyms=1 -v debug=0x100\n如果使用AppleALC，还需要在上一句话后加上alcid=3，加debug=0x100 内核崩溃后不重启，加-v 开启跑代码(啰嗦)模式 ，加keepsyms=1是遇到致命错误需要重启的错误就卡在这里，就方便排除错误搜索prev-lang:kbd，\n1把&lt;data&gt;&lt;/data&gt;中间的内容改为emgtSGFuczoyNTI=\n\n设置显示设备注意：Mac不支持VGA和DVI如果那有核显并且使用核显输出的话我们需要进行这一步操作，建议备份config.plist后再操作，查看列表根据自己的设备设置\n\n笔记本的i5 4210u HD4400的配置是这样的注意OC-Gen-X的默认语言是俄语，要改语言的话，在notepad++中修改 prev-lang:kbd，改为emgtSGFuczoyNTI=\n\n\n检查配置文件把config.plist上传到OpenCore Sanity Checker，改到全部通过\n\n设置BIOS参考，禁用CSM、禁用安全启动、将操作系统类型设置为其他操作系统、将SATA设置为AHCI、禁用CFG锁定、禁用英特尔虚拟化技术/ VT-X、禁用VT-D、启用XHCI Hand-off，禁用USB键盘和鼠标模拟器当然其实要求也没那么严格，比如我用的HDMI转VGA的头，被BIOS发现不能用UEFI，但是实际上还是UEFI启动成功了有些设置如果在BIOS里面改不了可以改配置文件加参数什么的禁用：CSM、安全启动、快速启动、虚拟化、Intel SGX、CFG LOCK开启：超线程、Above 4G decoding、Execute Disable Bit(执行禁止位)、EHCI/XHCI Hand-off、Legacy RTC DeviceSATA设置为AHCI\n\n获取镜像与安装从黑果小兵镜像站下载喜欢的dmg，然后使用etcher写入U盘镜像，最后用Diskgenius删除Fat分区的EFI文件夹后再复制配置文件EFI\n\n安装Mojave中的可能遇到的问题磁盘工具格式化磁盘，如果用SSD选APFS，如果用机械硬盘选MacOS日志提示这个“安装macOS Mojave”应用程序副本已损坏，不能用来安装macOS拔掉网线，打开终端，输入\n1date102400002019.00\n\n安装完成后完善ACPIOC-little参考大部分通用的ACPI\n12笔记本背光亮度调节 SSDT-PNLF.aml SSDT-ALS0.aml睡眠秒唤醒 SSDT-GPRW SSDT-UPRW\n不通用的ACPI\n12345电量显示0 SSDT-BATT.aml节能 SSDT-PLUG禁用独显 SSDT-DDGPU.aml解除USB端口限制 SSDT-EC.aml苹果原生电源管理SSDT-PLUG.aml\n使用Opencore Configurator内置的一些也可以使用Clover，先按F4 Save oem DSDT Save，然后按F5 patched DSDT，接下来就可以在U盘里找到DSDT了\n\n需要的软件Iasl-winGibMacOSOC-Gen-X检查配置SSDTTimeGenSMBIOSProperTreeHackintool\nIntel® Power GadgetMaciASLHIDPIRDM\n\n其他笔记允许任何软件；来源\n1sudo spctl --master-disable\n双系统时间不同步\n1Reg add HKLM\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1\n忽略更新\n12345sudo softwareupdate --ignore &quot;macOS Catalina&quot;sudo softwareupdate --ignore &quot;macOS Big Sur&quot;sudo softwareupdate --reset-ignoreddefaults write com.apple.systempreferences AttentionPrefBundleIDs 0killall Dock","dateCreated":"2021-03-30T00:00:00+08:00","dateModified":"2022-06-29T22:02:00+08:00","datePublished":"2021-03-30T00:00:00+08:00","description":"本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了","headline":"MacOS的安装","image":["cover.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://panxiuwen123.gitee.io/posts/1005/"},"publisher":{"@type":"Organization","name":"Sean Pan","sameAs":["https://www.zhihu.com/people/gu-ao-de-zhan-dou-zhe","https://music.163.com/#/user/home?id=70816221","https://github.com/panxiuwen/","https://gitee.com/sean982202733/","mailto:panxiuwen_sean@qq.com"],"image":"mitu.jpg","logo":{"@type":"ImageObject","url":"mitu.jpg"}},"url":"https://panxiuwen123.gitee.io/posts/1005/","keywords":"System","thumbnailUrl":"cover.jpg"}</script>
     <meta name="description" content="本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="MacOS的安装">
-<meta property="og:url" content="https://panxiuwen.github.io/posts/1005/index.html">
+<meta property="og:url" content="https://panxiuwen123.gitee.io/posts/1005/index.html">
 <meta property="og:site_name" content="Pan&#39;s websit">
 <meta property="og:description" content="本文介绍了如何在普通电脑上安装苹果的MacOS(黑苹果)，毕竟安装Windows和Linux太简单了">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/01.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/02.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/03.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/04.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/05.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/06.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/07.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/08.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/09.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/10.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/11.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/12.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/13.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/14.jpg">
-<meta property="og:image" content="https://panxiuwen.github.io/posts/1005/15.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/01.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/02.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/03.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/04.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/05.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/06.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/07.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/08.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/09.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/10.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/11.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/12.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/13.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/14.jpg">
+<meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/15.jpg">
 <meta property="article:published_time" content="2021-03-29T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-06-29T14:02:00.797Z">
 <meta property="article:author" content="Sean Pan">
 <meta property="article:tag" content="System">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://panxiuwen.github.io/posts/1005/01.jpg">
+<meta name="twitter:image" content="https://panxiuwen123.gitee.io/posts/1005/01.jpg">
 <meta name="twitter:creator" content="@982202733">
 <meta property="fb:app_id" content="[object Object]">
     
@@ -51,11 +51,11 @@
         
     
     
-        <meta property="og:image" content="https://panxiuwen.github.io/assets/images/mitu.jpg"/>
+        <meta property="og:image" content="https://panxiuwen123.gitee.io/assets/images/mitu.jpg"/>
     
     
-        <meta property="og:image" content="https://panxiuwen.github.io/posts/1005/cover.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://panxiuwen.github.io/posts/1005/cover.jpg"/>
+        <meta property="og:image" content="https://panxiuwen123.gitee.io/posts/1005/cover.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://panxiuwen123.gitee.io/posts/1005/cover.jpg"/>
     
     
     
